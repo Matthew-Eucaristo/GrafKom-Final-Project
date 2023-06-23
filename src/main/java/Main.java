@@ -30,6 +30,10 @@ public class Main {
 
     ShaderProgram objectShader;
 
+    private void createTrees(){
+        // take the trees in blender and create many trees as decoration
+
+    }
 
     public void init() {
         window.init();
@@ -62,6 +66,7 @@ public class Main {
                 );
 
         // test drive dari blender
+        // Terrain
         objects.add(new ObjectLoader(
                         shaderModuleDataList,
                         new ArrayList<>(),
@@ -78,6 +83,8 @@ public class Main {
                         .inlineScaleObjectXYZ(1f)
                         .inlineRotateObject((float) Math.toRadians(90), 1f, 0f, 0f)
         );
+
+        createTrees();
 
         // setup camera
         // Get the object's position.
@@ -99,32 +106,12 @@ public class Main {
         float cameraSpeed = 0.1f;
         float rotateSpeedInDegrees = 1f;
 
-        // ini yg buat geraking object dan camera bersamaan
-        // menggunakan I,J,K,L
-        if (window.isKeyPressed(GLFW_KEY_I)) {
-            objects.get(0).translateObject(0f, 0f, -cameraSpeed);
-            camera.moveForward(cameraSpeed);
-        }
-        if (window.isKeyPressed(GLFW_KEY_K)) {
-            objects.get(0).translateObject(0f, 0f, cameraSpeed);
-            camera.moveForward(-cameraSpeed);
-        }
-        if (window.isKeyPressed(GLFW_KEY_J)) {
-            objects.get(0).translateObject(-cameraSpeed, 0f, 0f);
-            camera.moveLeft(cameraSpeed);
-
-        }
-        if (window.isKeyPressed(GLFW_KEY_L)) {
-            objects.get(0).translateObject(cameraSpeed, 0f, 0f);
-            camera.moveRight(cameraSpeed);
-        }
-
         // ini buat yang WASD
         if (window.isKeyPressed(GLFW_KEY_W)) {
-            camera.moveUp(cameraSpeed / 10);
+            camera.moveForward(cameraSpeed / 10);
         }
         if (window.isKeyPressed(GLFW_KEY_S)) {
-            camera.moveDown(cameraSpeed / 10);
+            camera.moveBackwards(cameraSpeed / 10);
         }
         if (window.isKeyPressed(GLFW_KEY_A)) {
             camera.moveLeft(cameraSpeed / 10);
