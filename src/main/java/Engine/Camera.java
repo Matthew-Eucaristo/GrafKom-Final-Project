@@ -1,6 +1,7 @@
 package Engine;
 
 import org.joml.*;
+import java.lang.Math;
 
 public class Camera {
 
@@ -10,6 +11,7 @@ public class Camera {
     private Vector2f rotation;
     private Vector3f up;
     private Matrix4f viewMatrix;
+    private Vector3f targetPosition = new Vector3f(0.0f, 0.0f, 0.0f);
 
     public Camera() {
         direction = new Vector3f();
@@ -76,6 +78,12 @@ public class Camera {
                 .translate(-position.x, -position.y, -position.z);
     }
 
+    public void lockInEye() {
+        rotation.x = (float) Math.toDegrees(Math.asin(-direction.y));
+        rotation.y = (float) Math.toDegrees(Math.atan2(direction.x, direction.z));
+        recalculate();
+    }
+
     public void setPosition(float x, float y, float z) {
         position.set(x, y, z);
         recalculate();
@@ -88,6 +96,30 @@ public class Camera {
 
     public Vector3f getDirection() {
         return direction;
+    }
+    
+
+    public Vector3f getTargetPosition() {
+        return targetPosition;
+    }
+
+    public void setTargetPosition(Vector3f targetPosition) {
+        this.targetPosition = targetPosition;
+    }
+
+    public void updatePosition() {
+        // calculate the new camera position using lerp
+        float lerpFactor = 0.004f; // adjust this value to control the speed of the camera movement
+        Vector3f newCameraPosition = new Vector3f();
+        newCameraPosition.x = MathUtils.lerp(position.x, targetPosition.x, lerpFactor);
+        newCameraPosition.y = MathUtils.lerp(position.y, targetPosition.y, lerpFactor);
+        newCameraPosition.z = MathUtils.lerp(position.z, targetPosition.z, lerpFactor);
+
+        // update the camera position
+        position.set(newCameraPosition);
+
+        // calculate the view matrix and projection matrix
+        recalculate();
     }
 
 }

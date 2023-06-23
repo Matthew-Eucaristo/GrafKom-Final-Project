@@ -132,6 +132,10 @@ public class Window {
         return glfwGetKey(window, keyCode) == GLFW_PRESS;
     }
 
+    public boolean isKeyReleased(int keyCode) {
+        return glfwGetKey(window, keyCode) == GLFW_RELEASE;
+    }
+
     public MouseInput getMouseInput() {
         return mouseInput;
     }

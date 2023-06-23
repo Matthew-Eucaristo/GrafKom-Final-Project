@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.naming.ldap.PagedResultsControl;
+
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL30.*;
@@ -29,8 +31,19 @@ public class Main {
     ShaderProgram objectShader;
     List<ShaderProgram.ShaderModuleData> shaderModuleDataList;
 
-    private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, String filename,
+    Object mainCharacter;
+    boolean toggleKeyPressed = false;
+
+    boolean cameraModeIsFPS = false;
+    boolean cameraTransitionCompleted = false;
+
+    private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
+            String filename,
             Vector4f color, Vector3f translate, Vector3f scale, Vector4f rotate) {
+        // check if parent is null
+        if (parent == null) {
+            parent = objects;
+        }
         // check if the translate or scale or rotate is null
         if (translate == null) {
             translate = new Vector3f(0f, 0f, 0f);
@@ -49,7 +62,7 @@ public class Main {
         color.w /= 255f;
 
         // add objects
-        objects.add(new ObjectLoader(
+        parent.add(new ObjectLoader(
                 shaderModuleDataList,
                 new ArrayList<>(),
                 color,
@@ -64,6 +77,12 @@ public class Main {
                 .inlineTranslateObject(translate.x, translate.y, translate.z)
                 .inlineScaleObject(scale.x, scale.y, scale.z)
                 .inlineRotateObject((float) Math.toRadians(rotate.w), rotate.x, rotate.y, rotate.z));
+
+    }
+
+    private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, String filename,
+            Vector4f color, Vector3f translate, Vector3f scale, Vector4f rotate) {
+        importObjects(shaderModuleDataList, null, filename, color, translate, scale, rotate);
     }
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, String filename,
@@ -72,34 +91,113 @@ public class Main {
                 rotate);
     }
 
+    private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
+            String filename,
+            Vector4f color, Vector3f translate, float scaleXYZ, Vector4f rotate) {
+        importObjects(shaderModuleDataList, parent, filename, color, translate,
+                new Vector3f(scaleXYZ, scaleXYZ, scaleXYZ),
+                rotate);
+    }
+
     private void createTrees() {
         // take the trees in blender and create many trees as decoration
         createTree(0, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0f, 0f, 0f), 1,
                 new Vector4f(1f, 0f, 0f, -90));
-        createTree(1, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(-0.5f, 0f, 0f),1,
+        createTree(1, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(-0.5f, 0f, 0f),
+                1,
                 new Vector4f(1f, 0f, 0f, -90));
-        createTree(2, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0.5f, 0f, 0f), 1,
+        createTree(2, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0.5f, 0f, 0f),
+                1,
                 new Vector4f(1f, 0f, 0f, -90));
-
 
     }
 
-    private void createTree(int variant, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scaleXYZ, Vector4f rotate) {
+    private void createStreetLamps() {
+        float scale = 0.05f;
+        // create the street lamps
+        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(200f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+
+    }
+
+    private void createTree(int variant, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scaleXYZ,
+            Vector4f rotate) {
         switch (variant) {
             case 1:
-                importObjects(shaderModuleDataList,"resources/blender/tree/tree1leaf.fbx" , colorLeaf, translate, scaleXYZ, rotate);
-                importObjects(shaderModuleDataList,"resources/blender/tree/tree1wood.fbx" , colorWood, translate, scaleXYZ, rotate);
+                importObjects(shaderModuleDataList, "resources/blender/tree/tree1leaf.fbx", colorLeaf, translate,
+                        scaleXYZ, rotate);
+                importObjects(shaderModuleDataList, "resources/blender/tree/tree1wood.fbx", colorWood, translate,
+                        scaleXYZ, rotate);
                 break;
             case 2:
-                importObjects(shaderModuleDataList,"resources/blender/tree/tree2leaf.fbx" , colorLeaf, translate, scaleXYZ, rotate);
-                importObjects(shaderModuleDataList,"resources/blender/tree/tree2wood.fbx" , colorWood, translate, scaleXYZ, rotate);
+                importObjects(shaderModuleDataList, "resources/blender/tree/tree2leaf.fbx", colorLeaf, translate,
+                        scaleXYZ, rotate);
+                importObjects(shaderModuleDataList, "resources/blender/tree/tree2wood.fbx", colorWood, translate,
+                        scaleXYZ, rotate);
                 break;
             case 3:
-                importObjects(shaderModuleDataList,"resources/blender/tree/tree3leaf.fbx" , colorLeaf, translate, scaleXYZ, rotate);
-                importObjects(shaderModuleDataList,"resources/blender/tree/tree3wood.fbx" , colorWood, translate, scaleXYZ, rotate);
+                importObjects(shaderModuleDataList, "resources/blender/tree/tree3leaf.fbx", colorLeaf, translate,
+                        scaleXYZ, rotate);
+                importObjects(shaderModuleDataList, "resources/blender/tree/tree3wood.fbx", colorWood, translate,
+                        scaleXYZ, rotate);
                 break;
         }
 
+    }
+
+    private void createMC(Object mainCharacter) {
+        // create main character as chilc of the parent
+
+        // rotations
+        Vector4f rotation = new Vector4f(1f, 0f, 0f, -90f);
+
+        // create the body
+        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/body.fbx",
+                new Vector4f(170f, 200f, 170f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+
+        // create the head
+        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/head.fbx",
+                new Vector4f(190f, 190f, 189f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+
+        // create the eye
+        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/eye.fbx",
+                new Vector4f(10f, 10f, 200f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+
+        // create the hair
+        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/hair.fbx",
+                new Vector4f(10f, 20f, 20f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+
+        // create the leg
+        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/leg.fbx",
+                new Vector4f(100f, 255f, 255f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+
+        // create the mouth
+        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/mouth.fbx",
+                new Vector4f(255f, 255f, 0f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+
+        // create the shirt
+        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/shirt.fbx",
+                new Vector4f(255f, 0f, 255f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+
+        // rotation for all child of main character
+        mainCharacter.getChildObject().forEach(object -> {
+            object.inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f);
+        });
+
+        // translation for all child of main character
+        mainCharacter.getChildObject().forEach(object -> {
+            object.inlineTranslateObject(0f, 1f, 0f);
+        });
     }
 
     public void init() {
@@ -118,6 +216,7 @@ public class Main {
         objectShader = new ShaderProgram(shaderModuleDataList);
         objectShader.link();
 
+        // this is for the main character
         objects.add(new Sphere(
                 // this is for the object sementara buat chara yg digerakkin
                 shaderModuleDataList,
@@ -129,11 +228,14 @@ public class Main {
                 0.125f,
                 36,
                 18)
-                .inlineTranslateObject(0f, 0f, 0f)
-                .inlineScaleObjectXYZ(1f)
-                .inlineRotateObject((float) Math.toRadians(00), 1f, 0f, 0f));
+                .inlineTranslateObject(0f, 5f, 0f)
+                .inlineScaleObjectXYZ(0.1f)
+                .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f));
 
-        // test drive dari blender
+        // main character
+        mainCharacter = objects.get(0);
+        createMC(mainCharacter);
+
         // Terrain
         importObjects(shaderModuleDataList, "resources/blender/terrain.fbx", new Vector4f(58, 105, 0, 255), null, null,
                 new Vector4f(1f, 0f, 0f, 90));
@@ -141,15 +243,8 @@ public class Main {
         // Trees
         createTrees();
 
-        // setup camera
-        // Get the object's position.
-        Vector3f objectPosition = new Vector3f(
-                objects.get(0).getCenterPoint().get(0),
-                objects.get(0).getCenterPoint().get(1),
-                objects.get(0).getCenterPoint().get(2));
-
-        // Set the camera's position and up vector.
-        // camera.lookAt(objectPosition, new Vector3f(0, 1, 0));
+        // Street lamps
+        createStreetLamps();
 
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
@@ -157,21 +252,44 @@ public class Main {
     }
 
     public void input() {
-        float cameraSpeed = 0.1f;
+        float cameraSpeed = 0.05f;
+        float characterSpeed = 0.03f;
         float rotateSpeedInDegrees = 1f;
+
+        // keybind for toggling FPS or TPS
+        if (window.isKeyPressed(GLFW_KEY_1)) {
+            if (!toggleKeyPressed) {
+                toggleKeyPressed = true;
+
+                // toggle camera transition
+                cameraTransitionCompleted = false;
+
+                // toggle camera mode
+                if (cameraModeIsFPS) {
+                    cameraModeIsFPS = false;
+                } else {
+                    cameraModeIsFPS = true;
+
+                    // toggle camera transition
+                    cameraTransitionCompleted = false;
+                }
+            }
+        } else {
+            toggleKeyPressed = false;
+        }
 
         // ini buat yang WASD
         if (window.isKeyPressed(GLFW_KEY_W)) {
-            camera.moveForward(cameraSpeed / 10);
+            camera.moveForward(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_S)) {
-            camera.moveBackwards(cameraSpeed / 10);
+            camera.moveBackwards(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_A)) {
-            camera.moveLeft(cameraSpeed / 10);
+            camera.moveLeft(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_D)) {
-            camera.moveRight(cameraSpeed / 10);
+            camera.moveRight(cameraSpeed);
         }
 
         // ini buat Q dan E buat rotate
@@ -193,39 +311,25 @@ public class Main {
             camera.addRotation((float) Math.toRadians(rotateSpeedInDegrees), 0);
             camera.moveUp((float) Math.toRadians(rotateSpeedInDegrees));
         }
-
-        // ini yang buat obyek utama maju mundur kiri kanan seperti third person
-        // menggunakan arrow key
-        // but when it rotates, move the same vector as the object.get(0)
-        if (window.isKeyPressed(GLFW_KEY_UP)) {
-            objects.get(0).translateObject(0f, 0f, -cameraSpeed);
-            camera.getPosition().add(0f, 0f, -cameraSpeed);
-            camera.recalculate();
-        }
-        if (window.isKeyPressed(GLFW_KEY_DOWN)) {
-            objects.get(0).translateObject(0f, 0f, cameraSpeed);
-            camera.getPosition().add(0f, 0f, cameraSpeed);
-            camera.recalculate();
-        }
-        if (window.isKeyPressed(GLFW_KEY_LEFT)) {
-            objects.get(0).translateObject(-cameraSpeed, 0f, 0f);
-            camera.getPosition().add(-cameraSpeed, 0f, 0f);
-            camera.recalculate();
-        }
-        if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
-            objects.get(0).translateObject(cameraSpeed, 0f, 0f);
-            camera.getPosition().add(cameraSpeed, 0f, 0f);
-            camera.recalculate();
-        }
         if (window.isKeyPressed(GLFW_KEY_PAGE_UP)) {
-            objects.get(0).translateObject(0f, cameraSpeed, 0f);
-            camera.getPosition().add(0f, cameraSpeed, 0f);
-            camera.recalculate();
+            camera.moveUp(cameraSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
-            objects.get(0).translateObject(0f, -cameraSpeed, 0f);
-            camera.getPosition().add(0f, -cameraSpeed, 0f);
-            camera.recalculate();
+            camera.moveDown(cameraSpeed);
+        }
+
+        // this is for moving the character
+        if (window.isKeyPressed(GLFW_KEY_UP)) {
+            objects.get(0).translateObject(0f, 0f, -characterSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_DOWN)) {
+            objects.get(0).translateObject(0f, 0f, characterSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_LEFT)) {
+            objects.get(0).translateObject(-characterSpeed, 0f, 0f);
+        }
+        if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
+            objects.get(0).translateObject(characterSpeed, 0f, 0f);
         }
 
         // ini yang buat mouse button
@@ -258,6 +362,28 @@ public class Main {
                 object.draw(camera, projection);
             }
 
+            // update all the center point to the correct one
+            objects.forEach(object -> {
+                object.updateCenterPoint();
+            });
+
+            // camera transition
+            cameraTransition();
+
+            // set FPS/free
+            if (cameraModeIsFPS && cameraTransitionCompleted) {
+                // set to FPS mode
+                Vector3f eyePosition = new Vector3f(
+                        mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
+                        mainCharacter.getChildObject().get(2).getCenterPoint().get(1),
+                        mainCharacter.getChildObject().get(2).getCenterPoint().get(2));
+
+                // set the camera to the main character eye
+                camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
+                camera.lockInEye();
+
+            }
+
             // Restore state
             glDisableVertexAttribArray(0);
 
@@ -266,6 +392,43 @@ public class Main {
             // invoked during this call.
             glfwPollEvents();
         }
+    }
+
+    private void cameraTransition() {
+        float acceptedOffset = 0.3f;
+        if (cameraTransitionCompleted)
+            return;
+        if (cameraModeIsFPS) {
+            // target is the eye
+            Vector3f target = new Vector3f(
+                    mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
+                    mainCharacter.getChildObject().get(2).getCenterPoint().get(1),
+                    mainCharacter.getChildObject().get(2).getCenterPoint().get(2));
+
+            camera.setTargetPosition(target);
+            camera.updatePosition();
+
+            if (camera.getPosition().distance(target) < acceptedOffset) {
+                cameraTransitionCompleted = true;
+                System.out.println("Transition Completed!");
+            }
+
+        } else {
+            // target is the body
+            Vector3f target = new Vector3f(
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(0),
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(1),
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(2));
+
+            camera.setTargetPosition(target);
+            camera.updatePosition();
+
+            if (camera.getPosition().distance(target) < acceptedOffset) {
+                cameraTransitionCompleted = true;
+                System.out.println("Transition Completed!");
+            }
+        }
+
     }
 
     public void run() {

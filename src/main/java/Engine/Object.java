@@ -42,9 +42,14 @@ public class Object extends ShaderProgram{
         this.childObject = childObject;
     }
 
-    public List<Float> getCenterPoint() {
-        updateCenterPoint();
-        return centerPoint;
+    private List<Float> getUpdateCenterPoint(){
+        Vector3f destTemp = new Vector3f();
+        model.transformPosition(0.0f,0.0f,0.0f,destTemp);
+        return Arrays.asList(destTemp.x,destTemp.y,destTemp.z);
+    }
+
+    public List<Float> getCenterPoint(){
+        return getUpdateCenterPoint();
     }
 
     public void setCenterPoint(List<Float> centerPoint) {
@@ -191,9 +196,16 @@ public class Object extends ShaderProgram{
         vertices.add(newVertices);
         setupVAOVBO();
     }
+    public List<Vector3f> getVertices() {
+        return vertices;
+    }
+
+    public void setVertices(List<Vector3f> vertices) {
+        this.vertices = vertices;
+    }
+
     public void translateObject(Float offsetX,Float offsetY,Float offsetZ){
         model = new Matrix4f().translate(offsetX,offsetY,offsetZ).mul(new Matrix4f(model));
-        updateCenterPoint();
         for(Object child:childObject){
             child.translateObject(offsetX,offsetY,offsetZ);
         }
@@ -204,7 +216,6 @@ public class Object extends ShaderProgram{
     }
     public void rotateObject(Float degree, Float x,Float y,Float z){
         model = new Matrix4f().rotate(degree,x,y,z).mul(new Matrix4f(model));
-        updateCenterPoint();
         for(Object child:childObject){
             child.rotateObject(degree,x,y,z);
         }
@@ -215,12 +226,14 @@ public class Object extends ShaderProgram{
         return this;
     }
     public void updateCenterPoint(){
-        Vector3f destTemp = new Vector3f();
-        model.transformPosition(0.0f,0.0f,0.0f,destTemp);
-        centerPoint.set(0,destTemp.x);
-        centerPoint.set(1,destTemp.y);
-        centerPoint.set(2,destTemp.z);
+        centerPoint = getUpdateCenterPoint();
+
+        for(Object child:childObject){
+            child.updateCenterPoint();
+        }
     }
+
+
     public void scaleObject(Float scaleX,Float scaleY,Float scaleZ){
         model = new Matrix4f().scale(scaleX,scaleY,scaleZ).mul(new Matrix4f(model));
         for(Object child:childObject){
