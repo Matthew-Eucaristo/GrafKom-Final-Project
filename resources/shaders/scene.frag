@@ -27,6 +27,7 @@ struct PointLight {
 #define NR_POINT_LIGHTS 4
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 
+// Spot Light
 struct SpotLight {
     vec3 position;
     vec3 direction;

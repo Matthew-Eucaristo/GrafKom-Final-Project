@@ -46,7 +46,7 @@ public class Main {
         objectShader.link();
 
         objects.add(new Sphere(
-                // this is for the object
+                // this is for the object sementara buat chara yg digerakkin
                 shaderModuleDataList,
                 new ArrayList<>(),
                 new Vector4f(1.0f, 1.0f, 0.0f, 1.0f),
@@ -55,134 +55,29 @@ public class Main {
                 0.125f,
                 0.125f,
                 36,
-                18));
-
-        objects.add(new Sphere(
-                // this is for the land
-                shaderModuleDataList,
-                new ArrayList<>(),
-                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-                Arrays.asList(0.0f, -0.5f, 0.0f),
-                0.5f,
-                0.5f,
-                0.5f,
-                36,
-                18));
-
-        objects.add(new Sphere(
-                // this is for the land
-                shaderModuleDataList,
-                new ArrayList<>(),
-                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-                Arrays.asList(-1.0f, -0.5f, 0.0f),
-                0.5f,
-                0.5f,
-                0.5f,
-                36,
-                18));
-        objects.add(new Sphere(
-                // this is for the land
-                shaderModuleDataList,
-                new ArrayList<>(),
-                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-                Arrays.asList(1.0f, -0.5f, 0.0f),
-                0.5f,
-                0.5f,
-                0.5f,
-                36,
-                18));
-
-        // setup loaded object
-//        objects.add(new ObjectLoader(
-//                shaderModuleDataList,
-//                new ArrayList<>(),
-//                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-//                Arrays.asList(0.0f, -0.5f, 0.0f),
-//                0.5f,
-//                0.5f,
-//                0.5f,
-//                36,
-//                18,
-//                "resources/blender/satelite/satelite sementara.glb"
-//        ));
-//        objects.add(new ObjectLoader(
-//                shaderModuleDataList,
-//                new ArrayList<>(),
-//                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-//                Arrays.asList(0.0f, -0.5f, 0.0f),
-//                0.5f,
-//                0.5f,
-//                0.5f,
-//                36,
-//                18,
-//                "resources/blender/box/box.obj"
-//        ).inlineTranslateObject(5f,0f,0f));
-        objects.add(new ObjectLoader(
-                shaderModuleDataList,
-                new ArrayList<>(),
-                new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-                Arrays.asList(0.0f, -0.5f, 0.0f),
-                0.5f,
-                0.5f,
-                0.5f,
-                36,
-                18,
-                "resources/blender/asuna/asuna.stl"
-        )
-                .inlineTranslateObject(0f,0f,0f)
-                        .inlineScaleObjectXYZ(0.3f)
-                        .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f)
-        );
-        objects.add(new ObjectLoader(
-                        shaderModuleDataList,
-                        new ArrayList<>(),
-                        new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-                        Arrays.asList(0.0f, -0.5f, 0.0f),
-                        0.5f,
-                        0.5f,
-                        0.5f,
-                        36,
-                        18,
-                        "resources/blender/asuna/second variant/asuna.obj"
-                )
+                18)
                         .inlineTranslateObject(0f,0f,0f)
-                        .inlineScaleObjectXYZ(0.3f)
-                        .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f)
-        );
+                        .inlineScaleObjectXYZ(1f)
+                        .inlineRotateObject((float) Math.toRadians(00), 1f, 0f, 0f)
+                );
+
+        // test drive dari blender
         objects.add(new ObjectLoader(
                         shaderModuleDataList,
                         new ArrayList<>(),
-                        new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
+                        new Vector4f(0.0f, 1.0f, 0.0f, 1.0f), // color
                         Arrays.asList(0.0f, -0.5f, 0.0f),
                         0.5f,
                         0.5f,
                         0.5f,
                         36,
                         18,
-                        "resources/blender/asuna/second variant/asuna2.fbx"
+                        "resources/blender/terrain.fbx" // path to the object
                 )
-                        .inlineTranslateObject(3f,0f,1f)
-                        .inlineScaleObjectXYZ(1.3f)
-                        .inlineRotateObject((float) Math.toRadians(0), 0f, 1f, 0f)
+                        .inlineTranslateObject(0f,5f,0f)
+                        .inlineScaleObjectXYZ(1f)
+                        .inlineRotateObject((float) Math.toRadians(90), 1f, 0f, 0f)
         );
-        objects.add(new ObjectLoader(
-                        shaderModuleDataList,
-                        new ArrayList<>(),
-                        new Vector4f(0.0f, 1.0f, 0.0f, 1.0f),
-                        Arrays.asList(0.0f, -0.5f, 0.0f),
-                        0.5f,
-                        0.5f,
-                        0.5f,
-                        36,
-                        18,
-                        "resources\\blender\\anna\\Anna_OBJ\\Anna_OBJ.obj"
-                )
-                        .inlineTranslateObject(0f,0f,0f)
-                        .inlineScaleObjectXYZ(0.3f)
-                        .inlineRotateObject((float) Math.toRadians(0), 0f, 0f, 0f)
-        );
-
-
 
         // setup camera
         // Get the object's position.
