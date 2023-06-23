@@ -98,62 +98,69 @@ public class Main {
                 new Vector3f(scaleXYZ, scaleXYZ, scaleXYZ),
                 rotate);
     }
-
-    private void createTrees() {
-        // take the trees in blender and create many trees as decoration
-        createTree(0, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0f, 0f, 0f), 1,
-                new Vector4f(1f, 0f, 0f, -90));
-        createTree(1, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(-0.5f, 0f, 0f),
-                1,
-                new Vector4f(1f, 0f, 0f, -90));
-        createTree(2, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0.5f, 0f, 0f),
-                1,
-                new Vector4f(1f, 0f, 0f, -90));
-
-    }
-
     private void createStreetLamps() {
         float scale = 0.05f;
         // create the street lamps
         importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
                 new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+
+        // set as parent
+        List<Object> streetLamps = objects.get(3).getChildObject();
+
+        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
                 new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
                 new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
                 new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
                 new Vector4f(31f, 21f, 14f, 255f), new Vector3f(200f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
+        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
                 new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
 
     }
 
-    private void createTree(int variant, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scaleXYZ,
+
+    private void createTrees() {
+        // take the trees in blender and create many trees as decoration
+        createTree(1,null, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0f, 0f, 0f), 1,
+                new Vector4f(1f, 0f, 0f, -90));
+
+        List<Object> trees = objects.get(2).getChildObject();
+
+        createTree(1,trees, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(-0.5f, 0f, 0f),
+                1,
+                new Vector4f(1f, 0f, 0f, -90));
+        createTree(2,trees, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0.5f, 0f, 0f),
+                1,
+                new Vector4f(1f, 0f, 0f, -90));
+
+    }
+    private void createTree(int variant, List<Object> parent, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scaleXYZ,
             Vector4f rotate) {
         switch (variant) {
             case 1:
-                importObjects(shaderModuleDataList, "resources/blender/tree/tree1leaf.fbx", colorLeaf, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1leaf.fbx", colorLeaf, translate,
                         scaleXYZ, rotate);
-                importObjects(shaderModuleDataList, "resources/blender/tree/tree1wood.fbx", colorWood, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1wood.fbx", colorWood, translate,
                         scaleXYZ, rotate);
                 break;
             case 2:
-                importObjects(shaderModuleDataList, "resources/blender/tree/tree2leaf.fbx", colorLeaf, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2leaf.fbx", colorLeaf, translate,
                         scaleXYZ, rotate);
-                importObjects(shaderModuleDataList, "resources/blender/tree/tree2wood.fbx", colorWood, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2wood.fbx", colorWood, translate,
                         scaleXYZ, rotate);
                 break;
             case 3:
-                importObjects(shaderModuleDataList, "resources/blender/tree/tree3leaf.fbx", colorLeaf, translate,
+                importObjects(shaderModuleDataList, parent,"resources/blender/tree/tree3leaf.fbx", colorLeaf, translate,
                         scaleXYZ, rotate);
-                importObjects(shaderModuleDataList, "resources/blender/tree/tree3wood.fbx", colorWood, translate,
+                importObjects(shaderModuleDataList, parent,"resources/blender/tree/tree3wood.fbx", colorWood, translate,
                         scaleXYZ, rotate);
                 break;
         }
 
     }
+
 
     private void createMC(Object mainCharacter) {
         // create main character as chilc of the parent
@@ -245,6 +252,14 @@ public class Main {
 
         // Street lamps
         createStreetLamps();
+
+
+
+
+
+
+
+
 
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();

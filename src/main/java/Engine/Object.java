@@ -62,19 +62,15 @@ public class Object extends ShaderProgram{
             , Vector4f color) {
         super(shaderModuleDataList);
         this.vertices = vertices;
-//        setupVAOVBO();
+
         uniformsMap = new UniformsMap(getProgramId());
-//        uniformsMap.createUniform(
-//                "uni_color");
-//        uniformsMap.createUniform(
-//                "model");
-//        uniformsMap.createUniform(
-//                "projection");
-//        uniformsMap.createUniform(
-//                "view");
+
         this.color = color;
+
         model = new Matrix4f().identity();
+
         childObject = new ArrayList<>();
+        
         centerPoint = Arrays.asList(0f,0f,0f);
     }
     public Object(List<ShaderModuleData> shaderModuleDataList,
