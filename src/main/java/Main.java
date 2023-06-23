@@ -18,8 +18,6 @@ import static org.lwjgl.opengl.GL30.*;
 public class Main {
     private Window window = new Window(800, 800, "Hello World");
     private ArrayList<Object> objects = new ArrayList<>();
-    private ArrayList<Object> objectsRectangle = new ArrayList<>();
-    private ArrayList<Object> objectsPointsControl = new ArrayList<>();
 
     private MouseInput mouseInput;
     int countDegree = 0;
@@ -29,6 +27,7 @@ public class Main {
     Matrix4f viewMatrix;
 
     ShaderProgram objectShader;
+    List<ShaderProgram.ShaderModuleData> shaderModuleDataList;
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, String filename,
             Vector4f color, Vector3f translate, Vector3f scale, Vector4f rotate) {
@@ -42,6 +41,12 @@ public class Main {
         if (rotate == null) {
             rotate = new Vector4f(0f, 0f, 0f, 0f);
         }
+
+        // divide the color to the 255
+        color.x /= 255f;
+        color.y /= 255f;
+        color.z /= 255f;
+        color.w /= 255f;
 
         // add objects
         objects.add(new ObjectLoader(
@@ -69,16 +74,29 @@ public class Main {
 
     private void createTrees() {
         // take the trees in blender and create many trees as decoration
+        createTree(0, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0f, 0f, 0f), 1,
+                new Vector4f(1f, 0f, 0f, -90));
+        createTree(1, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(-0.5f, 0f, 0f),1,
+                new Vector4f(1f, 0f, 0f, -90));
+        createTree(2, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0.5f, 0f, 0f), 1,
+                new Vector4f(1f, 0f, 0f, -90));
+
 
     }
 
-    private void createTree(int variant) {
+    private void createTree(int variant, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scaleXYZ, Vector4f rotate) {
         switch (variant) {
             case 1:
+                importObjects(shaderModuleDataList,"resources/blender/tree/tree1leaf.fbx" , colorLeaf, translate, scaleXYZ, rotate);
+                importObjects(shaderModuleDataList,"resources/blender/tree/tree1wood.fbx" , colorWood, translate, scaleXYZ, rotate);
                 break;
             case 2:
+                importObjects(shaderModuleDataList,"resources/blender/tree/tree2leaf.fbx" , colorLeaf, translate, scaleXYZ, rotate);
+                importObjects(shaderModuleDataList,"resources/blender/tree/tree2wood.fbx" , colorWood, translate, scaleXYZ, rotate);
                 break;
             case 3:
+                importObjects(shaderModuleDataList,"resources/blender/tree/tree3leaf.fbx" , colorLeaf, translate, scaleXYZ, rotate);
+                importObjects(shaderModuleDataList,"resources/blender/tree/tree3wood.fbx" , colorWood, translate, scaleXYZ, rotate);
                 break;
         }
 
@@ -91,7 +109,8 @@ public class Main {
         camera.setPosition(0f, 0f, 1f);
 
         // create the shader program
-        List<ShaderProgram.ShaderModuleData> shaderModuleDataList = new ArrayList<>();
+        // usahain di atas
+        shaderModuleDataList = new ArrayList<>();
         shaderModuleDataList.add(new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER));
         shaderModuleDataList
                 .add(new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER));
@@ -116,7 +135,7 @@ public class Main {
 
         // test drive dari blender
         // Terrain
-        importObjects(shaderModuleDataList, "resources/blender/terrain.fbx", new Vector4f(0f, 1f, 0f, 1f), null, null,
+        importObjects(shaderModuleDataList, "resources/blender/terrain.fbx", new Vector4f(58, 105, 0, 255), null, null,
                 new Vector4f(1f, 0f, 0f, 90));
 
         // Trees
