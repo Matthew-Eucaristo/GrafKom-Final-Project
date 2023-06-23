@@ -126,6 +126,7 @@ public class Main {
         createTree(1,null, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0f, 0f, 0f), 1,
                 new Vector4f(1f, 0f, 0f, -90));
 
+        // set as parent
         List<Object> trees = objects.get(2).getChildObject();
 
         createTree(1,trees, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(-0.5f, 0f, 0f),
@@ -139,24 +140,27 @@ public class Main {
     private void createTree(int variant, List<Object> parent, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scaleXYZ,
             Vector4f rotate) {
         switch (variant) {
-            case 1:
+            case 1 -> {
                 importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1leaf.fbx", colorLeaf, translate,
                         scaleXYZ, rotate);
                 importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1wood.fbx", colorWood, translate,
                         scaleXYZ, rotate);
-                break;
-            case 2:
+            }
+            case 2 -> {
                 importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2leaf.fbx", colorLeaf, translate,
                         scaleXYZ, rotate);
                 importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2wood.fbx", colorWood, translate,
                         scaleXYZ, rotate);
-                break;
-            case 3:
+            }
+            case 3 -> {
                 importObjects(shaderModuleDataList, parent,"resources/blender/tree/tree3leaf.fbx", colorLeaf, translate,
                         scaleXYZ, rotate);
                 importObjects(shaderModuleDataList, parent,"resources/blender/tree/tree3wood.fbx", colorWood, translate,
                         scaleXYZ, rotate);
-                break;
+            }
+            default -> {
+                System.out.println("No such variant");
+            }
         }
 
     }
