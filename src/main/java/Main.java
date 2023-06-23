@@ -30,8 +30,57 @@ public class Main {
 
     ShaderProgram objectShader;
 
-    private void createTrees(){
+    private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, String filename,
+            Vector4f color, Vector3f translate, Vector3f scale, Vector4f rotate) {
+        // check if the translate or scale or rotate is null
+        if (translate == null) {
+            translate = new Vector3f(0f, 0f, 0f);
+        }
+        if (scale == null) {
+            scale = new Vector3f(1f, 1f, 1f);
+        }
+        if (rotate == null) {
+            rotate = new Vector4f(0f, 0f, 0f, 0f);
+        }
+
+        // add objects
+        objects.add(new ObjectLoader(
+                shaderModuleDataList,
+                new ArrayList<>(),
+                color,
+                Arrays.asList(0.0f, -0.5f, 0.0f),
+                0.5f,
+                0.5f,
+                0.5f,
+                36,
+                18,
+                filename // path to the object
+        )
+                .inlineTranslateObject(translate.x, translate.y, translate.z)
+                .inlineScaleObject(scale.x, scale.y, scale.z)
+                .inlineRotateObject((float) Math.toRadians(rotate.w), rotate.x, rotate.y, rotate.z));
+    }
+
+    private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, String filename,
+            Vector4f color, Vector3f translate, float scaleXYZ, Vector4f rotate) {
+        importObjects(shaderModuleDataList, filename, color, translate, new Vector3f(scaleXYZ, scaleXYZ, scaleXYZ),
+                rotate);
+    }
+
+    private void createTrees() {
         // take the trees in blender and create many trees as decoration
+
+    }
+
+    private void createTree(int variant) {
+        switch (variant) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+        }
 
     }
 
@@ -44,7 +93,8 @@ public class Main {
         // create the shader program
         List<ShaderProgram.ShaderModuleData> shaderModuleDataList = new ArrayList<>();
         shaderModuleDataList.add(new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER));
-        shaderModuleDataList.add(new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER));
+        shaderModuleDataList
+                .add(new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag", GL_FRAGMENT_SHADER));
 
         objectShader = new ShaderProgram(shaderModuleDataList);
         objectShader.link();
@@ -60,30 +110,16 @@ public class Main {
                 0.125f,
                 36,
                 18)
-                        .inlineTranslateObject(0f,0f,0f)
-                        .inlineScaleObjectXYZ(1f)
-                        .inlineRotateObject((float) Math.toRadians(00), 1f, 0f, 0f)
-                );
+                .inlineTranslateObject(0f, 0f, 0f)
+                .inlineScaleObjectXYZ(1f)
+                .inlineRotateObject((float) Math.toRadians(00), 1f, 0f, 0f));
 
         // test drive dari blender
         // Terrain
-        objects.add(new ObjectLoader(
-                        shaderModuleDataList,
-                        new ArrayList<>(),
-                        new Vector4f(0.0f, 1.0f, 0.0f, 1.0f), // color
-                        Arrays.asList(0.0f, -0.5f, 0.0f),
-                        0.5f,
-                        0.5f,
-                        0.5f,
-                        36,
-                        18,
-                        "resources/blender/terrain.fbx" // path to the object
-                )
-                        .inlineTranslateObject(0f,5f,0f)
-                        .inlineScaleObjectXYZ(1f)
-                        .inlineRotateObject((float) Math.toRadians(90), 1f, 0f, 0f)
-        );
+        importObjects(shaderModuleDataList, "resources/blender/terrain.fbx", new Vector4f(0f, 1f, 0f, 1f), null, null,
+                new Vector4f(1f, 0f, 0f, 90));
 
+        // Trees
         createTrees();
 
         // setup camera
@@ -98,7 +134,6 @@ public class Main {
 
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
-
 
     }
 
@@ -145,35 +180,34 @@ public class Main {
         // but when it rotates, move the same vector as the object.get(0)
         if (window.isKeyPressed(GLFW_KEY_UP)) {
             objects.get(0).translateObject(0f, 0f, -cameraSpeed);
-            camera.getPosition().add(0f,0f,-cameraSpeed);
+            camera.getPosition().add(0f, 0f, -cameraSpeed);
             camera.recalculate();
         }
         if (window.isKeyPressed(GLFW_KEY_DOWN)) {
             objects.get(0).translateObject(0f, 0f, cameraSpeed);
-            camera.getPosition().add(0f,0f,cameraSpeed);
+            camera.getPosition().add(0f, 0f, cameraSpeed);
             camera.recalculate();
         }
         if (window.isKeyPressed(GLFW_KEY_LEFT)) {
             objects.get(0).translateObject(-cameraSpeed, 0f, 0f);
-            camera.getPosition().add(-cameraSpeed,0f,0f);
+            camera.getPosition().add(-cameraSpeed, 0f, 0f);
             camera.recalculate();
         }
         if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
             objects.get(0).translateObject(cameraSpeed, 0f, 0f);
-            camera.getPosition().add(cameraSpeed,0f,0f);
+            camera.getPosition().add(cameraSpeed, 0f, 0f);
             camera.recalculate();
         }
-        if (window.isKeyPressed(GLFW_KEY_PAGE_UP)){
+        if (window.isKeyPressed(GLFW_KEY_PAGE_UP)) {
             objects.get(0).translateObject(0f, cameraSpeed, 0f);
-            camera.getPosition().add(0f,cameraSpeed,0f);
+            camera.getPosition().add(0f, cameraSpeed, 0f);
             camera.recalculate();
         }
-        if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)){
+        if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
             objects.get(0).translateObject(0f, -cameraSpeed, 0f);
-            camera.getPosition().add(0f,-cameraSpeed,0f);
+            camera.getPosition().add(0f, -cameraSpeed, 0f);
             camera.recalculate();
         }
-
 
         // ini yang buat mouse button
         if (mouseInput.isLeftButtonPressed()) {
