@@ -99,6 +99,15 @@ public class Main {
                 new Vector3f(scaleXYZ, scaleXYZ, scaleXYZ),
                 rotate);
     }
+    public void createCaroussel(){
+
+        //caroussel
+        importObjects(shaderModuleDataList, "resources/blender/Caroussel/carousel.fbx",
+                new Vector4f(50f, 25f, 0f, 255f), // warna
+                new Vector3f(250f, 30f,200f),5, // translasi dan scaling object
+                new Vector4f(1f, 0f, 0f,-90)); // rotasi
+    }
+
     private void createStreetLamps() {
         float scale = 0.05f;
         // create the street lamps
@@ -165,6 +174,9 @@ public class Main {
         }
 
     }
+
+
+
 
 
     private void createMC(Object mainCharacter) {
@@ -268,6 +280,8 @@ public class Main {
         importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255), null, null,
                 new Vector4f(0f, 0f, 0f, 0));
 
+
+
         // Trees
         createTrees();
 
@@ -276,6 +290,9 @@ public class Main {
 
         // Gate and castles
         createCastles();
+
+        //caroussel
+        createCaroussel();
 
 
 
