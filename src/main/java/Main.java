@@ -77,8 +77,7 @@ public class Main {
         )
                 .inlineScaleObject(scale.x, scale.y, scale.z)
                 .inlineRotateObject((float) Math.toRadians(rotate.w), rotate.x, rotate.y, rotate.z)
-                .inlineTranslateObject(translate.x, translate.y, translate.z)
-                );
+                .inlineTranslateObject(translate.x, translate.y, translate.z));
 
     }
 
@@ -144,18 +143,22 @@ public class Main {
 
         // take the trees in blender and create many trees as decoration
         createTree(1, null, colorLeaf, colorWood,
-                new Vector3f(-41f, -33f, 11f), 1,
+                new Vector3f(-41f, 11f, -33f), 1,
                 rotation);
 
         // set as parent
         List<Object> trees = objects.get(2).getChildObject();
 
         createTree(1, trees, colorLeaf, colorWood,
-                new Vector3f(-0.5f, 0f, 0f),
+                new Vector3f(-42f, 20f, 15f),
                 1,
                 rotation);
         createTree(2, trees, colorLeaf, colorWood,
-                new Vector3f(0.5f, 0f, 0f),
+                new Vector3f(),
+                1,
+                rotation);
+        createTree(3, trees, colorLeaf, colorWood,
+                new Vector3f(0f, 20f, 0f),
                 1,
                 rotation);
 
@@ -203,7 +206,7 @@ public class Main {
         Vector4f rotation = new Vector4f(1f, 0f, 0f, -90f);
 
         // transitions
-        Vector3f translate = new Vector3f(0f,0f , -47f);
+        Vector3f translate = new Vector3f(0f, 0f, -47f);
 
         // create the body
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/body.fbx",
