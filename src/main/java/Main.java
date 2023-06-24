@@ -99,13 +99,14 @@ public class Main {
                 new Vector3f(scaleXYZ, scaleXYZ, scaleXYZ),
                 rotate);
     }
-    public void createCaroussel(){
 
-        //caroussel
+    public void createCaroussel() {
+
+        // caroussel
         importObjects(shaderModuleDataList, "resources/blender/Caroussel/carousel.fbx",
                 new Vector4f(50f, 25f, 0f, 255f), // warna
-                new Vector3f(250f, 30f,200f),5, // translasi dan scaling object
-                new Vector4f(1f, 0f, 0f,-90)); // rotasi
+                new Vector3f(250f, 30f, 200f), 5, // translasi dan scaling object
+                new Vector4f(1f, 0f, 0f, -90)); // rotasi
     }
 
     private void createStreetLamps() {
@@ -130,42 +131,61 @@ public class Main {
 
     }
 
-
     private void createTrees() {
+        // set rotations
+        Vector4f rotation = new Vector4f(1f, 0f, 0f, -90f);
+
+        // color leaf
+        Vector4f colorLeaf = new Vector4f(0f, 255f, 0f, 255f);
+
+        // color wood
+        Vector4f colorWood = new Vector4f(50,45,23,255f);
+
         // take the trees in blender and create many trees as decoration
-        createTree(1,null, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0f, 0f, 0f), 1,
-                new Vector4f(1f, 0f, 0f, -90));
+        createTree(1, null, colorLeaf, colorWood,
+                new Vector3f(0f, 0f, 0f), 1,
+                rotation);
 
         // set as parent
         List<Object> trees = objects.get(2).getChildObject();
 
-        createTree(1,trees, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(-0.5f, 0f, 0f),
+        createTree(1, trees, colorLeaf, colorWood,
+                new Vector3f(-0.5f, 0f, 0f),
                 1,
-                new Vector4f(1f, 0f, 0f, -90));
-        createTree(2,trees, new Vector4f(0f, 255f, 0f, 255f), new Vector4f(50f, 40f, 32f, 255f), new Vector3f(0.5f, 0f, 0f),
+                rotation);
+        createTree(2, trees, colorLeaf, colorWood,
+                new Vector3f(0.5f, 0f, 0f),
                 1,
-                new Vector4f(1f, 0f, 0f, -90));
+                rotation);
 
     }
-    private void createTree(int variant, List<Object> parent, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scaleXYZ,
+
+    private void createTree(int variant, List<Object> parent, Vector4f colorLeaf, Vector4f colorWood,
+            Vector3f translate, float scaleXYZ,
             Vector4f rotate) {
         switch (variant) {
             case 1 -> {
-                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1leaf.fbx", colorLeaf, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1leaf.fbx", colorLeaf,
+                        translate,
                         scaleXYZ, rotate);
-                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1wood.fbx", colorWood, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree1wood.fbx", colorWood,
+                        translate,
                         scaleXYZ, rotate);
             }
             case 2 -> {
-                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2leaf.fbx", colorLeaf, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2leaf.fbx", colorLeaf,
+                        translate,
                         scaleXYZ, rotate);
-                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2wood.fbx", colorWood, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree2wood.fbx", colorWood,
+                        translate,
                         scaleXYZ, rotate);
             }
             case 3 -> {
-                importObjects(shaderModuleDataList, parent,"resources/blender/tree/tree3leaf.fbx", colorLeaf, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree3leaf.fbx", colorLeaf,
+                        translate,
                         scaleXYZ, rotate);
-                importObjects(shaderModuleDataList, parent,"resources/blender/tree/tree3wood.fbx", colorWood, translate,
+                importObjects(shaderModuleDataList, parent, "resources/blender/tree/tree3wood.fbx", colorWood,
+                        translate,
                         scaleXYZ, rotate);
             }
             default -> {
@@ -175,43 +195,42 @@ public class Main {
 
     }
 
-
-
-
-
     private void createMC(Object mainCharacter) {
         // create main character as chilc of the parent
 
         // rotations
         Vector4f rotation = new Vector4f(1f, 0f, 0f, -90f);
 
+        // transitions
+        Vector3f translate = new Vector3f(0f, 47f, 0f);
+
         // create the body
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/body.fbx",
-                new Vector4f(170f, 200f, 170f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+                new Vector4f(170f, 200f, 170f, 255f), translate, 1f, rotation);
 
         // create the head
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/head.fbx",
-                new Vector4f(190f, 190f, 189f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+                new Vector4f(190f, 190f, 189f, 255f), translate, 1f, rotation);
 
         // create the eye
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/eye.fbx",
-                new Vector4f(10f, 10f, 200f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+                new Vector4f(10f, 10f, 200f, 255f), translate, 1f, rotation);
 
         // create the hair
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/hair.fbx",
-                new Vector4f(10f, 20f, 20f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+                new Vector4f(10f, 20f, 20f, 255f), translate, 1f, rotation);
 
         // create the leg
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/leg.fbx",
-                new Vector4f(100f, 255f, 255f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+                new Vector4f(100f, 255f, 255f, 255f), translate, 1f, rotation);
 
         // create the mouth
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/mouth.fbx",
-                new Vector4f(255f, 255f, 0f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+                new Vector4f(255f, 255f, 0f, 255f), translate, 1f, rotation);
 
         // create the shirt
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/shirt.fbx",
-                new Vector4f(255f, 0f, 255f, 255f), new Vector3f(0f, 0f, 0f), 1f, rotation);
+                new Vector4f(255f, 0f, 255f, 255f), translate, 1f, rotation);
 
         // rotation for all child of main character
         mainCharacter.getChildObject().forEach(object -> {
@@ -224,19 +243,20 @@ public class Main {
         });
     }
 
-    private void createCastles(){
-        importObjects(shaderModuleDataList, null, "resources/blender/gate/gate_door.obj", 
-        new Vector4f(169,138,100,255), null, 1f, new Vector4f(1f,0f,0f,0));
+    private void createCastles() {
+        importObjects(shaderModuleDataList, null, "resources/blender/gate/gate_door.obj",
+                new Vector4f(169, 138, 100, 255), null, 1f, new Vector4f(1f, 0f, 0f, 0));
 
         // set as parent
         List<Object> gate = objects.get(4).getChildObject();
 
         // towers
-        importObjects(shaderModuleDataList, gate, "resources/blender/gate/towers.obj", new Vector4f(225,210,160,255), null, 1f, new Vector4f(1f,0f,0f,0));
+        importObjects(shaderModuleDataList, gate, "resources/blender/gate/towers.obj", new Vector4f(225, 210, 160, 255),
+                null, 1f, new Vector4f(1f, 0f, 0f, 0));
 
         // walls
-        importObjects(shaderModuleDataList, gate, "resources/blender/gate/walls.obj", new Vector4f(81,60,49,255), null, 1f, null);
-
+        importObjects(shaderModuleDataList, gate, "resources/blender/gate/walls.obj", new Vector4f(81, 60, 49, 255),
+                null, 1f, null);
 
     }
 
@@ -244,7 +264,7 @@ public class Main {
         window.init();
         GL.createCapabilities();
         mouseInput = window.getMouseInput();
-        camera.setPosition(0f, 10f, 19f);
+        camera.setPosition(0f, 25f, 120f);
 
         // create the shader program
         // usahain di atas
@@ -277,10 +297,9 @@ public class Main {
         createMC(mainCharacter);
 
         // Terrain
-        importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255), null, null,
+        importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255),
+                null, null,
                 new Vector4f(0f, 0f, 0f, 0));
-
-
 
         // Trees
         createTrees();
@@ -291,17 +310,8 @@ public class Main {
         // Gate and castles
         createCastles();
 
-        //caroussel
+        // caroussel
         createCaroussel();
-
-
-
-
-
-
-
-
-
 
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
@@ -475,8 +485,7 @@ public class Main {
             Vector3f target = new Vector3f(
                     mainCharacter.getChildObject().get(0).getCenterPoint().get(0),
                     mainCharacter.getChildObject().get(0).getCenterPoint().get(1) + 1.5f,
-                    mainCharacter.getChildObject().get(0).getCenterPoint().get(2) + 2f
-                    );
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(2) + 2f);
 
             camera.setTargetPosition(target);
             camera.updatePosition();

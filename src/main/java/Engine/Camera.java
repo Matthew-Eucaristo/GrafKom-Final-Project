@@ -109,7 +109,7 @@ public class Camera {
 
     public void updatePosition() {
         // calculate the new camera position using lerp
-        float lerpFactor = 0.004f; // adjust this value to control the speed of the camera movement
+        float lerpFactor = 0.008f; // adjust this value to control the speed of the camera movement
         Vector3f newCameraPosition = new Vector3f();
         newCameraPosition.x = MathUtils.lerp(position.x, targetPosition.x, lerpFactor);
         newCameraPosition.y = MathUtils.lerp(position.y, targetPosition.y, lerpFactor);
