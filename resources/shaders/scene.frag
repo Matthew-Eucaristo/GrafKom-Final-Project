@@ -24,7 +24,7 @@ struct PointLight {
     vec3 specular;
 };
 
-#define NR_POINT_LIGHTS 4
+#define NR_POINT_LIGHTS 1
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 
 // Spot Light
@@ -65,12 +65,12 @@ vec3 calcDirLight(DirLight light, vec3 normal, vec3 viewDir)
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 64);
 
     // combine results
-//    vec3 ambient = light.ambient;
-//    vec3 diffuse = light.diffuse * diff;
-//    vec3 specular = light.specular * spec;
-        vec3 ambient = light.ambient * vec3(uni_color);
-        vec3 diffuse = light.diffuse * diff * vec3(uni_color);
-        vec3 specular = light.specular * spec * vec3(uni_color);
+    vec3 ambient = light.ambient;
+    vec3 diffuse = light.diffuse * diff;
+    vec3 specular = light.specular * spec;
+//        vec3 ambient = light.ambient * vec3(uni_color);
+//        vec3 diffuse = light.diffuse * diff * vec3(uni_color);
+//        vec3 specular = light.specular * spec * vec3(uni_color);
 
     return (ambient + diffuse + specular);
 }

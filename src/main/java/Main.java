@@ -36,7 +36,7 @@ public class Main {
     boolean toggleKeyPressed = false;
 
     boolean cameraModeIsFPS = false;
-    boolean cameraTransitionCompleted = false;
+    boolean cameraTransitionCompleted = true;
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
             String filename,
@@ -225,7 +225,7 @@ public class Main {
     }
 
     private void createCastles(){
-        importObjects(shaderModuleDataList, null, "resources/blender/gate/gate_door.obj", 
+        importObjects(shaderModuleDataList, null, "resources/blender/gate/gate_door.obj",
         new Vector4f(169,138,100,255), null, 1f, new Vector4f(1f,0f,0f,0));
 
         // set as parent
@@ -238,6 +238,30 @@ public class Main {
         importObjects(shaderModuleDataList, gate, "resources/blender/gate/walls.obj", new Vector4f(81,60,49,255), null, 1f, null);
 
 
+    }
+    private void createDropTower(){
+        importObjects(shaderModuleDataList, null, "resources/blender/drop tower/DropTower.obj",
+                new Vector4f(169,138,100,255), new Vector3f(10f,1f,2f), 1f, new Vector4f(1f,0f,0f,0));
+
+        // set as parent
+        List<Object> dropTower = objects.get(5).getChildObject();
+
+        // sit
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj", new Vector4f(81,60,49,255), null, 1f, null);
+
+        // platform
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj", new Vector4f(81,60,49,255), null, 1f, null);
+
+        // ramp
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj", new Vector4f(81,60,49,255), null, 1f, null);
+
+        // fence
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj", new Vector4f(81,60,49,255), null, 1f, null);
+
+        // fence 2
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj", new Vector4f(81,60,49,255), null, 1f, null);
+
+        objects.get(5).inlineTranslateObject(10f,1f,2f);
     }
 
     public void init() {
@@ -294,8 +318,25 @@ public class Main {
         //caroussel
         createCaroussel();
 
+        // Drop Tower
+        createDropTower();
 
 
+        // Random Object
+        objects.add(new Sphere(
+                // this is for the object sementara buat chara yg digerakkin
+                shaderModuleDataList,
+                new ArrayList<>(),
+                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
+                Arrays.asList(10f, 0f, 0f),
+                0.125f,
+                0.125f,
+                0.125f,
+                36,
+                18));
+//                .inlineTranslateObject(10f, 2f, 10f)
+//                .inlineScaleObjectXYZ(50f)
+//                .inlineRotateObject((float) Math.toRadians(180), 0f, 0f, 0f));
 
 
 

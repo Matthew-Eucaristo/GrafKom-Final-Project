@@ -222,23 +222,23 @@ public class Sphere extends Circle {
 
         // directional light
         uniformsMap.setUniform("dirLight.direction", new Vector3f(-0.2f, -1.0f, -0.3f));
-        uniformsMap.setUniform("dirLight.ambient", new Vector3f(0.05f, 0.05f, 0.05f));
-        uniformsMap.setUniform("dirLight.diffuse", new Vector3f(0.4f, 0.4f, 0.4f));
-        uniformsMap.setUniform("dirLight.specular", new Vector3f(0.5f, 0.5f, 0.5f));
+        uniformsMap.setUniform("dirLight.ambient", new Vector3f(0.2f, 0.2f, 0.2f));
+        uniformsMap.setUniform("dirLight.diffuse", new Vector3f(1f, 1f, 1f));
+        uniformsMap.setUniform("dirLight.specular", new Vector3f(1f, 1f, 1f));
 
-        uniformsMap.setUniform("viewPos", camera.getPosition());
+
 
         // posisi pointLight
         Vector3f[] _pointLightPositions = new Vector3f[]{
-            new Vector3f(0.7f, 0.2f, 2.0f),
-            new Vector3f(2.3f, -3.3f, -4.0f),
-            new Vector3f(-4.0f, 2.0f, -12.0f),
-            new Vector3f(0.0f, 0.0f, -3.0f)
+            new Vector3f(12f, 10f, 0f),
+//            new Vector3f(2.3f, -3.3f, -4.0f),
+//            new Vector3f(-4.0f, 2.0f, -12.0f),
+//            new Vector3f(0.0f, 0.0f, -3.0f)
         };
         for(int i = 0; i < _pointLightPositions.length; i++){
             uniformsMap.setUniform("pointLights[" + i + "].position", _pointLightPositions[i]);
             uniformsMap.setUniform("pointLights[" + i + "].ambient", new Vector3f(0.05f, 0.05f, 0.05f));
-            uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(0.8f, 0.8f, 0.8f));
+            uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(1f, 1f, 1f));
             uniformsMap.setUniform("pointLights[" + i + "].specular", new Vector3f(1.0f, 1.0f, 1.0f));
             uniformsMap.setUniform("pointLights[" + i + "].constant", 1.0f);
             uniformsMap.setUniform("pointLights[" + i + "].linear", 0.09f);
@@ -259,5 +259,6 @@ public class Sphere extends Circle {
         uniformsMap.setUniform("spotLight.cutOff", (float) Math.cos(Math.toRadians(12.5f)));
         uniformsMap.setUniform("spotLight.outerCutOff", (float) Math.cos(Math.toRadians(15.0f)));
 
+        uniformsMap.setUniform("viewPos", camera.getPosition());
     }
 }
