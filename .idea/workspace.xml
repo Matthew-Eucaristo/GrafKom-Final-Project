@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="carusel dan swing ride dah bisa ke display :D">
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/carousel(2).obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Cylinder.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Cylinder.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Top.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Top.obj" afterDir="false" />
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="upload buat bumpercar">
+      <change afterPath="$PROJECT_DIR$/resources/blender/tree/leaf.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/tree/wood.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/tree/wood.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Caroussel/Caroussel.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Caroussel/carousel.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree1leaf.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree1wood.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree2leaf.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/tree/leaf.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree2wood.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree3leaf.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree3wood.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,20 +49,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Intel/IdeaProjects/GrafKom-Final-Project/resources/blender/drop tower&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/GitHub/Grafkom-kelas",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Intel\IdeaProjects\GrafKom-Final-Project\resources\blender\drop tower" />
@@ -69,7 +70,7 @@
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="GrafKom-Final-Project" />
+      <module name="grafkom-kelas" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -98,15 +99,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685272778014</updated>
     </task>
-    <task id="LOCAL-00003" summary="scaling ulang tempat">
-      <option name="closed" value="true" />
-      <created>1687629638194</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1687629638194</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -124,8 +117,6 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fixed the pom.xml&#10;used the other repo createBox() method" />
     <MESSAGE value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
-    <MESSAGE value="scaling ulang tempat" />
-    <MESSAGE value="carusel dan swing ride dah bisa ke display :D" />
-    <option name="LAST_COMMIT_MESSAGE" value="carusel dan swing ride dah bisa ke display :D" />
+    <option name="LAST_COMMIT_MESSAGE" value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
   </component>
 </project>

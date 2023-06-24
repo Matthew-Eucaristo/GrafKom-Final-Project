@@ -239,7 +239,7 @@ public class Sphere extends Circle {
 
         // directional light
         uniformsMap.setUniform("dirLight.direction", lightDirection);
-        uniformsMap.setUniform("dirLight.ambient", new Vector3f(0.2f, 0.2f, 0.2f));
+        uniformsMap.setUniform("dirLight.ambient", new Vector3f(0.3f, 0.3f, 0.3f));
         uniformsMap.setUniform("dirLight.diffuse", new Vector3f(1f, 1f, 1f));
         uniformsMap.setUniform("dirLight.specular", new Vector3f(1f, 1f, 1f));
 
