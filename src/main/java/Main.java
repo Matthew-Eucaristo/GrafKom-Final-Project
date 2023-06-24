@@ -207,7 +207,7 @@ public class Main {
         Vector4f rotation = new Vector4f(1f, 0f, 0f, -90f);
 
         // transitions
-        Vector3f translate = new Vector3f(0f, 0f, -47f);
+        Vector3f translate = new Vector3f(-7.5f, 0f, -57f);
 
         // create the body
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/body.fbx",
@@ -298,7 +298,7 @@ public class Main {
         window.init();
         GL.createCapabilities();
         mouseInput = window.getMouseInput();
-        camera.setPosition(0f, 25f, 120f);
+        camera.setPosition(5f, 35f, 140f);
 
         // create the shader program
         // usahain di atas
