@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="buang print yang gapenting">
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="scaling ulang tempat">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/blender/gate/gate_door.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/gate/gate_door.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/blender/gate/towers.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/gate/towers.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/blender/gate/walls.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/gate/walls.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/blender/terrain/terrain.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/terrain/terrain.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +93,15 @@
       <option name="project" value="LOCAL" />
       <updated>1685272778014</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="scaling ulang tempat">
+      <option name="closed" value="true" />
+      <created>1687629638194</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687629638194</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -110,6 +119,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fixed the pom.xml&#10;used the other repo createBox() method" />
     <MESSAGE value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
-    <option name="LAST_COMMIT_MESSAGE" value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
+    <MESSAGE value="scaling ulang tempat" />
+    <option name="LAST_COMMIT_MESSAGE" value="scaling ulang tempat" />
   </component>
 </project>
