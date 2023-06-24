@@ -36,8 +36,10 @@ public class Main {
     boolean toggleKeyPressed = false;
 
     boolean cameraModeIsFPS = false;
-    boolean cameraTransitionCompleted = false;
-    
+    boolean cameraDT = false;
+    boolean cameraTransitionCompleted = true;
+
+    boolean dropTowerSwitch = true;
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
             String filename,
@@ -108,6 +110,16 @@ public class Main {
                 new Vector4f(50f, 25f, 0f, 255f), // warna
                 new Vector3f(0f, 0f, 00f), 1f, // translasi dan scaling object
                 new Vector4f(1f, 0f, 0f, -90)); // rotasi
+    }
+
+    public boolean updateDropTowerSit(float y){
+
+        if(y > 15){
+            dropTowerSwitch = false;
+        }else if (y < 1){
+            dropTowerSwitch = true;
+        }
+        return dropTowerSwitch;
     }
 
     private void createStreetLamps() {
@@ -264,33 +276,44 @@ public class Main {
                 null, 1f, null);
 
     }
+    private void createDropTower(){
+        Vector3f translate = new Vector3f(10f,1f,2f);
 
-    private void createDropTower() {
         importObjects(shaderModuleDataList, null, "resources/blender/drop tower/DropTower.obj",
-                new Vector4f(169, 138, 100, 255), new Vector3f(10f, 1f, 2f), 1f, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(169,138,100,255), translate, 1f, new Vector4f(1f,0f,0f,0));
 
         // set as parent
         List<Object> dropTower = objects.get(5).getChildObject();
 
         // sit
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj",
-                new Vector4f(81, 60, 49, 255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj", new Vector4f(81,60,49,255), translate, 1f, null);
 
         // platform
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj",
-                new Vector4f(81, 60, 49, 255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj", new Vector4f(81,60,49,255), translate, 1f, null);
 
         // ramp
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj",
-                new Vector4f(81, 60, 49, 255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj", new Vector4f(81,60,49,255), translate, 1f, null);
 
         // fence
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj",
-                new Vector4f(81, 60, 49, 255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj", new Vector4f(81,60,49,255), translate, 1f, null);
 
         // fence 2
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj",
-                new Vector4f(81, 60, 49, 255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj", new Vector4f(81,60,49,255), translate, 1f, null);
+    }
+    private void createFerrisWheel(){
+        Vector3f translate = new Vector3f(-5f,1f,-5f);
+
+        importObjects(shaderModuleDataList, null, "resources/blender/ferris wheel/FWPlatform.obj",
+                new Vector4f(169,138,100,255), translate, 1f, new Vector4f(1f,0f,0f,0));
+
+        // set as parent
+        List<Object> ferrisWheel = objects.get(6).getChildObject();
+
+        // sit
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(81,60,49,255), translate, 1f, null);
+
+        // wheel
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(81,60,49,255), translate, 1f, null);
 
     }
 
@@ -350,6 +373,10 @@ public class Main {
         // Drop Tower
         createDropTower();
 
+        // Ferris Wheel
+        createFerrisWheel();
+
+
         // Random Object
         objects.add(new Sphere(
                 // this is for the object sementara buat chara yg digerakkin
@@ -365,6 +392,12 @@ public class Main {
         // .inlineTranslateObject(10f, 2f, 10f)
         // .inlineScaleObjectXYZ(50f)
         // .inlineRotateObject((float) Math.toRadians(180), 0f, 0f, 0f));
+
+
+
+
+
+
 
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
@@ -384,6 +417,10 @@ public class Main {
                 // toggle camera transition
                 cameraTransitionCompleted = false;
 
+                if(cameraDT) {
+                    cameraDT = false;
+                }
+
                 // toggle camera mode
                 if (cameraModeIsFPS) {
                     cameraModeIsFPS = false;
@@ -394,9 +431,32 @@ public class Main {
                     cameraTransitionCompleted = false;
                 }
             }
-        } else {
+        } else if(window.isKeyPressed(GLFW_KEY_2)) {
+            if (!toggleKeyPressed) {
+                toggleKeyPressed = true;
+
+                // toggle camera transition
+                cameraTransitionCompleted = false;
+
+
+                // toggle camera mode
+                if (cameraDT) {
+                    cameraDT = false;
+                } else{
+                    cameraDT = true;
+                    cameraTransitionCompleted = false;
+
+                }
+                System.out.println(cameraDT);
+            }
+
+
+        }else {
             toggleKeyPressed = false;
         }
+
+
+
 
         // ini buat yang WASD
         if (window.isKeyPressed(GLFW_KEY_W)) {
@@ -491,7 +551,7 @@ public class Main {
             cameraTransition();
 
             // set FPS/free
-            if (cameraModeIsFPS && cameraTransitionCompleted) {
+            if (cameraModeIsFPS && cameraTransitionCompleted && !cameraDT) {
                 // set to FPS mode
                 Vector3f eyePosition = new Vector3f(
                         mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
@@ -503,6 +563,26 @@ public class Main {
                 camera.lockInEye();
 
             }
+            // set CameraDT
+            if (cameraDT && cameraTransitionCompleted) {
+                // set to DT mode
+                Vector3f eyePosition = new Vector3f(
+                        objects.get(5).getChildObject().get(0).getCenterPoint().get(0),
+                        objects.get(5).getChildObject().get(0).getCenterPoint().get(1),
+                        objects.get(5).getChildObject().get(0).getCenterPoint().get(2));
+
+                // set the camera to the main character eye
+                camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
+                camera.lockInEye();
+
+            }
+            // Translate Drop Tower Sit
+            if(updateDropTowerSit(objects.get(5).getChildObject().get(0).getCenterPoint().get(1))){
+                objects.get(5).getChildObject().get(0).inlineTranslateObject(0f,0.05f,0f);
+            } else {
+                objects.get(5).getChildObject().get(0).inlineTranslateObject(0f,-0.2f,0f);
+            }
+
 
             // Restore state
             glDisableVertexAttribArray(0);
