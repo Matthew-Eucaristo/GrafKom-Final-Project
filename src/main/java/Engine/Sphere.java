@@ -7,12 +7,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.lwjgl.glfw.GLFW.glfwGetTime;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.GL_POLYGON;
 import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL15.GL_STATIC_DRAW;
 import static org.lwjgl.opengl.GL20.glEnableVertexAttribArray;
 import static org.lwjgl.opengl.GL20.glVertexAttribPointer;
+import org.lwjgl.glfw.GLFW;
+
+
+
 
 public class Sphere extends Circle {
     float radiusZ;
@@ -220,8 +225,20 @@ public class Sphere extends Circle {
                 false,
                 0, 0);
 
+        // Calculate the position of the light
+        Vector3f objectPosition = new Vector3f(0,0,0);
+        Vector3f lightPosition = new Vector3f(10,0,0);
+        float time = (float) glfwGetTime();
+        float radius = 20.0f;
+        float angle = time * 0.1f * (float) Math.PI;
+        float lightX = (float) Math.sin(angle) * radius;
+        float lightY = (float) Math.cos(angle) * radius;
+        float lightZ = 0f;
+        Vector3f lightDirection = objectPosition.sub(lightPosition.add(lightX, lightY, lightZ)).normalize();
+
+
         // directional light
-        uniformsMap.setUniform("dirLight.direction", new Vector3f(-0.2f, -1.0f, -0.3f));
+        uniformsMap.setUniform("dirLight.direction", lightDirection);
         uniformsMap.setUniform("dirLight.ambient", new Vector3f(0.2f, 0.2f, 0.2f));
         uniformsMap.setUniform("dirLight.diffuse", new Vector3f(1f, 1f, 1f));
         uniformsMap.setUniform("dirLight.specular", new Vector3f(1f, 1f, 1f));

@@ -36,7 +36,8 @@ public class Main {
     boolean toggleKeyPressed = false;
 
     boolean cameraModeIsFPS = false;
-    boolean cameraTransitionCompleted = true;
+    boolean cameraTransitionCompleted = false;
+    
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
             String filename,
@@ -105,7 +106,7 @@ public class Main {
         // caroussel
         importObjects(shaderModuleDataList, "resources/blender/Caroussel/carousel.fbx",
                 new Vector4f(50f, 25f, 0f, 255f), // warna
-                new Vector3f(250f, 30f, 200f), 5, // translasi dan scaling object
+                new Vector3f(0f, 0f, 00f), 1f, // translasi dan scaling object
                 new Vector4f(1f, 0f, 0f, -90)); // rotasi
     }
 
@@ -263,29 +264,34 @@ public class Main {
                 null, 1f, null);
 
     }
-    private void createDropTower(){
+
+    private void createDropTower() {
         importObjects(shaderModuleDataList, null, "resources/blender/drop tower/DropTower.obj",
-                new Vector4f(169,138,100,255), new Vector3f(10f,1f,2f), 1f, new Vector4f(1f,0f,0f,0));
+                new Vector4f(169, 138, 100, 255), new Vector3f(10f, 1f, 2f), 1f, new Vector4f(1f, 0f, 0f, 0));
 
         // set as parent
         List<Object> dropTower = objects.get(5).getChildObject();
 
         // sit
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj", new Vector4f(81,60,49,255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj",
+                new Vector4f(81, 60, 49, 255), null, 1f, null);
 
         // platform
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj", new Vector4f(81,60,49,255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj",
+                new Vector4f(81, 60, 49, 255), null, 1f, null);
 
         // ramp
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj", new Vector4f(81,60,49,255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj",
+                new Vector4f(81, 60, 49, 255), null, 1f, null);
 
         // fence
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj", new Vector4f(81,60,49,255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj",
+                new Vector4f(81, 60, 49, 255), null, 1f, null);
 
         // fence 2
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj", new Vector4f(81,60,49,255), null, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj",
+                new Vector4f(81, 60, 49, 255), null, 1f, null);
 
-        objects.get(5).inlineTranslateObject(10f,1f,2f);
     }
 
     public void init() {
@@ -317,7 +323,7 @@ public class Main {
                 36,
                 18)
                 .inlineTranslateObject(0f, 5f, 0f)
-                .inlineScaleObjectXYZ(0.1f)
+                .inlineScaleObjectXYZ(0f)
                 .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f));
 
         // main character
@@ -344,7 +350,6 @@ public class Main {
         // Drop Tower
         createDropTower();
 
-
         // Random Object
         objects.add(new Sphere(
                 // this is for the object sementara buat chara yg digerakkin
@@ -357,15 +362,9 @@ public class Main {
                 0.125f,
                 36,
                 18));
-//                .inlineTranslateObject(10f, 2f, 10f)
-//                .inlineScaleObjectXYZ(50f)
-//                .inlineRotateObject((float) Math.toRadians(180), 0f, 0f, 0f));
-
-
-
-
-
-
+        // .inlineTranslateObject(10f, 2f, 10f)
+        // .inlineScaleObjectXYZ(50f)
+        // .inlineRotateObject((float) Math.toRadians(180), 0f, 0f, 0f));
 
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
