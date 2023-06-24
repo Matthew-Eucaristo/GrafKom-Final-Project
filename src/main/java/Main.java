@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
 import javax.naming.ldap.PagedResultsControl;
 
@@ -211,11 +212,27 @@ public class Main {
         });
     }
 
+    private void createCastles(){
+        importObjects(shaderModuleDataList, null, "resources/blender/gate/gate_door.obj", 
+        new Vector4f(169,138,100,255), null, 1f, new Vector4f(1f,0f,0f,0));
+
+        // set as parent
+        List<Object> gate = objects.get(4).getChildObject();
+
+        // towers
+        importObjects(shaderModuleDataList, gate, "resources/blender/gate/towers.obj", new Vector4f(225,210,160,255), null, 1f, new Vector4f(1f,0f,0f,0));
+
+        // walls
+        importObjects(shaderModuleDataList, gate, "resources/blender/gate/walls.obj", new Vector4f(81,60,49,255), null, 1f, null);
+
+
+    }
+
     public void init() {
         window.init();
         GL.createCapabilities();
         mouseInput = window.getMouseInput();
-        camera.setPosition(0f, 0f, 1f);
+        camera.setPosition(0f, 10f, 19f);
 
         // create the shader program
         // usahain di atas
@@ -248,14 +265,18 @@ public class Main {
         createMC(mainCharacter);
 
         // Terrain
-        importObjects(shaderModuleDataList, "resources/blender/terrain.fbx", new Vector4f(58, 105, 0, 255), null, null,
-                new Vector4f(1f, 0f, 0f, 90));
+        importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255), null, null,
+                new Vector4f(0f, 0f, 0f, 0));
 
         // Trees
         createTrees();
 
         // Street lamps
         createStreetLamps();
+
+        // Gate and castles
+        createCastles();
+
 
 
 
@@ -421,7 +442,7 @@ public class Main {
             // target is the eye
             Vector3f target = new Vector3f(
                     mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
-                    mainCharacter.getChildObject().get(2).getCenterPoint().get(1),
+                    mainCharacter.getChildObject().get(2).getCenterPoint().get(1) + 1.5f,
                     mainCharacter.getChildObject().get(2).getCenterPoint().get(2));
 
             camera.setTargetPosition(target);
@@ -436,8 +457,9 @@ public class Main {
             // target is the body
             Vector3f target = new Vector3f(
                     mainCharacter.getChildObject().get(0).getCenterPoint().get(0),
-                    mainCharacter.getChildObject().get(0).getCenterPoint().get(1),
-                    mainCharacter.getChildObject().get(0).getCenterPoint().get(2));
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(1) + 1.5f,
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(2) + 2f
+                    );
 
             camera.setTargetPosition(target);
             camera.updatePosition();
