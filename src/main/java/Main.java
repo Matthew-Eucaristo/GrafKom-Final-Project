@@ -605,7 +605,7 @@ public class Main {
     public void loop() {
         while (window.isOpen()) {
             window.update();
-            glClearColor(104/255f, 187/255f, 230/255f, 1f);
+            glClearColor(0,22/255f,87/255f,1);
             GL.createCapabilities();
             input();
 

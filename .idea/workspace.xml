@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="upload buat bumpercar">
-      <change afterPath="$PROJECT_DIR$/resources/blender/tree/leaf.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/tree/wood.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/tree/wood.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree1leaf.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree1wood.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree2leaf.fbx" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/tree/leaf.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree2wood.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree3leaf.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/tree3wood.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/asuna_body.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/asuna_body.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/asuna_hair.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/asuna_hair.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/asuna_shirt.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/asuna_shirt.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/asuna_shoes.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/asuna_shoes.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/fence.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/fence.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/iron_fence.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/iron_fence.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/leaf.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/leaf.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/bumper car/tent.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/bumper car/tent.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
