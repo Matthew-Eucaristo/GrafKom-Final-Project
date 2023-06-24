@@ -4,11 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="buang print yang gapenting">
-      <change afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWPlatform.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWWheel.obj" afterDir="false" />
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="carusel dan swing ride dah bisa ke display :D">
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/carousel(2).obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Cylinder.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Cylinder.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Top.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/SwingRide_Top.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/Caroussel/Caroussel.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/Caroussel/carousel.fbx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,6 +53,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Intel/IdeaProjects/GrafKom-Final-Project/resources/blender/drop tower&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -62,7 +69,7 @@
   <component name="RunManager">
     <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="grafkom-kelas" />
+      <module name="GrafKom-Final-Project" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -91,7 +98,15 @@
       <option name="project" value="LOCAL" />
       <updated>1685272778014</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="scaling ulang tempat">
+      <option name="closed" value="true" />
+      <created>1687629638194</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687629638194</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -109,6 +124,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fixed the pom.xml&#10;used the other repo createBox() method" />
     <MESSAGE value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
-    <option name="LAST_COMMIT_MESSAGE" value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
+    <MESSAGE value="scaling ulang tempat" />
+    <MESSAGE value="carusel dan swing ride dah bisa ke display :D" />
+    <option name="LAST_COMMIT_MESSAGE" value="carusel dan swing ride dah bisa ke display :D" />
   </component>
 </project>
