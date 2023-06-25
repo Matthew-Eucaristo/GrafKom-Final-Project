@@ -157,11 +157,58 @@ public class Main {
                 null);
     }
     public void createSwingride() {
-        //swing ride
-        importObjects(shaderModuleDataList, "resources/blender/Swing_Ride/SwingRide.obj",
-                new Vector4f(197f, 204f, 8f, 255f), // warna
-                new Vector3f(-12, 1f, 20f), 3, // translasi dan scaling object
-                new Vector4f(1f, 0f, 0f, -360)); // rotasi
+        // alas swing ride
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/ground.obj",
+                new Vector4f(0,191,255,255),
+                null,
+                null,
+                null);
+        //set parent
+        List<Object> swing = objects.get(4).getChildObject();
+        //spindle
+        // alas swing ride
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/spindle.obj",
+                new Vector4f(232,182,0,255),
+                null,
+                null,
+                null);
+        //roof
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/roof.obj",
+                new Vector4f(242,100,25,255),
+                null,
+                null,
+                null);
+        //speen
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/speen.obj",
+                new Vector4f(207,255,4,255),
+                null,
+                null,
+                null);
+        //hand
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/hand.obj",
+                new Vector4f(67,70,75,255),
+                null,
+                null,
+                null);
+        //chains
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/chains.obj",
+                new Vector4f(255,103,0,255),
+                null,
+                null,
+                null);
+        //chair frames
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(65,105,225,255),
+                null,
+                null,
+                null);
+        //chair flats
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(255,107,53,255),
+                null,
+                null,
+                null);
+
     }
 
     public boolean updateDropTowerSit(float y) {
@@ -466,7 +513,7 @@ public class Main {
         createCaroussel();
 
         //swing ride
-//        createSwingride();
+        createSwingride();
 
         // Drop Tower
         createDropTower();

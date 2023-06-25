@@ -4,30 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="update.blend tambah ferrisWheel">
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/balls.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/balls.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/cap.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/cap.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/ground.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/ground.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/pole.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/pole.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof_frilles.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof_frilles.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/seats.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/seats.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/spindle.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/spindle.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_18_2023_11_21_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_18_2023_11_21_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="update blend, nambah swing ride">
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chains.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chains.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_flats.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_flats.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_frames.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_frames.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/ground.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/ground.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/hand.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/hand.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/roof.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/roof.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/speen.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/speen.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/spindle.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/spindle.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blender/main.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blender/main.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Caroussel/carousel(2).obj" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -113,7 +107,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685272778014</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update blend sama tambah carousel">
+      <created>1687675521815</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1687675521815</updated>
+    </task>
+    <task id="LOCAL-00004" summary="update blend, nambah swing ride">
+      <created>1687677917325</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687677917326</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,11 +136,14 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fixed the pom.xml&#10;used the other repo createBox() method" />
     <MESSAGE value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
     <MESSAGE value="ganti .blend sama benerin dropTOwer" />
     <MESSAGE value="update.blend tambah ferrisWheel" />
-    <option name="LAST_COMMIT_MESSAGE" value="update.blend tambah ferrisWheel" />
+    <MESSAGE value="update blend sama tambah carousel" />
+    <MESSAGE value="update blend, nambah swing ride" />
+    <option name="LAST_COMMIT_MESSAGE" value="update blend, nambah swing ride" />
   </component>
 </project>
