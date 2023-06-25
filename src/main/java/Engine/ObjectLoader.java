@@ -5,6 +5,7 @@ import org.joml.Vector3f;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.joml.Vector4f;
 import org.lwjgl.assimp.*;
@@ -95,8 +96,6 @@ public class ObjectLoader extends Sphere {
                  Vector4f colorVec = new Vector4f(color.r(), color.g(), color.b(), color.a());
                  newColors.add(colorVec);
              }
-            System.out.println("Done");
-
         }
 
     }
@@ -107,6 +106,9 @@ public class ObjectLoader extends Sphere {
         this.index = newIndex;
         // this.color = newColors;
         // this.texture = newTextures;
+
+        // set centerpoint
+        setCenterPoint(List.of(newVertices.get(0).x, newVertices.get(0).y, newVertices.get(0).z));
 
         setupVAOVBO();
 

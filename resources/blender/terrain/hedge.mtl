@@ -1,0 +1,22 @@
+# Blender 3.5.1 MTL File: 'main.blend'
+# www.blender.org
+
+newmtl hedge_IN
+Ns 96.078453
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_17856_hedge_obj/hedge_tex.jpg
+
+newmtl hedge_OUT
+Ns 96.078453
+Ka 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 0.001000
+illum 1
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_17856_hedge_obj/hedge_alpha.tga

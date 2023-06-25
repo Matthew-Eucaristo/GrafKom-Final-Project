@@ -19,7 +19,7 @@ import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL30.*;
 
 public class Main {
-    private Window window = new Window(800, 800, "NotSoThemePark");
+    private Window window = new Window(1000, 1000, "NotSoThemePark");
     private ArrayList<Object> objects = new ArrayList<>();
 
     private MouseInput mouseInput;
@@ -37,7 +37,7 @@ public class Main {
     boolean cameraModeIsFPS = false;
     boolean cameraDT = false;
     boolean cameraFW = false;
-    boolean cameraTransitionCompleted = true;
+    boolean cameraTransitionCompleted = false;
 
     boolean dropTowerSwitch = true;
     boolean isNight = false;
@@ -472,7 +472,7 @@ public class Main {
         window.init();
         GL.createCapabilities();
         mouseInput = window.getMouseInput();
-        camera.setPosition(5f, 35f, 140f);
+        camera.setPosition(0,1000,2000);
 
         // create the shader program
         // usahain di atas
@@ -584,6 +584,7 @@ public class Main {
         importObjects(shaderModuleDataList, null, "resources/blender/terrain/gate/gerbang_depan.obj", new Vector4f(24,32,38,255),
                 null, null, new Vector4f(0f, 0f, 0f, 0));
 
+        System.out.println(objects.get(17).getCenterPoint().toString());
         // set as parent
         List<Object> gate = objects.get(17).getChildObject();
 
@@ -615,6 +616,16 @@ public class Main {
         // set as parent
         List<Object> terrain = objects.get(1).getChildObject();
 
+        // earth
+        // land
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/earth/land.obj", new Vector4f(234,255,96,255),
+                null, null,
+                null);
+
+        // sea
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/earth/sea.obj", new Vector4f(81,165,188,255),
+                null, null,
+                null);
 
 
         // road
@@ -632,7 +643,7 @@ public class Main {
                 null, null, new Vector4f(0f, 0f, 0f, 0));
 
         // meja
-        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/meja.obj", new Vector4f(250, 206, 160, 255),
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/meja.stl", new Vector4f(250, 206, 160, 255),
                 null, null, new Vector4f(0f, 0f, 0f, 0));
 
         // text di depan
@@ -642,6 +653,10 @@ public class Main {
 
         // monkeyface
         importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/monkey_face/monkey_face.obj", new Vector4f(137,1,13,255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // hedge
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/hedge.obj", new Vector4f(0, 255, 0, 255),
                 null, null, new Vector4f(0f, 0f, 0f, 0));
 
 
@@ -1145,7 +1160,6 @@ public class Main {
             Sphere terrain = (Sphere) objects.get(0);
             isNight = terrain.getLightDirection().y >= 0 && terrain.getLightDirection().x < 1 && terrain.getLightDirection().x > -1;
 
-            System.out.println(isNight);
 
             // set CameraDT
             if (cameraDT && cameraTransitionCompleted) {

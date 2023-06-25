@@ -340,6 +340,25 @@ public class Sphere extends Circle {
         uniformsMap.setUniform("bigSpotLight.cutOff", (float) Math.cos(Math.toRadians(12.5f)));
         uniformsMap.setUniform("bigSpotLight.outerCutOff", (float) Math.cos(Math.toRadians(15.0f)));
 
+
+        // posisi monsterSpotLight
+        Vector3f _monsterSpotLightPosition = new Vector3f(15.6f, 29.6f, 44f);
+        Vector3f _monsterSpotLightDirection = new Vector3f(0, 96, -40);
+        lightPower = 0.000f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 1000f;
+        uniformsMap.setUniform("monsterSpotLight.position", _monsterSpotLightPosition);
+        uniformsMap.setUniform("monsterSpotLight.direction", _monsterSpotLightDirection);
+        uniformsMap.setUniform("monsterSpotLight.ambient", new Vector3f(0.0f, 0.0f, 0.0f));
+        uniformsMap.setUniform("monsterSpotLight.diffuse", new Vector3f(lightPower, lightPower, lightPower));
+        uniformsMap.setUniform("monsterSpotLight.specular", new Vector3f(lightPower));
+        uniformsMap.setUniform("monsterSpotLight.constant", 1.0f);
+        uniformsMap.setUniform("monsterSpotLight.linear", 0.2f);
+        uniformsMap.setUniform("monsterSpotLight.quadratic", 0.05f);
+        uniformsMap.setUniform("monsterSpotLight.cutOff", (float) Math.cos(Math.toRadians(12.5f)));
+        uniformsMap.setUniform("monsterSpotLight.outerCutOff", (float) Math.cos(Math.toRadians(15.0f)));
+
+
+
         uniformsMap.setUniform("viewPos", camera.getPosition());
     }
     public void updateBigSpotLightDir(){
