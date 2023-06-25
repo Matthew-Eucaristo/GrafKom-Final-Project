@@ -881,6 +881,7 @@ public class Main {
         });
 
 
+
     }
 
     private void createBumperCar() {
@@ -1090,17 +1091,27 @@ public class Main {
 
         // this is for moving the character
         if (window.isKeyPressed(GLFW_KEY_UP)) {
-            objects.get(0).translateObject(0f, 0f, -characterSpeed);
+            objects.get(0).translateObject(camera.getDirection().x, 0f,camera.getDirection().z );
+            camera.moveForward(characterSpeed);
+            System.out.println("x : " + camera.getDirection().x + " y : " + camera.getDirection().y + " z : " + camera.getDirection().z );
         }
         if (window.isKeyPressed(GLFW_KEY_DOWN)) {
-            objects.get(0).translateObject(0f, 0f, characterSpeed);
+            objects.get(0).translateObject(-camera.getDirection().x, 0f, -camera.getDirection().z);
+            camera.moveBackwards(characterSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_LEFT)) {
-            objects.get(0).translateObject(-characterSpeed, 0f, 0f);
+            objects.get(0).translateObject(camera.getDirection().x, 0f, -camera.getDirection().z);
+            camera.moveLeft(characterSpeed);
         }
         if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
             objects.get(0).translateObject(characterSpeed, 0f, 0f);
+            camera.moveRight(characterSpeed);
         }
+        if (window.isKeyPressed(GLFW_KEY_I)) {
+            objects.get(0).inlineRotateObject((float)Math.toRadians(1),0f, 1f, 0f);
+
+        }
+
 
         // ini yang buat mouse button
         if (mouseInput.isLeftButtonPressed()) {
@@ -1153,7 +1164,20 @@ public class Main {
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
-                camera.lockInEye();
+//                camera.lockInEye();
+
+            }
+            // set TPS
+            if (!cameraModeIsFPS && cameraTransitionCompleted && !cameraDT && !cameraFW) {
+                // set to FPS mode
+                Vector3f eyePosition = new Vector3f(
+                        mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
+                        mainCharacter.getChildObject().get(2).getCenterPoint().get(1),
+                        mainCharacter.getChildObject().get(2).getCenterPoint().get(2));
+
+                // set the camera to the main character eye
+                camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z + 2f);
+//                camera.lockInEye();
 
             }
             // check night or not
@@ -1165,9 +1189,9 @@ public class Main {
             if (cameraDT && cameraTransitionCompleted) {
                 // set to DT mode
                 Vector3f eyePosition = new Vector3f(
-                        objects.get(5).getChildObject().get(0).getCenterPoint().get(0) + 27.2f,
-                        objects.get(5).getChildObject().get(0).getCenterPoint().get(1),
-                        objects.get(5).getChildObject().get(0).getCenterPoint().get(2) + 0.8f);
+                        objects.get(7).getChildObject().get(0).getCenterPoint().get(0) + 27.2f,
+                        objects.get(7).getChildObject().get(0).getCenterPoint().get(1),
+                        objects.get(7).getChildObject().get(0).getCenterPoint().get(2) + 0.8f);
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
@@ -1179,9 +1203,9 @@ public class Main {
             if (cameraFW && cameraTransitionCompleted) {
                 // set to FW mode
                 Vector3f eyePosition = new Vector3f(
-                        objects.get(6).getChildObject().get(1).getCenterPoint().get(0),
-                        objects.get(6).getChildObject().get(1).getCenterPoint().get(1),
-                        objects.get(6).getChildObject().get(1).getCenterPoint().get(2));
+                        objects.get(8).getChildObject().get(8).getCenterPoint().get(0),
+                        objects.get(8).getChildObject().get(8).getCenterPoint().get(1),
+                        objects.get(8).getChildObject().get(8).getCenterPoint().get(2));
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y - 1f, eyePosition.z);

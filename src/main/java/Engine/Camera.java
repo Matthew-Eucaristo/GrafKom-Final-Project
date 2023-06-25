@@ -10,7 +10,7 @@ public class Camera {
     private Vector3f right;
     private Vector2f rotation;
     private Vector3f up;
-    private Matrix4f viewMatrix;
+    public Matrix4f viewMatrix;
     private Vector3f targetPosition = new Vector3f(0.0f, 0.0f, 0.0f);
 
     public Camera() {
