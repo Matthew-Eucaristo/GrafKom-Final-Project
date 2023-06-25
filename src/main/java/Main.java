@@ -113,7 +113,7 @@ public class Main {
                 null,
                 null);
         //set parent
-        List<Object> carusel = objects.get(3).getChildObject();
+        List<Object> carusel = objects.get(5).getChildObject();
         //spindel carusel
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/spindle.obj",
                 new Vector4f(235, 64, 52, 255),
@@ -166,7 +166,7 @@ public class Main {
                 null,
                 null);
         //set parent
-        List<Object> swing = objects.get(4).getChildObject();
+        List<Object> swing = objects.get(6).getChildObject();
         //spindle
         // alas swing ride
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/spindle.obj",
@@ -256,8 +256,8 @@ public class Main {
     private void createStreetLamps() {
         float scale = 0.05f;
         // create the street lamps
-        importObjects(shaderModuleDataList, "resources/blender/street lamp/street_lamp.fbx",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList,null, "resources/blender/street lamp/street_lamp.fbx",
+                new Vector4f(31f, 21f, 14f, 255f), null, scale, null);
 
         // set as parent
         List<Object> streetLamps = objects.get(3).getChildObject();
@@ -361,7 +361,7 @@ public class Main {
                 new Vector4f(179, 140, 12, 255), null, null, null);
 
         // set as parent
-        List<Object> dropTower = objects.get(5).getChildObject();
+        List<Object> dropTower = objects.get(7).getChildObject();
 
 
         // square
@@ -400,7 +400,7 @@ public class Main {
                 new Vector4f(213, 215, 219, 255), null, null, null);
 
         // set as parent
-        List<Object> ferrisWheel = objects.get(6).getChildObject();
+        List<Object> ferrisWheel = objects.get(8).getChildObject();
 
 //        // wheel
 //        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219, 255), null, null, null);
@@ -447,11 +447,11 @@ public class Main {
     private void createColourLamps() {
         float scale = 1;
         // create the colour lamps
-        importObjects(shaderModuleDataList, null, "resources/blender/colour lamp/ColourLampPole.obj",
+        importObjects(shaderModuleDataList, null, "resources/blender/colour lamp/ColourLamp.obj",
                 new Vector4f(31f, 21f, 14f, 255f), null, null, null);
 
         // set as parent
-        List<Object> colourLamps = objects.get(8).getChildObject();
+        List<Object> colourLamps = objects.get(10).getChildObject();
 
 
 //        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable",
@@ -464,14 +464,6 @@ public class Main {
 //                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
 //        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb4",
 //                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
-//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
-//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(200f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
 
     }
 
@@ -557,22 +549,22 @@ public class Main {
 
 
         // Random Object
-        objects.add(new Sphere(
-                // this is for the object sementara buat chara yg digerakkin
-                shaderModuleDataList,
-                new ArrayList<>(),
-                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
-                Arrays.asList(10f, 0f, 0f),
-                0.125f,
-                0.125f,
-                0.125f,
-                36,
-                18));
+//        objects.add(new Sphere(
+//                // this is for the object sementara buat chara yg digerakkin
+//                shaderModuleDataList,
+//                new ArrayList<>(),
+//                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
+//                Arrays.asList(10f, 0f, 0f),
+//                0.125f,
+//                0.125f,
+//                0.125f,
+//                36,
+//                18));
         // .inlineTranslateObject(10f, 2f, 10f)
         // .inlineScaleObjectXYZ(50f)
         // .inlineRotateObject((float) Math.toRadians(180), 0f, 0f, 0f));
 
-
+        System.out.println(objects.size());
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
 
@@ -729,7 +721,7 @@ public class Main {
                 new Vector4f(96, 101, 89, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // set as parent
-        List<Object> bumperCar = objects.get(7).getChildObject();
+        List<Object> bumperCar = objects.get(9).getChildObject();
 
         // all child
         // asuna body
@@ -856,7 +848,25 @@ public class Main {
                     cameraTransitionCompleted = false;
 
                 }
-                System.out.println(cameraDT);
+            }
+
+
+        }else if (window.isKeyPressed(GLFW_KEY_3)) {
+            if (!toggleKeyPressed) {
+                toggleKeyPressed = true;
+
+                // toggle camera transition
+                cameraTransitionCompleted = false;
+
+
+                // toggle camera mode
+                if (cameraFW) {
+                    cameraFW = false;
+                } else {
+                    cameraFW = true;
+                    cameraTransitionCompleted = false;
+
+                }
             }
 
 
@@ -980,6 +990,7 @@ public class Main {
 
 
             }
+            // set CameraFW
             if (cameraFW && cameraTransitionCompleted) {
                 // set to FW mode
                 Vector3f eyePosition = new Vector3f(
@@ -994,25 +1005,25 @@ public class Main {
 
             }
             // Translate Drop Tower Sit
-            if (updateDropTowerSit(objects.get(5).getChildObject().get(0).getCenterPoint().get(1))) {
-                objects.get(5).getChildObject().get(0).inlineTranslateObject(0f, 0.05f, 0f);
-                objects.get(5).getChildObject().get(1).inlineTranslateObject(0f, 0.05f, 0f);
+            if (updateDropTowerSit(objects.get(7).getChildObject().get(0).getCenterPoint().get(1))) {
+                objects.get(7).getChildObject().get(0).inlineTranslateObject(0f, 0.05f, 0f);
+                objects.get(7).getChildObject().get(1).inlineTranslateObject(0f, 0.05f, 0f);
             } else {
-                objects.get(5).getChildObject().get(0).inlineTranslateObject(0f, -0.2f, 0f);
-                objects.get(5).getChildObject().get(1).inlineTranslateObject(0f, -0.2f, 0f);
+                objects.get(7).getChildObject().get(0).inlineTranslateObject(0f, -0.2f, 0f);
+                objects.get(7).getChildObject().get(1).inlineTranslateObject(0f, -0.2f, 0f);
             }
 
 
             //rotasi Ferris Wheel
             // Wheel
-            objects.get(6).getChildObject().get(7).inlineTranslateObject(-6f, -24.5f, 0f);
-            objects.get(6).getChildObject().get(7).inlineRotateObject(0.003f, 0, 0, 1);
-            objects.get(6).getChildObject().get(7).inlineTranslateObject(6f, 24.5f, 0f);
+            objects.get(8).getChildObject().get(7).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(8).getChildObject().get(7).inlineRotateObject(0.003f, 0, 0, 1);
+            objects.get(8).getChildObject().get(7).inlineTranslateObject(6f, 24.5f, 0f);
 
             // sit
-            objects.get(6).getChildObject().get(8).inlineTranslateObject(-6f, -24.5f, 0f);
-            objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f, 0, 0, 1);
-            objects.get(6).getChildObject().get(8).inlineTranslateObject(6f, 24.5f, 0f);
+            objects.get(8).getChildObject().get(8).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(8).getChildObject().get(8).inlineRotateObject(0.003f, 0, 0, 1);
+            objects.get(8).getChildObject().get(8).inlineTranslateObject(6f, 24.5f, 0f);
 //            System.out.println(objects.get(6).getChildObject().get(1).getCenterPoint());
 
 //            ArrayList<Float> sitPos = new ArrayList<>();
@@ -1025,9 +1036,9 @@ public class Main {
 
 
             // Other Sit
-            objects.get(6).getChildObject().get(9).inlineTranslateObject(-6f, -24.5f, 0f);
-            objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f, 0, 0, 1);
-            objects.get(6).getChildObject().get(9).inlineTranslateObject(6f, 24.5f, 0f);
+            objects.get(8).getChildObject().get(9).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(8).getChildObject().get(9).inlineRotateObject(0.003f, 0, 0, 1);
+            objects.get(8).getChildObject().get(9).inlineTranslateObject(6f, 24.5f, 0f);
 
 //            ArrayList<Float> otherSitPos = new ArrayList<>();
 //            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(0));
@@ -1053,9 +1064,16 @@ public class Main {
 //                objects.remove(11);
 //            }
 
+//            if (objects.get(12).getCenterPoint().get(1) < 50){
+//                objects.get(12).inlineTranslateObject(0f,1f,0f);
+//            }
+
+
             // init ship animation
             initShipAni();
 
+            // init ship animation
+            initShipAni();
 
             // Restore state
             glDisableVertexAttribArray(0);
