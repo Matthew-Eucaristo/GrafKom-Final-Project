@@ -4,23 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="Tambah tenda&quot;">
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb1.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb1.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb2.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb2.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb3.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb3.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb4.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb4.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampCable.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampCable.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.mtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Object.java" afterDir="false" />
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="Benerin Ferris Wheel">
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -120,7 +104,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687677917326</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Benerin Ferris Wheel">
+      <created>1687709599100</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687709599100</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -143,6 +134,7 @@
     <MESSAGE value="update.blend tambah ferrisWheel" />
     <MESSAGE value="update blend sama tambah carousel" />
     <MESSAGE value="update blend, nambah swing ride" />
-    <option name="LAST_COMMIT_MESSAGE" value="update blend, nambah swing ride" />
+    <MESSAGE value="Benerin Ferris Wheel" />
+    <option name="LAST_COMMIT_MESSAGE" value="Benerin Ferris Wheel" />
   </component>
 </project>

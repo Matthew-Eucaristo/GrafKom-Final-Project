@@ -411,14 +411,14 @@ public class Main {
         // set as parent
         List<Object> ferrisWheel = objects.get(6).getChildObject();
 
-        // wheel
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219, 255), null, null, null);
-
-        // sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
-
-        // other sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
+//        // wheel
+//        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219, 255), null, null, null);
+//
+//        // sit
+//        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
+//
+//        // other sit
+//        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
 
         // structure
         importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWStructure.obj", new Vector4f(156, 8, 20, 255), null, null, null);
@@ -465,16 +465,16 @@ public class Main {
         List<Object> colourLamps = objects.get(8).getChildObject();
 
 
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable",
-                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb1",
-                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb2",
-                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb3",
-                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb4",
-                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+//        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable",
+//                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+//        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb1",
+//                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+//        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb2",
+//                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+//        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb3",
+//                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+//        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb4",
+//                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
 //        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
 //                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
 //        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
@@ -1012,12 +1012,12 @@ public class Main {
             objects.get(6).getChildObject().get(8).inlineTranslateObject(-6f,-24.5f,0f);
             objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f,0,0,1);
             objects.get(6).getChildObject().get(8).inlineTranslateObject(6f,24.5f,0f);
-            System.out.println(objects.get(6).getChildObject().get(1).getCenterPoint());
+//            System.out.println(objects.get(6).getChildObject().get(1).getCenterPoint());
 
-            ArrayList<Float> sitPos = new ArrayList<>();
-            sitPos.add(objects.get(6).getChildObject().get(8).getCenterPoint().get(0));
-            sitPos.add(objects.get(6).getChildObject().get(8).getCenterPoint().get(1));
-            sitPos.add(objects.get(6).getChildObject().get(8).getCenterPoint().get(2));
+//            ArrayList<Float> sitPos = new ArrayList<>();
+//            sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(0));
+//            sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(1));
+//            sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(2));
 
 //            objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f,0,0,-1);
 //            objects.get(6).getChildObject().get(8).inlineTranslateObject(sitPos.get(0),sitPos.get(1),0f);
@@ -1028,10 +1028,10 @@ public class Main {
             objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,1);
             objects.get(6).getChildObject().get(9).inlineTranslateObject(6f,24.5f,0f);
 
-            ArrayList<Float> otherSitPos = new ArrayList<>();
-            otherSitPos.add(objects.get(6).getChildObject().get(9).getCenterPoint().get(0));
-            otherSitPos.add(objects.get(6).getChildObject().get(9).getCenterPoint().get(1));
-            otherSitPos.add(objects.get(6).getChildObject().get(9).getCenterPoint().get(2));
+//            ArrayList<Float> otherSitPos = new ArrayList<>();
+//            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(0));
+//            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(1));
+//            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(2));
 
 //            objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,-1);
 //            objects.get(6).getChildObject().get(8).inlineTranslateObject(otherSitPos.get(0),otherSitPos.get(1),0f);
