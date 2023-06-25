@@ -4,24 +4,68 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="update blend, nambah swing ride">
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chains.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chains.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_flats.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_flats.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_frames.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/chair_frames.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/ground.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/ground.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/hand.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/hand.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/roof.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/roof.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/speen.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/speen.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/spindle.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/Swing_Ride/spindle.obj" afterDir="false" />
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="upload buat bumpercar">
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/atasan.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/atasan.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/besi.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/besi.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/branches.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/branches.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/daun.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/daun.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/kaki_besi.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/kaki_besi.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/kursi.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/kursi.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/papan.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/papan.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/papan_tiang.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/papan_tiang.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/pot.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/pot.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/sekrup.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/sekrup.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/tiangnya_papan.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/bus station/tiangnya_papan.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/api_jet.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/api_jet.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/badan_donut.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/badan_donut.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/badan_mobil_dan_sayap.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/badan_mobil_dan_sayap.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/ban_mobil.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/ban_mobil.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/dalam_mesin_atas_hitam.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/dalam_mesin_atas_hitam.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/engine_atas.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/engine_atas.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/icing_donut.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/icing_donut.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/jendela.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/jendela.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/kenalpot.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/kenalpot.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/laser_shooter.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/laser_shooter.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/mesin_jet.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/mesin_jet.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/mesin_utama.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/mesin_utama.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/pink_satukesatuan.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/pink_satukesatuan.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/pintu_satelit.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/pintu_satelit.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/plat_nomor.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/plat_nomor.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/sabuk_mesin.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/sabuk_mesin.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/tulisan.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/starshipku/tulisan.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/terrain.mtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/terrain/terrain.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/terrain/terrain.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,9 +82,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -63,7 +104,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "D:/Jonathan/Documents/Kuliah/Semester 4/Grafkom/Project_final_Grafkom",
+    "last_opened_file_path": "D:/GitHub/tryGrafKom",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
@@ -107,21 +148,7 @@
       <option name="project" value="LOCAL" />
       <updated>1685272778014</updated>
     </task>
-    <task id="LOCAL-00003" summary="update blend sama tambah carousel">
-      <created>1687675521815</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1687675521815</updated>
-    </task>
-    <task id="LOCAL-00004" summary="update blend, nambah swing ride">
-      <created>1687677917325</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1687677917326</updated>
-    </task>
-    <option name="localTasksCounter" value="5" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,14 +163,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="fixed the pom.xml&#10;used the other repo createBox() method" />
     <MESSAGE value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
-    <MESSAGE value="ganti .blend sama benerin dropTOwer" />
-    <MESSAGE value="update.blend tambah ferrisWheel" />
-    <MESSAGE value="update blend sama tambah carousel" />
-    <MESSAGE value="update blend, nambah swing ride" />
-    <option name="LAST_COMMIT_MESSAGE" value="update blend, nambah swing ride" />
+    <option name="LAST_COMMIT_MESSAGE" value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
   </component>
 </project>

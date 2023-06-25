@@ -106,60 +106,61 @@ public class Main {
     public void createCaroussel() {
 
         // alas caroussel
-        importObjects(shaderModuleDataList,null,"resources/blender/Caroussel/ground.obj",
-                new Vector4f(235,64,52,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Caroussel/ground.obj",
+                new Vector4f(235, 64, 52, 255),
                 null,
                 null,
                 null);
         //set parent
         List<Object> carusel = objects.get(3).getChildObject();
         //spindel carusel
-        importObjects(shaderModuleDataList,carusel,"resources/blender/Caroussel/spindle.obj",
-                new Vector4f(235,64,52,255),
+        importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/spindle.obj",
+                new Vector4f(235, 64, 52, 255),
                 null,
                 null,
                 null);
         // pole
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/pole.obj",
-                new Vector4f(255,215,0,255),
+                new Vector4f(255, 215, 0, 255),
                 null,
                 null,
                 null);
         //seats
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/seats.obj",
-                new Vector4f(0,128,128,255),
+                new Vector4f(0, 128, 128, 255),
                 null,
                 null,
                 null);
         //roof
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/roof.obj",
-                new Vector4f(255,255,255,255),
+                new Vector4f(255, 255, 255, 255),
                 null,
                 null,
                 null);
         //roof frilles
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/roof_frilles.obj",
-                new Vector4f(255,215,0,255),
+                new Vector4f(255, 215, 0, 255),
                 null,
                 null,
                 null);
         //cap
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/cap.obj",
-                new Vector4f(255,215,0,255),
+                new Vector4f(255, 215, 0, 255),
                 null,
                 null,
                 null);
         //balls
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/balls.obj",
-                new Vector4f(211,211,211,255),
+                new Vector4f(211, 211, 211, 255),
                 null,
                 null,
                 null);
     }
+
     public void createSwingride() {
         // alas swing ride
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/ground.obj",
-                new Vector4f(0,191,255,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/ground.obj",
+                new Vector4f(0, 191, 255, 255),
                 null,
                 null,
                 null);
@@ -167,44 +168,44 @@ public class Main {
         List<Object> swing = objects.get(4).getChildObject();
         //spindle
         // alas swing ride
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/spindle.obj",
-                new Vector4f(232,182,0,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/spindle.obj",
+                new Vector4f(232, 182, 0, 255),
                 null,
                 null,
                 null);
         //roof
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/roof.obj",
-                new Vector4f(242,100,25,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/roof.obj",
+                new Vector4f(242, 100, 25, 255),
                 null,
                 null,
                 null);
         //speen
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/speen.obj",
-                new Vector4f(207,255,4,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/speen.obj",
+                new Vector4f(207, 255, 4, 255),
                 null,
                 null,
                 null);
         //hand
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/hand.obj",
-                new Vector4f(67,70,75,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/hand.obj",
+                new Vector4f(67, 70, 75, 255),
                 null,
                 null,
                 null);
         //chains
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/chains.obj",
-                new Vector4f(255,103,0,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/chains.obj",
+                new Vector4f(255, 103, 0, 255),
                 null,
                 null,
                 null);
         //chair frames
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/chair_frames.obj",
-                new Vector4f(65,105,225,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(65, 105, 225, 255),
                 null,
                 null,
                 null);
         //chair flats
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/chair_frames.obj",
-                new Vector4f(255,107,53,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(255, 107, 53, 255),
                 null,
                 null,
                 null);
@@ -230,16 +231,6 @@ public class Main {
         // set as parent
         List<Object> streetLamps = objects.get(3).getChildObject();
 
-        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(200f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
-        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
 
     }
 
@@ -397,45 +388,46 @@ public class Main {
         Vector3f translate = new Vector3f(-5f, 1f, -5f);
 
         importObjects(shaderModuleDataList, null, "resources/blender/ferris wheel/FWSpindle.obj",
-                new Vector4f(213, 215, 219,255), null, null,null);
+                new Vector4f(213, 215, 219, 255), null, null, null);
 
         // set as parent
         List<Object> ferrisWheel = objects.get(6).getChildObject();
 
         // wheel
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219,255), null, null,null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219, 255), null, null, null);
 
         // sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
 
         // other sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
 
         // structure
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWStructure.obj", new Vector4f(156, 8, 20,255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWStructure.obj", new Vector4f(156, 8, 20, 255), null, null, null);
 
         // fence
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence.obj", new Vector4f(143, 141, 134,255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence1
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence1.obj", new Vector4f(143, 141, 134,255), null, null,null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence1.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence2
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence2.obj", new Vector4f(143, 141, 134,255), null, null,null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence2.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence3
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence3.obj", new Vector4f(143, 141, 134,255), null, null,null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence3.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
         // ramp
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWRamp.obj", new Vector4f(143, 141, 134,255),null, null,null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWRamp.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
         // structure
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWPlatform.obj", new Vector4f(213, 215, 219,255), null, null,null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWPlatform.obj", new Vector4f(213, 215, 219, 255), null, null, null);
 
         objects.get(6).updateCenterPoint();
 
 
     }
+
     private void createColourLamps() {
         float scale = 1;
         // create the colour lamps
@@ -527,6 +519,12 @@ public class Main {
         // Colour Lamp
         createColourLamps();
 
+        // myShip
+        createShip();
+
+        // bus station
+        createBusStation();
+
 
         // Random Object
         objects.add(new Sphere(
@@ -550,10 +548,139 @@ public class Main {
 
     }
 
+    private void createBusStation() {
+        // create parent
+        // atasasn
+        importObjects(shaderModuleDataList, null, "resources/blender/bus_station/atasan.obj",
+                new Vector4f(106,113,167,255), null, null, null);
+
+        // set as parent
+        List<Object> busStation = objects.get(8).getChildObject();
+
+        // all child
+        // besi
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/besi.obj",
+                new Vector4f(70,70,70,255), null, null, null);
+
+        // branches
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/branches.obj",
+                new Vector4f(154,131,107,255), null, null, null);
+
+        // daun
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/daun.obj",
+                new Vector4f(0,255,0,255), null, null, null);
+
+        // kaki besi
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kaki_besi.obj",
+                new Vector4f(70,70,70,255), null, null, null);
+
+        // kursi
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kursi.obj",
+                new Vector4f(72,72,109, 255), null, null, null);
+
+        // papan
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan.obj",
+                new Vector4f(126,128,128,255), null, null, null);
+
+        // papan tiang
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan_tiang.obj",
+                new Vector4f(126,128,128,255), null, null, null);
+
+        // pot
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/pot.obj",
+                new Vector4f(103,92,93,255), null, null, null);
+
+        // sekrup
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/sekrup.obj",
+                new Vector4f(70,70,70,255), null, null, null);
+
+        // tiangnya papan
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/tiangnya_papan.obj",
+                new Vector4f(70,70,70,255), null, null, null);
+    }
+
+    private void createShip() {
+        // create parent ship
+        // api jet
+        importObjects(shaderModuleDataList, null, "resources/blender/starshipku/api_jet.obj",
+                new Vector4f(87, 103, 205, 255), null, null, null);
+
+        // set as parent
+        List<Object> ship = objects.get(8).getChildObject();
+
+        // all child
+        // badan donut
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/badan_donut.obj",
+                new Vector4f(185, 112, 151, 255), null, null, null);
+
+        // badan mobil dan sayap
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/badan_mobil_dan_sayap.obj",
+                new Vector4f(216, 216, 216, 255), null, null, null);
+
+        // ban mobil
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/ban_mobil.obj",
+                new Vector4f(59, 59, 60, 255), null, null, null);
+
+        // dalam mesin atas hitam
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/dalam_mesin_atas_hitam.obj",
+                new Vector4f(0, 0, 0, 255), null, null, null);
+
+        // engine atas
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/engine_atas.obj",
+                new Vector4f(111, 79, 79, 255), null, null, null);
+
+        // icing donut
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/icing_donut.obj",
+                new Vector4f(255, 103, 159, 255), null, null, null);
+
+        // jendela
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/jendela.obj",
+                new Vector4f(92, 170, 198, 255), null, null, null);
+
+        // kenalpot
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/kenalpot.obj",
+                new Vector4f(169, 169, 169, 255), null, null, null);
+
+        // laser shooter
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/laser_shooter.obj",
+                new Vector4f(170, 172, 170, 255), null, null, null);
+
+        // mesin jet
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/mesin_jet.obj",
+                new Vector4f(47, 48, 45, 255), null, null, null);
+
+        // mesin utama
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/mesin_utama.obj",
+
+                new Vector4f(89, 90, 91, 255), null, null, null);
+
+        // pink satu kesatuan
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/pink_satukesatuan.obj",
+                new Vector4f(255, 103, 159, 255), null, null, null);
+
+        // pintu satelit
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/pintu_satelit.obj",
+                new Vector4f(91, 90, 89, 255), null, null, null);
+
+        // plat nomor
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/plat_nomor.obj",
+                new Vector4f(113, 129, 212, 255), null, null, null);
+
+        // sabuk mesin
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/sabuk_mesin.obj",
+                new Vector4f(61, 65, 65, 255), null, null, null);
+
+        // tulisan
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/tulisan.obj",
+                new Vector4f(156, 54, 158, 255), null, null, null);
+
+
+    }
+
     private void createBumperCar() {
         // alas bumpercar
         importObjects(shaderModuleDataList, null, "resources/blender/bumper car/alas_bumpercar.obj",
-                new Vector4f(96,101,89,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(96, 101, 89, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // set as parent
         List<Object> bumperCar = objects.get(7).getChildObject();
@@ -561,83 +688,83 @@ public class Main {
         // all child
         // asuna body
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/asuna_body.obj",
-                new Vector4f(253,229,205,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(253, 229, 205, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // asuna hair
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/asuna_hair.obj",
-                new Vector4f(214,163,84,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(214, 163, 84, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // asuna shirt
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/asuna_shirt.obj",
-                new Vector4f(163,58,21,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(163, 58, 21, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // asuna shoes
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/asuna_shoes.obj",
-                new Vector4f(182,180,183,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(182, 180, 183, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // bagian dalam kursi
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/bagian_dalam_kursi.obj",
-                new Vector4f(142,142,142,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(142, 142, 142, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // batang_kayu
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/batang_kayu.obj",
-                new Vector4f(119,102,22,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(119, 102, 22, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // besi buat kaki
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/besi_buat_kaki.obj",
-                new Vector4f(40,40,40,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(40, 40, 40, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // bumper color1
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/bumper_color1.obj",
-                new Vector4f(253,254,100,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(253, 254, 100, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // fence
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/fence.obj",
-                new Vector4f(227,226,224,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(227, 226, 224, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // iron fence
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/iron_fence.obj",
-                new Vector4f(82,97,127,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(82, 97, 127, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // leaf
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/leaf.obj",
-                new Vector4f(123,167,100,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(123, 167, 100, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // main_bumper
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/main_bumper.obj",
-                new Vector4f(23,21,30,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(23, 21, 30, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // main lights
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/main_lights.obj",
-                new Vector4f(255,255,255,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(255, 255, 255, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // main skeleton body
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/main_skeleton_body.obj",
-                new Vector4f(205,205,205,211), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(205, 205, 205, 211), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // plane
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/plane.obj",
-                new Vector4f(168,157,147,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(168, 157, 147, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // pot
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/pot.obj",
-                new Vector4f(136,90,82,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(136, 90, 82, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // sandaran kepala
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/sandaran_kepala.obj",
-                new Vector4f(128,128,128,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(128, 128, 128, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // setir
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/setir.obj",
-                new Vector4f(100,101,99,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(100, 101, 99, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // tent
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/tent.obj",
-                new Vector4f(195,80,17,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(195, 80, 17, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
 
         // tiang listrik
         importObjects(shaderModuleDataList, bumperCar, "resources/blender/bumper car/tiang_listrik.obj",
-                new Vector4f(165,148,134,255), null, null, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(165, 148, 134, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
     }
 
     public void input() {
@@ -765,7 +892,7 @@ public class Main {
     public void loop() {
         while (window.isOpen()) {
             window.update();
-            glClearColor(0,22/255f,87/255f,1);
+            glClearColor(0, 22 / 255f, 87 / 255f, 1);
             GL.createCapabilities();
             input();
 
@@ -799,7 +926,7 @@ public class Main {
                 Vector3f eyePosition = new Vector3f(
                         objects.get(5).getChildObject().get(0).getCenterPoint().get(0) + 27.2f,
                         objects.get(5).getChildObject().get(0).getCenterPoint().get(1),
-                        objects.get(5).getChildObject().get(0).getCenterPoint().get(2)+0.8f);
+                        objects.get(5).getChildObject().get(0).getCenterPoint().get(2) + 0.8f);
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
@@ -820,18 +947,18 @@ public class Main {
 //            float selisihX = objects.get(8).getCenterPoint().get(0)- objects.get(6).getChildObject().get(0).getCenterPoint().get(0);
 //            float selisihY = objects.get(8).getCenterPoint().get(1)- objects.get(6).getChildObject().get(0).getCenterPoint().get(1);
 //            float selisihZ = objects.get(8).getCenterPoint().get(2)- objects.get(6).getChildObject().get(0).getCenterPoint().get(2);
-            
-            objects.get(6).getChildObject().get(0).inlineTranslateObject(-6f,-24.5f,0f);
-            objects.get(6).getChildObject().get(0).inlineRotateObject(0.01f,0,0,1);
-            objects.get(6).getChildObject().get(0).inlineTranslateObject(6f,24.5f,0f);
 
-            objects.get(6).getChildObject().get(1).inlineTranslateObject(-6f,-24.5f,0f);
-            objects.get(6).getChildObject().get(1).inlineRotateObject(0.01f,0,0,1);
-            objects.get(6).getChildObject().get(1).inlineTranslateObject(6f,24.5f,0f);
+            objects.get(6).getChildObject().get(0).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(6).getChildObject().get(0).inlineRotateObject(0.01f, 0, 0, 1);
+            objects.get(6).getChildObject().get(0).inlineTranslateObject(6f, 24.5f, 0f);
 
-            objects.get(6).getChildObject().get(2).inlineTranslateObject(-6f,-24.5f,0f);
-            objects.get(6).getChildObject().get(2).inlineRotateObject(0.01f,0,0,1);
-            objects.get(6).getChildObject().get(2).inlineTranslateObject(6f,24.5f,0f);
+            objects.get(6).getChildObject().get(1).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(6).getChildObject().get(1).inlineRotateObject(0.01f, 0, 0, 1);
+            objects.get(6).getChildObject().get(1).inlineTranslateObject(6f, 24.5f, 0f);
+
+            objects.get(6).getChildObject().get(2).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(6).getChildObject().get(2).inlineRotateObject(0.01f, 0, 0, 1);
+            objects.get(6).getChildObject().get(2).inlineTranslateObject(6f, 24.5f, 0f);
 
 
             // Restore state

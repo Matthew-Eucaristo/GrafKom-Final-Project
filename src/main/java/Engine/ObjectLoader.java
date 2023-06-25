@@ -81,15 +81,22 @@ public class ObjectLoader extends Sphere {
             //     newTextures.add(verticesVec);
             // }
 
-            // // color
-            // AIColor4D.Buffer colorsBuffer = mesh.mColors(0);
-            // int numColors = mesh.mNumVertices();
+             // color
+             // check if there is color
+             if (mesh.mColors(0) == null) {
+                 System.out.println("No color");
+                 continue;
+             }
 
-            // for (int i = 0; i < numColors; i++) {
-            //     AIColor4D color = colorsBuffer.get(i);
-            //     Vector4f colorVec = new Vector4f(color.r(), color.g(), color.b(), color.a());
-            //     newColors.add(colorVec);
-            // }
+             AIColor4D.Buffer colorsBuffer = mesh.mColors(0);
+             int numColors = mesh.mNumVertices();
+
+             for (int i = 0; i < numColors; i++) {
+                 AIColor4D color = colorsBuffer.get(i);
+                 Vector4f colorVec = new Vector4f(color.r(), color.g(), color.b(), color.a());
+                 newColors.add(colorVec);
+             }
+            System.out.println("Done");
 
         }
 
