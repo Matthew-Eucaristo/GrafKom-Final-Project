@@ -160,8 +160,8 @@ public class Main {
 
     public void createSwingride() {
         // alas swing ride
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/ground.obj",
-                new Vector4f(0, 191, 255, 255),
+        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/ground.obj",
+                new Vector4f(0,191,255,255),
                 null,
                 null,
                 null);
@@ -169,48 +169,77 @@ public class Main {
         List<Object> swing = objects.get(4).getChildObject();
         //spindle
         // alas swing ride
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/spindle.obj",
-                new Vector4f(232, 182, 0, 255),
+        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/spindle.obj",
+                new Vector4f(232,182,0,255),
                 null,
                 null,
                 null);
         //roof
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/roof.obj",
-                new Vector4f(242, 100, 25, 255),
+        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/roof.obj",
+                new Vector4f(242,100,25,255),
                 null,
                 null,
                 null);
         //speen
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/speen.obj",
-                new Vector4f(207, 255, 4, 255),
+        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/speen.obj",
+                new Vector4f(207,255,4,255),
                 null,
                 null,
                 null);
         //hand
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/hand.obj",
-                new Vector4f(67, 70, 75, 255),
+        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/hand.obj",
+                new Vector4f(67,70,75,255),
                 null,
                 null,
                 null);
         //chains
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/chains.obj",
-                new Vector4f(255, 103, 0, 255),
+        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/chains.obj",
+                new Vector4f(255,103,0,255),
                 null,
                 null,
                 null);
         //chair frames
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/chair_frames.obj",
-                new Vector4f(65, 105, 225, 255),
+        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(65,105,225,255),
                 null,
                 null,
                 null);
         //chair flats
-        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/chair_frames.obj",
-                new Vector4f(255, 107, 53, 255),
+        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(255,107,53,255),
                 null,
                 null,
                 null);
 
+    }
+    public void createTents(){
+        importObjects(shaderModuleDataList,null,"resources/blender/Tents/tent1.obj",
+                new Vector4f(207,21,95,255),
+                null,
+                null,
+                null);
+        List<Object> tenda = objects.get(3).getChildObject();
+
+        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent2.obj",
+                new Vector4f(237,63,5,255),
+                null,
+                null,
+                null);
+        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent3.obj",
+                new Vector4f(164,5,237,255),
+                null,
+                null,
+                null);
+        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent4.obj",
+                new Vector4f(5,144,237,255),
+                null,
+                null,
+                null);
+        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent5.obj",
+                new Vector4f(5,237,214,255),
+                null,
+                null,
+                null);
     }
 
     public boolean updateDropTowerSit(float y) {
@@ -525,6 +554,9 @@ public class Main {
 
         // bus station
         createBusStation();
+
+        //tenda
+        createTents();
 
 
         // Random Object
