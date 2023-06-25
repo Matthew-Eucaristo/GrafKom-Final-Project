@@ -40,6 +40,7 @@ public class Main {
     boolean cameraTransitionCompleted = true;
 
     boolean dropTowerSwitch = true;
+    boolean isNight = false;
     List<Object> ferrisWheel;
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
@@ -256,7 +257,7 @@ public class Main {
     private void createStreetLamps() {
         float scale = 0.05f;
         // create the street lamps
-        importObjects(shaderModuleDataList,null, "resources/blender/street lamp/street_lamp.fbx",
+        importObjects(shaderModuleDataList, null, "resources/blender/street lamp/street_lamp.fbx",
                 new Vector4f(31f, 21f, 14f, 255f), null, scale, null);
 
         // set as parent
@@ -504,12 +505,7 @@ public class Main {
         createMC(mainCharacter);
 
         // Terrain
-        importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255),
-                null, null,
-                new Vector4f(0f, 0f, 0f, 0)); // 1
-        importObjects(shaderModuleDataList, objects.get(1).getChildObject(), "resources/blender/terrain/road.obj", new Vector4f(100, 100, 100, 255),
-                null, null,
-                new Vector4f(0f, 0f, 0f, 0));
+        createTerrain(); // 1
 
         // Trees
         createTrees(); // 2
@@ -553,6 +549,9 @@ public class Main {
         // circus tent
         createCircusTent(); // 15
 
+        // create monster
+        createMonster(); // 16
+
 
         // Random Object
 //        objects.add(new Sphere(
@@ -575,6 +574,47 @@ public class Main {
 
     }
 
+    private void createMonster() {
+        // create Monster
+        importObjects(shaderModuleDataList, null, "resources/blender/monster/monster.obj",
+                new Vector4f(60, 1, 3, 255), null, null, null);
+    }
+
+    private void createTerrain() {
+        // create parent
+        importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255),
+                null, null,
+                new Vector4f(0f, 0f, 0f, 0)); // 1
+
+        // set as parent
+        List<Object> terrain = objects.get(1).getChildObject();
+
+        // road
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/road.obj", new Vector4f(100, 100, 100, 255),
+                null, null,
+                new Vector4f(0f, 0f, 0f, 0));
+
+        // picnic table
+        // chair
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/chair.obj", new Vector4f(126, 83, 75, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // kaki meja
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/kaki_meja.obj", new Vector4f(49, 32, 29, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // meja
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/meja.obj", new Vector4f(250, 206, 160, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // text di depan
+        // happy place text
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/fonts/happy_place_text.obj", new Vector4f(6,30,165,255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+
+    }
+
     private void createCircusTent() {
         // create parent
         // flag
@@ -587,15 +627,15 @@ public class Main {
         // all child
         // iron wire
         importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/iron_wire.obj",
-                new Vector4f(94,80,79,255), null, null, null);
+                new Vector4f(94, 80, 79, 255), null, null, null);
 
         // pole
         importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/pole.obj",
-                new Vector4f(250,250,255,255), null, null, null);
+                new Vector4f(250, 250, 255, 255), null, null, null);
 
         // tent
         importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/tent.obj",
-                new Vector4f(251,191,77,255), null, null, null);
+                new Vector4f(251, 191, 77, 255), null, null, null);
 
 
     }
@@ -604,7 +644,7 @@ public class Main {
         // create parent
         // color2
         importObjects(shaderModuleDataList, null, "resources/blender/castle/color2.obj",
-                new Vector4f(22,133,139,255), null, null, null);
+                new Vector4f(22, 133, 139, 255), null, null, null);
 
         // set as parent
         List<Object> castleBesar = objects.get(14).getChildObject();
@@ -612,39 +652,43 @@ public class Main {
         // all child
         // color3
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color3.obj",
-                new Vector4f(50,46,46,255), null, null, null);
+                new Vector4f(50, 46, 46, 255), null, null, null);
 
         // color4
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color4.obj",
-                new Vector4f(130,119,107,255), null, null, null);
+                new Vector4f(130, 119, 107, 255), null, null, null);
 
         // front castle
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_castle.obj",
-                new Vector4f(208,110,54,255), null, null, null);
+                new Vector4f(208, 110, 54, 255), null, null, null);
 
         // front gate castle
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_gate_castle.obj",
-                new Vector4f(108,102,95,255), null, null, null);
+                new Vector4f(108, 102, 95, 255), null, null, null);
+
+        // tower
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/tower.stl",
+                new Vector4f(186, 184, 172, 255), null, null, null);
 
         // gerbang depan
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/gerbang_depan.obj",
-                new Vector4f(79,81,86,255), null, null, null);
+                new Vector4f(79, 81, 86, 255), null, null, null);
 
         // last_tower
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/last_tower.obj",
-                new Vector4f(196,164,115,255), null, null, null);
+                new Vector4f(196, 164, 115, 255), null, null, null);
 
         // main wall
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/main_wall.obj",
-                new Vector4f(153,163,187,255), null, null, null);
+                new Vector4f(153, 163, 187, 255), null, null, null);
 
         // roof 1
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/roof1.obj",
-                new Vector4f(30,43,56,255), null, null, null);
+                new Vector4f(30, 43, 56, 255), null, null, null);
 
         // tower color
         importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/tower_color.stl",
-                new Vector4f(138,74,113,255), null, null, null);
+                new Vector4f(138, 74, 113, 255), null, null, null);
     }
 
     private void createBusStation() {
@@ -780,14 +824,13 @@ public class Main {
 
         // translate
         ship.forEach(object -> {
-            object.inlineTranslateObject(-20f,30f,-100f);
+            object.inlineTranslateObject(-20f, 30f, -100f);
         });
 
         // rotate
         ship.forEach(object -> {
-            object.inlineRotateObject((float)Math.toRadians(35),0f,0f,1f);
+            object.inlineRotateObject((float) Math.toRadians(35), 0f, 0f, 1f);
         });
-
 
 
     }
@@ -928,7 +971,7 @@ public class Main {
             }
 
 
-        }else if (window.isKeyPressed(GLFW_KEY_3)) {
+        } else if (window.isKeyPressed(GLFW_KEY_3)) {
             if (!toggleKeyPressed) {
                 toggleKeyPressed = true;
 
@@ -1036,7 +1079,14 @@ public class Main {
 
             // code
             for (Object object : objects) {
+                // check if the index of object is 16, if it is then print if isNight equals true
+                if (!isNight) {
+                    if (objects.indexOf(object) == 16) {
+                        continue;
+                    }
+                }
                 object.draw(camera, projection);
+
             }
 
             // update all the center point to the correct one
@@ -1058,6 +1108,12 @@ public class Main {
                 camera.lockInEye();
 
             }
+            // check night or not
+            Sphere terrain = (Sphere) objects.get(0);
+            isNight = terrain.getLightDirection().y >= 0 && terrain.getLightDirection().x < 1 && terrain.getLightDirection().x > -1;
+
+            System.out.println(isNight);
+
             // set CameraDT
             if (cameraDT && cameraTransitionCompleted) {
                 // set to DT mode

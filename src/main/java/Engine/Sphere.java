@@ -29,6 +29,12 @@ public class Sphere extends Circle {
     boolean yPositive = false;
     boolean zPositive = false;
 
+    public Vector3f getLightDirection() {
+        return lightDirection;
+    }
+
+    Vector3f lightDirection;
+
 
     public Sphere(List<ShaderModuleData> shaderModuleDataList, List<Vector3f> vertices, Vector4f color, List<Float> centerPoint, Float radiusX, Float radiusY, Float radiusZ,
                   int sectorCount, int stackCount) {
@@ -234,19 +240,29 @@ public class Sphere extends Circle {
         Vector3f objectPosition = new Vector3f(0,0,0);
         Vector3f lightPosition = new Vector3f(10,0,0);
         float time = (float) glfwGetTime();
-        float radius = 20.0f;
-        float angle = (float)(Math.PI) + time * 0.04f * (float) Math.PI;
+        float radius = 70.0f;
+        float angle = (float)(1.7 * Math.PI) + time * 0.02f * (float) Math.PI;
         float lightX = (float) Math.sin(angle) * radius;
         float lightY = (float) Math.cos(angle) * radius;
         float lightZ = 0f;
-        Vector3f lightDirection = objectPosition.sub(lightPosition.add(lightX, lightY, lightZ)).normalize();
+        lightDirection = objectPosition.sub(lightPosition.add(lightX, lightY, lightZ)).normalize();
 
 
         // directional light
+        float ambient, diffuse, specular;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) {
+            ambient = 0.05f;
+            diffuse = 0.1f;
+            specular = 0.05f;
+        } else {
+            ambient = 0.5f;
+            diffuse = 1f;
+            specular = 1f;
+        }
         uniformsMap.setUniform("dirLight.direction", lightDirection);
-        uniformsMap.setUniform("dirLight.ambient", new Vector3f(0.3f, 0.3f, 0.3f));
-        uniformsMap.setUniform("dirLight.diffuse", new Vector3f(1f, 1f, 1f));
-        uniformsMap.setUniform("dirLight.specular", new Vector3f(1f, 1f, 1f));
+        uniformsMap.setUniform("dirLight.ambient", new Vector3f(ambient));
+        uniformsMap.setUniform("dirLight.diffuse", new Vector3f(diffuse));
+        uniformsMap.setUniform("dirLight.specular", new Vector3f(specular));
 
 
 
