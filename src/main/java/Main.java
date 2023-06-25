@@ -38,9 +38,11 @@ public class Main {
 
     boolean cameraModeIsFPS = false;
     boolean cameraDT = false;
+    boolean cameraFW = false;
     boolean cameraTransitionCompleted = true;
 
     boolean dropTowerSwitch = true;
+    List<Object> ferrisWheel;
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
                                String filename,
@@ -265,6 +267,9 @@ public class Main {
     }
 
     private void createTrees() {
+        // set rotations
+        Vector4f rotation = new Vector4f(0, 0f, 0f, 0f);
+
         // color leaf
         Vector4f colorLeaf = new Vector4f(0, 255f, 0, 255f);
 
@@ -433,10 +438,19 @@ public class Main {
         // ramp
         importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWRamp.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
-        // structure
+        // platform
         importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWPlatform.obj", new Vector4f(213, 215, 219, 255), null, null, null);
 
-        objects.get(6).updateCenterPoint();
+        // wheel
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219,255), null, null,null);
+
+        // sit
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20,255), new Vector3f(6f,9.6f,-39.2f), null, null);
+
+        // other sit
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+
+
 
 
     }
@@ -444,15 +458,23 @@ public class Main {
     private void createColourLamps() {
         float scale = 1;
         // create the colour lamps
-        importObjects(shaderModuleDataList, "resources/blender/colour lamp/ColourLamp.obj",
+        importObjects(shaderModuleDataList, null,"resources/blender/colour lamp/ColourLampPole.obj",
                 new Vector4f(31f, 21f, 14f, 255f), null, null, null);
 
         // set as parent
         List<Object> colourLamps = objects.get(8).getChildObject();
 
 
-//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
-//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable",
+                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb1",
+                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb2",
+                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb3",
+                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb4",
+                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
 //        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
 //                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
 //        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
@@ -915,7 +937,7 @@ public class Main {
     public void loop() {
         while (window.isOpen()) {
             window.update();
-            glClearColor(0, 22 / 255f, 87 / 255f, 1);
+            glClearColor(0,22/255f,87/255f,1);
             GL.createCapabilities();
             input();
 
@@ -931,7 +953,7 @@ public class Main {
             cameraTransition();
 
             // set FPS/free
-            if (cameraModeIsFPS && cameraTransitionCompleted && !cameraDT) {
+            if (cameraModeIsFPS && cameraTransitionCompleted && !cameraDT && !cameraFW) {
                 // set to FPS mode
                 Vector3f eyePosition = new Vector3f(
                         mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
@@ -955,6 +977,20 @@ public class Main {
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
 //                camera.lockInEye();
 
+
+            }
+            if (cameraFW && cameraTransitionCompleted) {
+                // set to FW mode
+                Vector3f eyePosition = new Vector3f(
+                        objects.get(6).getChildObject().get(1).getCenterPoint().get(0),
+                        objects.get(6).getChildObject().get(1).getCenterPoint().get(1),
+                        objects.get(6).getChildObject().get(1).getCenterPoint().get(2));
+
+                // set the camera to the main character eye
+                camera.setPosition(eyePosition.x, eyePosition.y-1f, eyePosition.z );
+//                camera.lockInEye();
+
+
             }
             // Translate Drop Tower Sit
             if (updateDropTowerSit(objects.get(5).getChildObject().get(0).getCenterPoint().get(1))) {
@@ -965,25 +1001,75 @@ public class Main {
                 objects.get(5).getChildObject().get(1).inlineTranslateObject(0f, -0.2f, 0f);
             }
 
-//            System.out.println("Awal" + objects.get(6).getChildObject().get(0).getCenterPoint());
-//            objects.get(6).getChildObject().get(0).updateCenterPoint();
-//            float selisihX = objects.get(8).getCenterPoint().get(0)- objects.get(6).getChildObject().get(0).getCenterPoint().get(0);
-//            float selisihY = objects.get(8).getCenterPoint().get(1)- objects.get(6).getChildObject().get(0).getCenterPoint().get(1);
-//            float selisihZ = objects.get(8).getCenterPoint().get(2)- objects.get(6).getChildObject().get(0).getCenterPoint().get(2);
 
-            objects.get(6).getChildObject().get(0).inlineTranslateObject(-6f, -24.5f, 0f);
-            objects.get(6).getChildObject().get(0).inlineRotateObject(0.01f, 0, 0, 1);
-            objects.get(6).getChildObject().get(0).inlineTranslateObject(6f, 24.5f, 0f);
+            //rotasi Ferris Wheel
+            // Wheel
+            objects.get(6).getChildObject().get(7).inlineTranslateObject(-6f,-24.5f,0f);
+            objects.get(6).getChildObject().get(7).inlineRotateObject(0.003f,0,0,1);
+            objects.get(6).getChildObject().get(7).inlineTranslateObject(6f,24.5f,0f);
 
-            objects.get(6).getChildObject().get(1).inlineTranslateObject(-6f, -24.5f, 0f);
-            objects.get(6).getChildObject().get(1).inlineRotateObject(0.01f, 0, 0, 1);
-            objects.get(6).getChildObject().get(1).inlineTranslateObject(6f, 24.5f, 0f);
+            // sit
+            objects.get(6).getChildObject().get(8).inlineTranslateObject(-6f,-24.5f,0f);
+            objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f,0,0,1);
+            objects.get(6).getChildObject().get(8).inlineTranslateObject(6f,24.5f,0f);
+            System.out.println(objects.get(6).getChildObject().get(1).getCenterPoint());
 
-            objects.get(6).getChildObject().get(2).inlineTranslateObject(-6f, -24.5f, 0f);
-            objects.get(6).getChildObject().get(2).inlineRotateObject(0.01f, 0, 0, 1);
-            objects.get(6).getChildObject().get(2).inlineTranslateObject(6f, 24.5f, 0f);
+            ArrayList<Float> sitPos = new ArrayList<>();
+            sitPos.add(objects.get(6).getChildObject().get(8).getCenterPoint().get(0));
+            sitPos.add(objects.get(6).getChildObject().get(8).getCenterPoint().get(1));
+            sitPos.add(objects.get(6).getChildObject().get(8).getCenterPoint().get(2));
 
-            initShipAni();
+//            objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f,0,0,-1);
+//            objects.get(6).getChildObject().get(8).inlineTranslateObject(sitPos.get(0),sitPos.get(1),0f);
+
+
+            // Other Sit
+            objects.get(6).getChildObject().get(9).inlineTranslateObject(-6f,-24.5f,0f);
+            objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,1);
+            objects.get(6).getChildObject().get(9).inlineTranslateObject(6f,24.5f,0f);
+
+            ArrayList<Float> otherSitPos = new ArrayList<>();
+            otherSitPos.add(objects.get(6).getChildObject().get(9).getCenterPoint().get(0));
+            otherSitPos.add(objects.get(6).getChildObject().get(9).getCenterPoint().get(1));
+            otherSitPos.add(objects.get(6).getChildObject().get(9).getCenterPoint().get(2));
+
+//            objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,-1);
+//            objects.get(6).getChildObject().get(8).inlineTranslateObject(otherSitPos.get(0),otherSitPos.get(1),0f);
+
+//            // sit
+//            importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20,255), new Vector3f(6f,9.6f,-39.2f), null, null);
+//
+//            // other sit
+//            importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+//
+//            objects.get(6).getChildObject().remove(8);
+//            objects.get(6).getChildObject().remove(8);
+//            objects.remove(6);
+//            objects.remove(6);
+
+//            System.out.println(objects.size());
+//            if (objects.get(8) != null){
+//                objects.remove(11);
+//            }
+
+
+//            for (Object o : objects
+//                 ) {
+//
+//                float distance = getDistance(o.getCenterPoint(),mainCharacter.getCenterPoint());
+//                float radius = 10f;
+//                List<Object> possibleCollision = null;
+//                if(distance < radius) {
+//                    possibleCollision.add(o);
+//                }
+//            }
+//            List<Vector3f> focal_vertices = new ArrayList<Vector3f>();
+//            //Get Vertices for Focal Entity
+//            focal_vertices.add(vertex);
+//
+//            List<Vector3f> entity_vertices = new ArrayList<Vector3f>();
+//            //Get Vertices for Focal Entity
+//            entity_vertices.add(vertex);
 
 
             // Restore state
@@ -1067,6 +1153,22 @@ public class Main {
             }
         }
 
+    }
+
+    public static float getDistance(List<Float> pointOne, List<Float> pointTwo) {
+        float distance = 0;
+
+        float x1 = pointOne.get(0);
+        float y1 = pointOne.get(1);
+        float z1 = pointOne.get(2);
+
+        float x2 = pointTwo.get(0);
+        float y2 = pointTwo.get(1);
+        float z2 = pointTwo.get(2);
+
+        distance = (float) Math.pow((Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2) + Math.pow(z1 - z2, 2)), .5f);
+
+        return distance;
     }
 
     public void run() {
