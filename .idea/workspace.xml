@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="Benerin Ferris Wheel">
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="Benerin Error lagi">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/shaders/scene.frag" beforeDir="false" afterPath="$PROJECT_DIR$/resources/shaders/scene.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687709599100</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Benerin Error lagi">
+      <created>1687717125528</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1687717125528</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -136,6 +145,7 @@
     <MESSAGE value="update blend sama tambah carousel" />
     <MESSAGE value="update blend, nambah swing ride" />
     <MESSAGE value="Benerin Ferris Wheel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Benerin Ferris Wheel" />
+    <MESSAGE value="Benerin Error lagi" />
+    <option name="LAST_COMMIT_MESSAGE" value="Benerin Error lagi" />
   </component>
 </project>

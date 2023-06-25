@@ -24,6 +24,11 @@ public class Sphere extends Circle {
     int stackCount;
     int sectorCount;
     int nbo;
+    Vector3f bigSpotLightDir = new Vector3f(-0.077f,-0.173f,0.062f);
+    boolean xPositive = false;
+    boolean yPositive = false;
+    boolean zPositive = false;
+
 
     public Sphere(List<ShaderModuleData> shaderModuleDataList, List<Vector3f> vertices, Vector4f color, List<Float> centerPoint, Float radiusX, Float radiusY, Float radiusZ,
                   int sectorCount, int stackCount) {
@@ -230,7 +235,7 @@ public class Sphere extends Circle {
         Vector3f lightPosition = new Vector3f(10,0,0);
         float time = (float) glfwGetTime();
         float radius = 20.0f;
-        float angle = time * 0.1f * (float) Math.PI;
+        float angle = (float)(Math.PI) + time * 0.04f * (float) Math.PI;
         float lightX = (float) Math.sin(angle) * radius;
         float lightY = (float) Math.cos(angle) * radius;
         float lightZ = 0f;
@@ -300,6 +305,59 @@ public class Sphere extends Circle {
         uniformsMap.setUniform("spotLight.cutOff", (float) Math.cos(Math.toRadians(12.5f)));
         uniformsMap.setUniform("spotLight.outerCutOff", (float) Math.cos(Math.toRadians(15.0f)));
 
+        updateBigSpotLightDir();
+
+        // posisi bigSpotLight
+        Vector3f _bigSpotLightPosition = new Vector3f(70f,53f,-40f);
+        Vector3f _bigSpotLightDirection = bigSpotLightDir;
+//        System.out.println("x :"+ bigSpotLightDir.x + " y :" + bigSpotLightDir.y +" z :"+bigSpotLightDir.z);
+        lightPower = 0.000f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 1000f;
+        uniformsMap.setUniform("bigSpotLight.position", _bigSpotLightPosition);
+        uniformsMap.setUniform("bigSpotLight.direction", _bigSpotLightDirection);
+        uniformsMap.setUniform("bigSpotLight.ambient", new Vector3f(0.0f, 0.0f, 0.0f));
+        uniformsMap.setUniform("bigSpotLight.diffuse", new Vector3f(lightPower, lightPower, lightPower));
+        uniformsMap.setUniform("bigSpotLight.specular", new Vector3f(lightPower));
+        uniformsMap.setUniform("bigSpotLight.constant", 1.0f);
+        uniformsMap.setUniform("bigSpotLight.linear", 0.09f);
+        uniformsMap.setUniform("bigSpotLight.quadratic", 0.032f);
+        uniformsMap.setUniform("bigSpotLight.cutOff", (float) Math.cos(Math.toRadians(12.5f)));
+        uniformsMap.setUniform("bigSpotLight.outerCutOff", (float) Math.cos(Math.toRadians(15.0f)));
+
         uniformsMap.setUniform("viewPos", camera.getPosition());
+    }
+    public void updateBigSpotLightDir(){
+        if(bigSpotLightDir.x < -0.178f){
+            xPositive = true;
+        }
+        if(bigSpotLightDir.x > -0.049f){
+            xPositive = false;}
+        if(bigSpotLightDir.y < -0.123f){
+            yPositive = true;
+        }
+        if(bigSpotLightDir.y > -0.084){
+            yPositive = false;
+        }
+        if(bigSpotLightDir.z < 0.062f){
+            zPositive = true;
+        }
+        if(bigSpotLightDir.z > 0.151){
+            zPositive = false;
+        }
+        if (xPositive){
+            bigSpotLightDir.x += 0.001;
+        }else {
+            bigSpotLightDir.x -= 0.001;
+        }
+        if (yPositive){
+            bigSpotLightDir.y += 0.001;
+        }else {
+            bigSpotLightDir.y -= 0.001;
+        }
+        if (zPositive){
+            bigSpotLightDir.z += 0.001;
+        }else {
+            bigSpotLightDir.z -= 0.001;
+        }
     }
 }

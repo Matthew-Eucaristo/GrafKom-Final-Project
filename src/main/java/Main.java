@@ -564,7 +564,6 @@ public class Main {
         // .inlineScaleObjectXYZ(50f)
         // .inlineRotateObject((float) Math.toRadians(180), 0f, 0f, 0f));
 
-        System.out.println(objects.size());
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
 
@@ -878,9 +877,14 @@ public class Main {
         // ini buat yang WASD
         if (window.isKeyPressed(GLFW_KEY_W)) {
             camera.moveForward(cameraSpeed);
+//            System.out.println("Pos " + camera.getPosition());
+//            System.out.println("Dir " + camera.getDirection());
+
         }
         if (window.isKeyPressed(GLFW_KEY_S)) {
             camera.moveBackwards(cameraSpeed);
+//            System.out.println("Pos " + camera.getPosition());
+//            System.out.println("Dir " + camera.getDirection());
         }
         if (window.isKeyPressed(GLFW_KEY_A)) {
             camera.moveLeft(cameraSpeed);
@@ -1053,21 +1057,6 @@ public class Main {
 //
 //            // other sit
 //            importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
-//
-//            objects.get(6).getChildObject().remove(8);
-//            objects.get(6).getChildObject().remove(8);
-//            objects.remove(6);
-//            objects.remove(6);
-
-//            System.out.println(objects.size());
-//            if (objects.get(8) != null){
-//                objects.remove(11);
-//            }
-
-//            if (objects.get(12).getCenterPoint().get(1) < 50){
-//                objects.get(12).inlineTranslateObject(0f,1f,0f);
-//            }
-
 
             // init ship animation
             initShipAni();
