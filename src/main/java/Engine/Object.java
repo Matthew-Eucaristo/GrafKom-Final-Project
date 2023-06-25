@@ -213,12 +213,12 @@ public class Object extends ShaderProgram{
     }
     public void rotateObject(Float degree, Float x,Float y,Float z){
         model = new Matrix4f().rotate(degree,x,y,z).mul(new Matrix4f(model));
-
         for(Object child:childObject){
             child.rotateObject(degree,x,y,z);
         }
 
     }
+
     public Object inlineRotateObject(float degree, float x, float y, float z) {
         this.rotateObject(degree, x, y, z);
         return this;
@@ -243,6 +243,7 @@ public class Object extends ShaderProgram{
         this.scaleObject(scaleX, scaleY, scaleZ);
         return this;
     }
+
 
     public void scaleObjectXYZ(float scale) {
         this.scaleObject(scale, scale, scale);
