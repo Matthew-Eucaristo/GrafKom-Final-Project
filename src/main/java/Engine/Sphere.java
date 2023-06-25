@@ -246,16 +246,37 @@ public class Sphere extends Circle {
 
 
         // posisi pointLight
-        Vector3f[] _pointLightPositions = new Vector3f[]{
+        Vector3f[] forLamps = new Vector3f[]{
             new Vector3f(12f, 10f, 0f),
-//            new Vector3f(2.3f, -3.3f, -4.0f),
-//            new Vector3f(-4.0f, 2.0f, -12.0f),
-//            new Vector3f(0.0f, 0.0f, -3.0f)
         };
-        for(int i = 0; i < _pointLightPositions.length; i++){
-            uniformsMap.setUniform("pointLights[" + i + "].position", _pointLightPositions[i]);
+        for(int i = 0; i < forLamps.length; i++){
+            uniformsMap.setUniform("pointLights[" + i + "].position", forLamps[i]);
             uniformsMap.setUniform("pointLights[" + i + "].ambient", new Vector3f(0.05f, 0.05f, 0.05f));
             uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(1f, 1f, 1f));
+            uniformsMap.setUniform("pointLights[" + i + "].specular", new Vector3f(1.0f, 1.0f, 1.0f));
+            uniformsMap.setUniform("pointLights[" + i + "].constant", 1.0f);
+            uniformsMap.setUniform("pointLights[" + i + "].linear", 0.09f);
+            uniformsMap.setUniform("pointLights[" + i + "].quadratic", 0.032f);
+        }
+        Vector3f[] forTowerLights = new Vector3f[]{
+                // urutan tower urut dari kanan sampe kiri depan
+                new Vector3f(54.2f, 16f, 41.6f),
+                new Vector3f(66f, 17f, 22f),
+                new Vector3f(70.6f, 18.3f, -10.3f),
+                new Vector3f(67.6f, 19f, -37.3f),
+                new Vector3f(29.3f, 20.6f, -47.4f),
+                new Vector3f(-13.8f, 18.8f, -53f),
+                new Vector3f(-41.2f, 20f, -37f),
+                new Vector3f(-53f, 18.2f, -9.8f),
+                new Vector3f(-46.6f, 17.2f, 13.2f),
+                new Vector3f(-31.4f, 16f, 40.7f),
+
+        };
+        float lightPower = 5f;
+        for(int i = 1; i < forTowerLights.length + 1; i++){
+            uniformsMap.setUniform("pointLights[" + i + "].position", forTowerLights[i - 1]);
+            uniformsMap.setUniform("pointLights[" + i + "].ambient", new Vector3f(0.05f, 0.05f, 0.05f));
+            uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f((float) (Math.random() * lightPower), (float) (Math.random() * lightPower), (float) (Math.random() * lightPower)));
             uniformsMap.setUniform("pointLights[" + i + "].specular", new Vector3f(1.0f, 1.0f, 1.0f));
             uniformsMap.setUniform("pointLights[" + i + "].constant", 1.0f);
             uniformsMap.setUniform("pointLights[" + i + "].linear", 0.09f);

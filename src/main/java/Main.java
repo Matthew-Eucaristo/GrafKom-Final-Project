@@ -34,6 +34,7 @@ public class Main {
 
     Object mainCharacter;
     boolean toggleKeyPressed = false;
+    boolean shipStateIsPos1 = true;
 
     boolean cameraModeIsFPS = false;
     boolean cameraDT = false;
@@ -552,66 +553,70 @@ public class Main {
         // create parent
         // atasasn
         importObjects(shaderModuleDataList, null, "resources/blender/bus_station/atasan.obj",
-                new Vector4f(106,113,167,255), null, null, null);
+                new Vector4f(106, 113, 167, 255), null, null, null);
 
         // set as parent
-        List<Object> busStation = objects.get(8).getChildObject();
+        List<Object> busStation = objects.get(12).getChildObject();
 
         // all child
         // besi
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/besi.obj",
-                new Vector4f(70,70,70,255), null, null, null);
+                new Vector4f(70, 70, 70, 255), null, null, null);
 
         // branches
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/branches.obj",
-                new Vector4f(154,131,107,255), null, null, null);
+                new Vector4f(154, 131, 107, 255), null, null, null);
 
         // daun
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/daun.obj",
-                new Vector4f(0,255,0,255), null, null, null);
+                new Vector4f(0, 255, 0, 255), null, null, null);
 
         // kaki besi
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kaki_besi.obj",
-                new Vector4f(70,70,70,255), null, null, null);
+                new Vector4f(70, 70, 70, 255), null, null, null);
 
         // kursi
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kursi.obj",
-                new Vector4f(72,72,109, 255), null, null, null);
+                new Vector4f(72, 72, 109, 255), null, null, null);
 
         // papan
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan.obj",
-                new Vector4f(126,128,128,255), null, null, null);
+                new Vector4f(126, 128, 128, 255), null, null, null);
 
         // papan tiang
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan_tiang.obj",
-                new Vector4f(126,128,128,255), null, null, null);
+                new Vector4f(126, 128, 128, 255), null, null, null);
 
         // pot
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/pot.obj",
-                new Vector4f(103,92,93,255), null, null, null);
+                new Vector4f(103, 92, 93, 255), null, null, null);
 
         // sekrup
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/sekrup.obj",
-                new Vector4f(70,70,70,255), null, null, null);
+                new Vector4f(70, 70, 70, 255), null, null, null);
 
         // tiangnya papan
         importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/tiangnya_papan.obj",
-                new Vector4f(70,70,70,255), null, null, null);
+                new Vector4f(70, 70, 70, 255), null, null, null);
     }
 
     private void createShip() {
         // create parent ship
-        // api jet
+        // api jet (dummy)
         importObjects(shaderModuleDataList, null, "resources/blender/starshipku/api_jet.obj",
-                new Vector4f(87, 103, 205, 255), null, null, null);
+                new Vector4f(87, 103, 205, 255), null, 0f, null);
 
         // set as parent
-        List<Object> ship = objects.get(8).getChildObject();
+        List<Object> ship = objects.get(11).getChildObject();
 
         // all child
+        // api jet
+        importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/api_jet.obj",
+                new Vector4f(87, 103, 205, 255), null, null, null);
+
         // badan donut
         importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/badan_donut.obj",
-                new Vector4f(185, 112, 151, 255), null, null, null);
+                new Vector4f(185,127,103,255), null, null, null);
 
         // badan mobil dan sayap
         importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/badan_mobil_dan_sayap.obj",
@@ -960,6 +965,8 @@ public class Main {
             objects.get(6).getChildObject().get(2).inlineRotateObject(0.01f, 0, 0, 1);
             objects.get(6).getChildObject().get(2).inlineTranslateObject(6f, 24.5f, 0f);
 
+            initShipAni();
+
 
             // Restore state
             glDisableVertexAttribArray(0);
@@ -969,6 +976,42 @@ public class Main {
             // invoked during this call.
             glfwPollEvents();
         }
+    }
+
+    private void initShipAni() {
+        // ship speed
+        float shipSpeed = 0.08f;
+
+        // pos1 and pos2
+        Vector3f pos1 = new Vector3f(0,0,0);
+        Vector3f pos2 = new Vector3f(-77,0,0);
+
+        // object name
+        List<Object> shipChild = objects.get(11).getChildObject();
+        Object shipParent = objects.get(11);
+
+        // centerpoint
+        Vector3f shipCenterPoint = new Vector3f(shipChild.get(1).getCenterPoint().get(0), shipChild.get(1).getCenterPoint().get(1), shipChild.get(1).getCenterPoint().get(2));
+
+        // go to pos2 with lerp transition
+        // when in pos2 and translate with lerp to pos1
+        // when in pos1 and translate with lerp to pos2
+
+        // go to pos2 with lerp transition
+        if (shipStateIsPos1){
+            shipParent.inlineTranslateObject(-shipSpeed, 0, 0);
+            if (shipCenterPoint.distance(pos2) < 1.1f){
+                shipStateIsPos1 = false;
+            }
+        } else {
+            shipParent.inlineTranslateObject(shipSpeed, 0, 0);
+            if (shipCenterPoint.distance(pos1) < 1.1f){
+                shipStateIsPos1 = true;
+            }
+        }
+
+
+
     }
 
     private void cameraTransition() {
