@@ -27,7 +27,7 @@ public class ObjectLoader extends Sphere {
         super(shaderModuleDataList, vertices, color, centerPoint, radiusX, radiusY, radiusZ, sectorCount, stackCount);
 
         scene = Assimp.aiImportFile(fileName, Assimp.aiProcess_Triangulate | Assimp.aiProcess_FlipUVs);
-        loadFiles();
+            loadFiles();
 
         loadObject();
     }

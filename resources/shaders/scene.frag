@@ -68,9 +68,9 @@ vec3 calcDirLight(DirLight light, vec3 normal, vec3 viewDir)
     vec3 ambient = light.ambient;
     vec3 diffuse = light.diffuse * diff;
     vec3 specular = light.specular * spec;
-//        vec3 ambient = light.ambient * vec3(uni_color);
-//        vec3 diffuse = light.diffuse * diff * vec3(uni_color);
-//        vec3 specular = light.specular * spec * vec3(uni_color);
+//        vec3 ambient = light.ambient * vec3(uni_color.xyz);
+//        vec3 diffuse = light.diffuse * diff * vec3(uni_color.xyz);
+//        vec3 specular = light.specular * spec * vec3(uni_color.xyz);
 
     return (ambient + diffuse + specular);
 }
@@ -88,9 +88,9 @@ vec3 calcPointLight(PointLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     float attenuation = 1.0 / (light.constant + light.linear * distance +
     light.quadratic * (distance * distance));
     //combine results
-    vec3 ambient  = light.ambient;
-    vec3 diffuse  = light.diffuse  * diff;
-    vec3 specular = light.specular * spec;
+    vec3 ambient  = light.ambient ;
+    vec3 diffuse  = light.diffuse  * diff ;
+    vec3 specular = light.specular * spec ;
     ambient  *= attenuation;
     diffuse  *= attenuation;
     specular *= attenuation;
@@ -118,9 +118,9 @@ vec3 calcSpotLight(SpotLight light, vec3 normal, vec3 fragPos, vec3 viewDir)
     float intensity = clamp((theta - light.outerCutOff) / epsilon, 0.0, 1.0);
 
     //combine results
-    vec3 ambient = light.ambient;
-    vec3 diffuse = light.diffuse * diff;
-    vec3 specular = light.specular * spec;
+    vec3 ambient = light.ambient ;
+    vec3 diffuse = light.diffuse ;
+    vec3 specular = light.specular;
     ambient  *= attenuation;
     diffuse  *= attenuation * intensity;
     specular *= attenuation * intensity;

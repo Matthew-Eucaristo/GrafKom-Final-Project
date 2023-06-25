@@ -268,8 +268,8 @@ public class Sphere extends Circle {
         uniformsMap.setUniform("spotLight.position", _spotLightPosition);
         uniformsMap.setUniform("spotLight.direction", _spotLightDirection);
         uniformsMap.setUniform("spotLight.ambient", new Vector3f(0.0f, 0.0f, 0.0f));
-        uniformsMap.setUniform("spotLight.diffuse", new Vector3f(1.0f, 1.0f, 1.0f));
-        uniformsMap.setUniform("spotLight.specular", new Vector3f(1.0f, 1.0f, 1.0f));
+        uniformsMap.setUniform("spotLight.diffuse", new Vector3f(10.0f, 10.0f, 10.0f));
+        uniformsMap.setUniform("spotLight.specular", new Vector3f(10.0f, 10.0f, 10.0f));
         uniformsMap.setUniform("spotLight.constant", 1.0f);
         uniformsMap.setUniform("spotLight.linear", 0.09f);
         uniformsMap.setUniform("spotLight.quadratic", 0.032f);

@@ -266,41 +266,104 @@ public class Main {
         Vector3f translate = new Vector3f(10f, 1f, 2f);
 
         importObjects(shaderModuleDataList, null, "resources/blender/drop tower/DropTower.obj",
-                new Vector4f(169, 138, 100, 255), translate, 1f, new Vector4f(1f, 0f, 0f, 0));
+                new Vector4f(179, 140, 12, 255), null, null, null);
 
         // set as parent
         List<Object> dropTower = objects.get(5).getChildObject();
 
+
+        // square
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSquare.obj", new Vector4f(12, 46, 148, 255), null, null, null);
+
         // sit
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj", new Vector4f(81, 60, 49, 255), translate, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj", new Vector4f(179, 140, 12, 255), null, null, null);
 
         // platform
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj", new Vector4f(81, 60, 49, 255), translate, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj", new Vector4f(156, 8, 20, 255), null, null, null);
 
         // ramp
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj", new Vector4f(81, 60, 49, 255), translate, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj", new Vector4f(82, 81, 79, 255), null, null, null);
+
+        // rounded fence
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRoundedFence.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj", new Vector4f(81, 60, 49, 255), translate, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj", new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence 2
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj", new Vector4f(81, 60, 49, 255), translate, 1f, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+
+        // head
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTHead.obj", new Vector4f(156, 8, 20, 255), null, null, null);
+
+        // structure
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTStructure.obj", new Vector4f(179, 140, 12, 255), null, null, null);
+
     }
 
     private void createFerrisWheel() {
         Vector3f translate = new Vector3f(-5f, 1f, -5f);
 
-        importObjects(shaderModuleDataList, null, "resources/blender/ferris wheel/FWPlatform.obj",
-                new Vector4f(169, 138, 100, 255), translate, 1f, new Vector4f(1f, 0f, 0f, 0));
+        importObjects(shaderModuleDataList, null, "resources/blender/ferris wheel/FWSpindle.obj",
+                new Vector4f(213, 215, 219,255), null, null,null);
 
         // set as parent
         List<Object> ferrisWheel = objects.get(6).getChildObject();
 
-        // sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(81, 60, 49, 255), translate, 1f, null);
-
         // wheel
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(81, 60, 49, 255), translate, 1f, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219,255), null, null,null);
+
+        // sit
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+
+        // other sit
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+
+        // structure
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWStructure.obj", new Vector4f(156, 8, 20,255), null, null, null);
+
+        // fence
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence.obj", new Vector4f(143, 141, 134,255), null, null, null);
+
+        // fence1
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence1.obj", new Vector4f(143, 141, 134,255), null, null,null);
+
+        // fence2
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence2.obj", new Vector4f(143, 141, 134,255), null, null,null);
+
+        // fence3
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence3.obj", new Vector4f(143, 141, 134,255), null, null,null);
+
+        // ramp
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWRamp.obj", new Vector4f(143, 141, 134,255),null, null,null);
+
+        // structure
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWPlatform.obj", new Vector4f(213, 215, 219,255), null, null,null);
+
+        objects.get(6).updateCenterPoint();
+
+
+    }
+    private void createColourLamps() {
+        float scale = 1;
+        // create the colour lamps
+        importObjects(shaderModuleDataList, "resources/blender/colour lamp/ColourLamp.obj",
+                new Vector4f(31f, 21f, 14f, 255f), null, null, null);
+
+        // set as parent
+        List<Object> colourLamps = objects.get(8).getChildObject();
+
+
+//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
+//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
+//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 100f), scale, new Vector4f(1f, 0f, 0f, 0));
+//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
+//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(100f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
+//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(200f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
+//        importObjects(shaderModuleDataList, streetLamps, "resources/blender/street lamp/street_lamp.fbx",
+//                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(300f, 20f, 0f), scale, new Vector4f(1f, 0f, 0f, 0));
 
     }
 
@@ -366,6 +429,9 @@ public class Main {
 
         // Bumper Car
         createBumperCar();
+
+        // Colour Lamp
+        createColourLamps();
 
 
         // Random Object
@@ -481,7 +547,7 @@ public class Main {
     }
 
     public void input() {
-        float cameraSpeed = 0.25f;
+        float cameraSpeed = 0.2f;
         float characterSpeed = 0.03f;
         float rotateSpeedInDegrees = 1f;
 
@@ -637,22 +703,34 @@ public class Main {
             if (cameraDT && cameraTransitionCompleted) {
                 // set to DT mode
                 Vector3f eyePosition = new Vector3f(
-                        objects.get(5).getChildObject().get(0).getCenterPoint().get(0),
+                        objects.get(5).getChildObject().get(0).getCenterPoint().get(0) + 27.2f,
                         objects.get(5).getChildObject().get(0).getCenterPoint().get(1),
-                        objects.get(5).getChildObject().get(0).getCenterPoint().get(2));
+                        objects.get(5).getChildObject().get(0).getCenterPoint().get(2)+0.8f);
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
-                camera.lockInEye();
+//                camera.lockInEye();
 
             }
             // Translate Drop Tower Sit
             if (updateDropTowerSit(objects.get(5).getChildObject().get(0).getCenterPoint().get(1))) {
                 objects.get(5).getChildObject().get(0).inlineTranslateObject(0f, 0.05f, 0f);
+                objects.get(5).getChildObject().get(1).inlineTranslateObject(0f, 0.05f, 0f);
             } else {
                 objects.get(5).getChildObject().get(0).inlineTranslateObject(0f, -0.2f, 0f);
+                objects.get(5).getChildObject().get(1).inlineTranslateObject(0f, -0.2f, 0f);
             }
 
+            System.out.println("Awal" + objects.get(6).getChildObject().get(0).getCenterPoint());
+            objects.get(6).getChildObject().get(0).updateCenterPoint();
+            float selisihX = objects.get(8).getCenterPoint().get(0)- objects.get(6).getChildObject().get(0).getCenterPoint().get(0);
+            float selisihY = objects.get(8).getCenterPoint().get(1)- objects.get(6).getChildObject().get(0).getCenterPoint().get(1);
+            float selisihZ = objects.get(8).getCenterPoint().get(2)- objects.get(6).getChildObject().get(0).getCenterPoint().get(2);
+            objects.get(6).getChildObject().get(0).inlineTranslateObject(selisihX,selisihY,selisihZ);
+            System.out.println(objects.get(6).getChildObject().get(0).getCenterPoint());
+            objects.get(6).getChildObject().get(0).inlineRotateObject(0.01f,0,0,1);
+            objects.get(6).getChildObject().get(0).inlineTranslateObject(-selisihX,-selisihY,-selisihZ);
+            System.out.println(objects.get(6).getChildObject().get(0).getCenterPoint());
 
             // Restore state
             glDisableVertexAttribArray(0);
