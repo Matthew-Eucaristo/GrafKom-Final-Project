@@ -4,21 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="udah bisa buat spaceship sama bus station nya">
-      <change afterPath="$PROJECT_DIR$/resources/blender/castle/tower.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/castle/tower.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/castle/tower.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/castle/tower.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/castle/tower_color.stl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/picnic_table/chair.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/picnic_table/chair.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/picnic_table/kaki_meja.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/picnic_table/kaki_meja.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/picnic_table/meja.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/picnic_table/meja.obj" afterDir="false" />
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="kurang ini tadi maap">
+      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/monkey_face/monkey_face.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/monkey_face/monkey_face.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/tree/1.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +98,23 @@
       <option name="project" value="LOCAL" />
       <updated>1687696041427</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="jadi text&#10;jadi monster">
+      <option name="closed" value="true" />
+      <created>1687726099502</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1687726099502</updated>
+    </task>
+    <task id="LOCAL-00005" summary="kurang ini tadi maap">
+      <option name="closed" value="true" />
+      <created>1687726139669</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1687726139669</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,6 +133,8 @@
     <MESSAGE value="fixed the pom.xml&#10;used the other repo createBox() method" />
     <MESSAGE value="sudah bisa bentuk, tetapi masih jelek, urutan keliatnnya masih salah" />
     <MESSAGE value="udah bisa buat spaceship sama bus station nya" />
-    <option name="LAST_COMMIT_MESSAGE" value="udah bisa buat spaceship sama bus station nya" />
+    <MESSAGE value="jadi text&#10;jadi monster" />
+    <MESSAGE value="kurang ini tadi maap" />
+    <option name="LAST_COMMIT_MESSAGE" value="kurang ini tadi maap" />
   </component>
 </project>

@@ -552,6 +552,9 @@ public class Main {
         // create monster
         createMonster(); // 16
 
+        // create gate
+        createCreepyGate(); // 17
+
 
         // Random Object
 //        objects.add(new Sphere(
@@ -574,6 +577,29 @@ public class Main {
 
     }
 
+    private void createCreepyGate() {
+        // create parent
+        // gate
+        // gerbang
+        importObjects(shaderModuleDataList, null, "resources/blender/terrain/gate/gerbang_depan.obj", new Vector4f(24,32,38,255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // set as parent
+        List<Object> gate = objects.get(17).getChildObject();
+
+        // papan
+        importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/papan.obj", new Vector4f(115,87,68,255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // dont enter1
+        importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/dont_enter1.obj", new Vector4f(106,14,10,255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // dont enter2
+        importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/dont_enter2.obj", new Vector4f(106,14,10,255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+    }
+
     private void createMonster() {
         // create Monster
         importObjects(shaderModuleDataList, null, "resources/blender/monster/monster.obj",
@@ -588,6 +614,8 @@ public class Main {
 
         // set as parent
         List<Object> terrain = objects.get(1).getChildObject();
+
+
 
         // road
         importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/road.obj", new Vector4f(100, 100, 100, 255),
@@ -611,6 +639,11 @@ public class Main {
         // happy place text
         importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/fonts/happy_place_text.obj", new Vector4f(6,30,165,255),
                 null, null, new Vector4f(0f, 0f, 0f, 0));
+
+        // monkeyface
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/monkey_face/monkey_face.obj", new Vector4f(137,1,13,255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+
 
 
     }
@@ -1081,7 +1114,7 @@ public class Main {
             for (Object object : objects) {
                 // check if the index of object is 16, if it is then print if isNight equals true
                 if (!isNight) {
-                    if (objects.indexOf(object) == 16) {
+                    if (objects.indexOf(object) == 16 || objects.indexOf(object) == 17) {
                         continue;
                     }
                 }
