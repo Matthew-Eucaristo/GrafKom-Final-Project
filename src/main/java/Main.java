@@ -19,7 +19,7 @@ import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL30.*;
 
 public class Main {
-    private Window window = new Window(800, 800, "Hello World");
+    private Window window = new Window(800, 800, "NotSoThemePark");
     private ArrayList<Object> objects = new ArrayList<>();
 
     private MouseInput mouseInput;
@@ -983,7 +983,14 @@ public class Main {
             objects.get(6).getChildObject().get(2).inlineRotateObject(0.01f, 0, 0, 1);
             objects.get(6).getChildObject().get(2).inlineTranslateObject(6f, 24.5f, 0f);
 
+            // init ship animation
             initShipAni();
+
+
+
+
+
+
 
 
             // Restore state
