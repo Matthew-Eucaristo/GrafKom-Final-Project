@@ -218,7 +218,7 @@ public class Main {
                 null,
                 null,
                 null);
-        List<Object> tenda = objects.get(3).getChildObject();
+        List<Object> tenda = objects.get(13).getChildObject();
 
         importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent2.obj",
                 new Vector4f(237,63,5,255),
@@ -265,9 +265,6 @@ public class Main {
     }
 
     private void createTrees() {
-        // set rotations
-        Vector4f rotation = new Vector4f(0, 0f, 0f, 0f);
-
         // color leaf
         Vector4f colorLeaf = new Vector4f(0, 255f, 0, 255f);
 
@@ -275,40 +272,26 @@ public class Main {
         Vector4f colorWood = new Vector4f(50, 45, 23, 255f);
 
         // take the trees in blender and create many trees as decoration
-        createTree(null, colorLeaf, colorWood,
-                new Vector3f(), 1,
-                rotation);
+        createTree(null, 1, colorLeaf, colorWood, null, 1, null);
 
         // set as parent
         List<Object> trees = objects.get(2).getChildObject();
 
-        // create child trees
-        createTree(trees, colorLeaf, colorWood,
-                new Vector3f(75, 11, 43),
-                1,
-                rotation);
-        createTree(trees, colorLeaf, colorWood,
-                new Vector3f(83, 17, 41),
-                1,
-                rotation);
-        createTree(trees, colorLeaf, colorWood,
-                new Vector3f(66.8f, 2, 49),
-                1,
-                rotation);
+
+        // all child
 
     }
 
-    private void createTree(List<Object> parent, Vector4f colorLeaf, Vector4f colorWood,
-                            Vector3f translate, float scaleXYZ,
-                            Vector4f rotate) {
-        importObjects(shaderModuleDataList, parent, "resources/blender/tree/leaf.obj", colorLeaf,
-                translate,
-                scaleXYZ, rotate);
-        importObjects(shaderModuleDataList, parent, "resources/blender/tree/wood.obj", colorWood,
-                translate,
-                scaleXYZ, rotate);
+    private void createTree(List<Object> parent, int number, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scale, Vector4f rotation) {
+        // create the leaf
+        importObjects(shaderModuleDataList, parent, "resources/blender/tree/" + number + ".obj",
+                colorLeaf, translate, scale, rotation);
 
+        // create the wood
+        importObjects(shaderModuleDataList, parent, "resources/blender/tree/w" + number + ".obj",
+                colorWood, translate, scale, rotation);
     }
+
 
     private void createMC(Object mainCharacter) {
         // create main character as child of the parent
@@ -514,49 +497,52 @@ public class Main {
                 .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f));
 
         // main character
-        mainCharacter = objects.get(0);
+        mainCharacter = objects.get(0); // 0
         createMC(mainCharacter);
 
         // Terrain
         importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255),
                 null, null,
+                new Vector4f(0f, 0f, 0f, 0)); // 1
+        importObjects(shaderModuleDataList, objects.get(1).getChildObject(),  "resources/blender/terrain/road.obj", new Vector4f(100,100,100,255),
+                null, null,
                 new Vector4f(0f, 0f, 0f, 0));
 
         // Trees
-        createTrees();
+        createTrees(); // 2
 
         // Street lamps
-        createStreetLamps();
+        createStreetLamps(); // 3
 
         // Gate and castles
-        createCastles();
+        createCastles(); // 4
 
         // caroussel
-        createCaroussel();
+        createCaroussel(); // 5
 
         //swing ride
-        createSwingride();
+        createSwingride(); // 6
 
         // Drop Tower
-        createDropTower();
+        createDropTower(); // 7
 
         // Ferris Wheel
-        createFerrisWheel();
+        createFerrisWheel(); // 8
 
         // Bumper Car
-        createBumperCar();
+        createBumperCar(); // 9
 
         // Colour Lamp
-        createColourLamps();
+        createColourLamps(); // 10
 
         // myShip
-        createShip();
+        createShip(); // 11
 
         // bus station
-        createBusStation();
+        createBusStation(); // 12
 
         //tenda
-        createTents();
+        createTents(); // 13
 
 
         // Random Object

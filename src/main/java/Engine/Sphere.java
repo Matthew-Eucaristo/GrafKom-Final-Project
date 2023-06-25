@@ -272,7 +272,8 @@ public class Sphere extends Circle {
                 new Vector3f(-31.4f, 16f, 40.7f),
 
         };
-        float lightPower = 5f;
+        float lightPower = 0.1f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 7f;
         for(int i = 1; i < forTowerLights.length + 1; i++){
             uniformsMap.setUniform("pointLights[" + i + "].position", forTowerLights[i - 1]);
             uniformsMap.setUniform("pointLights[" + i + "].ambient", new Vector3f(0.05f, 0.05f, 0.05f));
@@ -286,10 +287,12 @@ public class Sphere extends Circle {
         // posisi spotLight
         Vector3f _spotLightPosition = camera.getPosition();
         Vector3f _spotLightDirection = camera.getDirection();
+        lightPower = 0.000f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 10f;
         uniformsMap.setUniform("spotLight.position", _spotLightPosition);
         uniformsMap.setUniform("spotLight.direction", _spotLightDirection);
         uniformsMap.setUniform("spotLight.ambient", new Vector3f(0.0f, 0.0f, 0.0f));
-        uniformsMap.setUniform("spotLight.diffuse", new Vector3f(10.0f, 10.0f, 10.0f));
+        uniformsMap.setUniform("spotLight.diffuse", new Vector3f(lightPower, lightPower, lightPower));
         uniformsMap.setUniform("spotLight.specular", new Vector3f(10.0f, 10.0f, 10.0f));
         uniformsMap.setUniform("spotLight.constant", 1.0f);
         uniformsMap.setUniform("spotLight.linear", 0.09f);
