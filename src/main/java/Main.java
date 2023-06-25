@@ -547,6 +547,12 @@ public class Main {
         //tenda
         createTents(); // 13
 
+        // castle
+        createCastleBesar(); // 14
+
+        // circus tent
+        createCircusTent(); // 15
+
 
         // Random Object
 //        objects.add(new Sphere(
@@ -567,6 +573,78 @@ public class Main {
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
 
+    }
+
+    private void createCircusTent() {
+        // create parent
+        // flag
+        importObjects(shaderModuleDataList, null, "resources/blender/circus_tent/flag.obj",
+                new Vector4f(255, 0, 0, 255), null, null, null);
+
+        // set as parent
+        List<Object> circusTent = objects.get(15).getChildObject();
+
+        // all child
+        // iron wire
+        importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/iron_wire.obj",
+                new Vector4f(94,80,79,255), null, null, null);
+
+        // pole
+        importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/pole.obj",
+                new Vector4f(250,250,255,255), null, null, null);
+
+        // tent
+        importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/tent.obj",
+                new Vector4f(251,191,77,255), null, null, null);
+
+
+    }
+
+    private void createCastleBesar() {
+        // create parent
+        // color2
+        importObjects(shaderModuleDataList, null, "resources/blender/castle/color2.obj",
+                new Vector4f(22,133,139,255), null, null, null);
+
+        // set as parent
+        List<Object> castleBesar = objects.get(14).getChildObject();
+
+        // all child
+        // color3
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color3.obj",
+                new Vector4f(50,46,46,255), null, null, null);
+
+        // color4
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color4.obj",
+                new Vector4f(130,119,107,255), null, null, null);
+
+        // front castle
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_castle.obj",
+                new Vector4f(208,110,54,255), null, null, null);
+
+        // front gate castle
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_gate_castle.obj",
+                new Vector4f(108,102,95,255), null, null, null);
+
+        // gerbang depan
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/gerbang_depan.obj",
+                new Vector4f(79,81,86,255), null, null, null);
+
+        // last_tower
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/last_tower.obj",
+                new Vector4f(196,164,115,255), null, null, null);
+
+        // main wall
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/main_wall.obj",
+                new Vector4f(153,163,187,255), null, null, null);
+
+        // roof 1
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/roof1.obj",
+                new Vector4f(30,43,56,255), null, null, null);
+
+        // tower color
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/tower_color.stl",
+                new Vector4f(138,74,113,255), null, null, null);
     }
 
     private void createBusStation() {
