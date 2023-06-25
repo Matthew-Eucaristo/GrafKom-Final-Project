@@ -5,30 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="update.blend tambah ferrisWheel">
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLamp.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTHead.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTRoundedFence.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTSquare.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTStructure.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/drop tower/DropTower.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWCoba.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blender/main.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blender/main.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/drop tower/DTFence.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTFence.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/drop tower/DTFence2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTFence2.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/drop tower/DTPlatform.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTPlatform.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/drop tower/DTRamp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTRamp.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/drop tower/DTSit.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/drop tower/DTSit.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/drop tower/DropTower.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/drop tower/DropTower.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWPlatform.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWPlatform.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWOtherSit.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWOtherSit.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSpindle.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSpindle.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWWheel.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWWheel.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/shaders/scene.frag" beforeDir="false" afterPath="$PROJECT_DIR$/resources/shaders/scene.frag" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

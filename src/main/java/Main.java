@@ -721,16 +721,24 @@ public class Main {
                 objects.get(5).getChildObject().get(1).inlineTranslateObject(0f, -0.2f, 0f);
             }
 
-            System.out.println("Awal" + objects.get(6).getChildObject().get(0).getCenterPoint());
-            objects.get(6).getChildObject().get(0).updateCenterPoint();
-            float selisihX = objects.get(8).getCenterPoint().get(0)- objects.get(6).getChildObject().get(0).getCenterPoint().get(0);
-            float selisihY = objects.get(8).getCenterPoint().get(1)- objects.get(6).getChildObject().get(0).getCenterPoint().get(1);
-            float selisihZ = objects.get(8).getCenterPoint().get(2)- objects.get(6).getChildObject().get(0).getCenterPoint().get(2);
-            objects.get(6).getChildObject().get(0).inlineTranslateObject(selisihX,selisihY,selisihZ);
-            System.out.println(objects.get(6).getChildObject().get(0).getCenterPoint());
+//            System.out.println("Awal" + objects.get(6).getChildObject().get(0).getCenterPoint());
+//            objects.get(6).getChildObject().get(0).updateCenterPoint();
+//            float selisihX = objects.get(8).getCenterPoint().get(0)- objects.get(6).getChildObject().get(0).getCenterPoint().get(0);
+//            float selisihY = objects.get(8).getCenterPoint().get(1)- objects.get(6).getChildObject().get(0).getCenterPoint().get(1);
+//            float selisihZ = objects.get(8).getCenterPoint().get(2)- objects.get(6).getChildObject().get(0).getCenterPoint().get(2);
+            
+            objects.get(6).getChildObject().get(0).inlineTranslateObject(-6f,-24.5f,0f);
             objects.get(6).getChildObject().get(0).inlineRotateObject(0.01f,0,0,1);
-            objects.get(6).getChildObject().get(0).inlineTranslateObject(-selisihX,-selisihY,-selisihZ);
-            System.out.println(objects.get(6).getChildObject().get(0).getCenterPoint());
+            objects.get(6).getChildObject().get(0).inlineTranslateObject(6f,24.5f,0f);
+
+            objects.get(6).getChildObject().get(1).inlineTranslateObject(-6f,-24.5f,0f);
+            objects.get(6).getChildObject().get(1).inlineRotateObject(0.01f,0,0,1);
+            objects.get(6).getChildObject().get(1).inlineTranslateObject(6f,24.5f,0f);
+
+            objects.get(6).getChildObject().get(2).inlineTranslateObject(-6f,-24.5f,0f);
+            objects.get(6).getChildObject().get(2).inlineRotateObject(0.01f,0,0,1);
+            objects.get(6).getChildObject().get(2).inlineTranslateObject(6f,24.5f,0f);
+
 
             // Restore state
             glDisableVertexAttribArray(0);
