@@ -105,11 +105,56 @@ public class Main {
 
     public void createCaroussel() {
 
-        // caroussel
-        importObjects(shaderModuleDataList, "resources/blender/Caroussel/carousel(2).obj",
-                new Vector4f(197f, 204f, 8f, 255f), // warna
-                new Vector3f(-40f, 1f, 20f), 1, // translasi dan scaling object
-                new Vector4f(1f, 0f, 0f, -360)); // rotasi
+        // alas caroussel
+        importObjects(shaderModuleDataList,null,"resources/blender/Caroussel/ground.obj",
+                new Vector4f(235,64,52,255),
+                null,
+                null,
+                null);
+        //set parent
+        List<Object> carusel = objects.get(3).getChildObject();
+        //spindel carusel
+        importObjects(shaderModuleDataList,carusel,"resources/blender/Caroussel/spindle.obj",
+                new Vector4f(235,64,52,255),
+                null,
+                null,
+                null);
+        // pole
+        importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/pole.obj",
+                new Vector4f(255,215,0,255),
+                null,
+                null,
+                null);
+        //seats
+        importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/seats.obj",
+                new Vector4f(0,128,128,255),
+                null,
+                null,
+                null);
+        //roof
+        importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/roof.obj",
+                new Vector4f(255,255,255,255),
+                null,
+                null,
+                null);
+        //roof frilles
+        importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/roof_frilles.obj",
+                new Vector4f(255,215,0,255),
+                null,
+                null,
+                null);
+        //cap
+        importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/cap.obj",
+                new Vector4f(255,215,0,255),
+                null,
+                null,
+                null);
+        //balls
+        importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/balls.obj",
+                new Vector4f(211,211,211,255),
+                null,
+                null,
+                null);
     }
     public void createSwingride() {
         //swing ride
@@ -419,7 +464,9 @@ public class Main {
 
         // caroussel
         createCaroussel();
-        createSwingride();
+
+        //swing ride
+//        createSwingride();
 
         // Drop Tower
         createDropTower();

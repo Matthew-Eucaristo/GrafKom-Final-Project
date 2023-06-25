@@ -5,11 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="update.blend tambah ferrisWheel">
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/balls.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/balls.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/cap.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/cap.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/ground.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/ground.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/pole.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/pole.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof_frilles.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/roof_frilles.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/seats.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/seats.obj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/spindle.mtl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/blender/Caroussel/spindle.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_18_2023_11_21_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_18_2023_11_21_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWOtherSit.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWOtherSit.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSit.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSpindle.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWSpindle.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/ferris wheel/FWWheel.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/ferris wheel/FWWheel.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blender/main.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Blender/main.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/Caroussel/carousel(2).obj" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +45,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -42,19 +63,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Intel/IdeaProjects/ModelRenderer&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "D:/Jonathan/Documents/Kuliah/Semester 4/Grafkom/Project_final_Grafkom",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Intel\IdeaProjects\GrafKom-Final-Project\resources\blender\drop tower" />
