@@ -5,27 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="udah bisa buat spaceship sama bus station nya">
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/road.mtl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/blender/terrain/road.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blender/main.blend" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Blender/main.blend1" beforeDir="false" afterPath="$PROJECT_DIR$/Blender/main.blend1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent1.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent1.mtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent1.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent1.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent2.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent2.mtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent2.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent2.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent3.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent3.mtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent3.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent3.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent4.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent4.mtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent4.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent4.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent5.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent5.mtl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/Tents/tent5.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/Tents/tent5.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/leaf.mtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/leaf.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/wood.mtl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/blender/tree/wood.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

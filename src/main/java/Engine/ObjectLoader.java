@@ -84,7 +84,6 @@ public class ObjectLoader extends Sphere {
              // color
              // check if there is color
              if (mesh.mColors(0) == null) {
-                 System.out.println("No color");
                  continue;
              }
 

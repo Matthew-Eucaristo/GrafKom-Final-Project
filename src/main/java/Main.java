@@ -34,8 +34,6 @@ public class Main {
 
     Object mainCharacter;
     boolean toggleKeyPressed = false;
-    boolean shipStateIsPos1 = true;
-
     boolean cameraModeIsFPS = false;
     boolean cameraDT = false;
     boolean cameraFW = false;
@@ -162,8 +160,8 @@ public class Main {
 
     public void createSwingride() {
         // alas swing ride
-        importObjects(shaderModuleDataList,null,"resources/blender/Swing_Ride/ground.obj",
-                new Vector4f(0,191,255,255),
+        importObjects(shaderModuleDataList, null, "resources/blender/Swing_Ride/ground.obj",
+                new Vector4f(0, 191, 255, 255),
                 null,
                 null,
                 null);
@@ -171,74 +169,75 @@ public class Main {
         List<Object> swing = objects.get(4).getChildObject();
         //spindle
         // alas swing ride
-        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/spindle.obj",
-                new Vector4f(232,182,0,255),
+        importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/spindle.obj",
+                new Vector4f(232, 182, 0, 255),
                 null,
                 null,
                 null);
         //roof
-        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/roof.obj",
-                new Vector4f(242,100,25,255),
+        importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/roof.obj",
+                new Vector4f(242, 100, 25, 255),
                 null,
                 null,
                 null);
         //speen
-        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/speen.obj",
-                new Vector4f(207,255,4,255),
+        importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/speen.obj",
+                new Vector4f(207, 255, 4, 255),
                 null,
                 null,
                 null);
         //hand
-        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/hand.obj",
-                new Vector4f(67,70,75,255),
+        importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/hand.obj",
+                new Vector4f(67, 70, 75, 255),
                 null,
                 null,
                 null);
         //chains
-        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/chains.obj",
-                new Vector4f(255,103,0,255),
+        importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/chains.obj",
+                new Vector4f(255, 103, 0, 255),
                 null,
                 null,
                 null);
         //chair frames
-        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/chair_frames.obj",
-                new Vector4f(65,105,225,255),
+        importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(65, 105, 225, 255),
                 null,
                 null,
                 null);
         //chair flats
-        importObjects(shaderModuleDataList,swing,"resources/blender/Swing_Ride/chair_frames.obj",
-                new Vector4f(255,107,53,255),
+        importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/chair_frames.obj",
+                new Vector4f(255, 107, 53, 255),
                 null,
                 null,
                 null);
 
     }
-    public void createTents(){
-        importObjects(shaderModuleDataList,null,"resources/blender/Tents/tent1.obj",
-                new Vector4f(207,21,95,255),
+
+    public void createTents() {
+        importObjects(shaderModuleDataList, null, "resources/blender/Tents/tent1.obj",
+                new Vector4f(207, 21, 95, 255),
                 null,
                 null,
                 null);
         List<Object> tenda = objects.get(13).getChildObject();
 
-        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent2.obj",
-                new Vector4f(237,63,5,255),
+        importObjects(shaderModuleDataList, tenda, "resources/blender/Tents/tent2.obj",
+                new Vector4f(237, 63, 5, 255),
                 null,
                 null,
                 null);
-        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent3.obj",
-                new Vector4f(164,5,237,255),
+        importObjects(shaderModuleDataList, tenda, "resources/blender/Tents/tent3.obj",
+                new Vector4f(164, 5, 237, 255),
                 null,
                 null,
                 null);
-        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent4.obj",
-                new Vector4f(5,144,237,255),
+        importObjects(shaderModuleDataList, tenda, "resources/blender/Tents/tent4.obj",
+                new Vector4f(5, 144, 237, 255),
                 null,
                 null,
                 null);
-        importObjects(shaderModuleDataList,tenda,"resources/blender/Tents/tent5.obj",
-                new Vector4f(5,237,214,255),
+        importObjects(shaderModuleDataList, tenda, "resources/blender/Tents/tent5.obj",
+                new Vector4f(5, 237, 214, 255),
                 null,
                 null,
                 null);
@@ -274,24 +273,19 @@ public class Main {
         Vector4f colorWood = new Vector4f(50, 45, 23, 255f);
 
         // take the trees in blender and create many trees as decoration
-        createTree(null, 1, colorLeaf, colorWood, null, 1, null);
+
+
+        // create the leaf
+        importObjects(shaderModuleDataList, null, "resources/blender/tree/" + 1 + ".obj",
+                colorLeaf, null, null, null);
 
         // set as parent
         List<Object> trees = objects.get(2).getChildObject();
 
-
-        // all child
-
-    }
-
-    private void createTree(List<Object> parent, int number, Vector4f colorLeaf, Vector4f colorWood, Vector3f translate, float scale, Vector4f rotation) {
-        // create the leaf
-        importObjects(shaderModuleDataList, parent, "resources/blender/tree/" + number + ".obj",
-                colorLeaf, translate, scale, rotation);
-
         // create the wood
-        importObjects(shaderModuleDataList, parent, "resources/blender/tree/w" + number + ".obj",
-                colorWood, translate, scale, rotation);
+        importObjects(shaderModuleDataList, trees, "resources/blender/tree/w" + 1 + ".obj",
+                colorWood, null, null, null);
+
     }
 
 
@@ -439,15 +433,13 @@ public class Main {
         importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWPlatform.obj", new Vector4f(213, 215, 219, 255), null, null, null);
 
         // wheel
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219,255), null, null,null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219, 255), null, null, null);
 
         // sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20,255), new Vector3f(6f,9.6f,-39.2f), null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20, 255), new Vector3f(6f, 9.6f, -39.2f), null, null);
 
         // other sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
-
-
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
 
 
     }
@@ -455,7 +447,7 @@ public class Main {
     private void createColourLamps() {
         float scale = 1;
         // create the colour lamps
-        importObjects(shaderModuleDataList, null,"resources/blender/colour lamp/ColourLampPole.obj",
+        importObjects(shaderModuleDataList, null, "resources/blender/colour lamp/ColourLampPole.obj",
                 new Vector4f(31f, 21f, 14f, 255f), null, null, null);
 
         // set as parent
@@ -523,7 +515,7 @@ public class Main {
         importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj", new Vector4f(58, 105, 0, 255),
                 null, null,
                 new Vector4f(0f, 0f, 0f, 0)); // 1
-        importObjects(shaderModuleDataList, objects.get(1).getChildObject(),  "resources/blender/terrain/road.obj", new Vector4f(100,100,100,255),
+        importObjects(shaderModuleDataList, objects.get(1).getChildObject(), "resources/blender/terrain/road.obj", new Vector4f(100, 100, 100, 255),
                 null, null,
                 new Vector4f(0f, 0f, 0f, 0));
 
@@ -653,7 +645,7 @@ public class Main {
 
         // badan donut
         importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/badan_donut.obj",
-                new Vector4f(185,127,103,255), null, null, null);
+                new Vector4f(185, 127, 103, 255), null, null, null);
 
         // badan mobil dan sayap
         importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/badan_mobil_dan_sayap.obj",
@@ -715,6 +707,18 @@ public class Main {
         // tulisan
         importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/tulisan.obj",
                 new Vector4f(156, 54, 158, 255), null, null, null);
+
+
+        // translate
+        ship.forEach(object -> {
+            object.inlineTranslateObject(-20f,30f,-100f);
+        });
+
+        // rotate
+        ship.forEach(object -> {
+            object.inlineRotateObject((float)Math.toRadians(35),0f,0f,1f);
+        });
+
 
 
     }
@@ -934,7 +938,7 @@ public class Main {
     public void loop() {
         while (window.isOpen()) {
             window.update();
-            glClearColor(0,22/255f,87/255f,1);
+            glClearColor(0, 22 / 255f, 87 / 255f, 1);
             GL.createCapabilities();
             input();
 
@@ -984,7 +988,7 @@ public class Main {
                         objects.get(6).getChildObject().get(1).getCenterPoint().get(2));
 
                 // set the camera to the main character eye
-                camera.setPosition(eyePosition.x, eyePosition.y-1f, eyePosition.z );
+                camera.setPosition(eyePosition.x, eyePosition.y - 1f, eyePosition.z);
 //                camera.lockInEye();
 
 
@@ -1001,14 +1005,14 @@ public class Main {
 
             //rotasi Ferris Wheel
             // Wheel
-            objects.get(6).getChildObject().get(7).inlineTranslateObject(-6f,-24.5f,0f);
-            objects.get(6).getChildObject().get(7).inlineRotateObject(0.003f,0,0,1);
-            objects.get(6).getChildObject().get(7).inlineTranslateObject(6f,24.5f,0f);
+            objects.get(6).getChildObject().get(7).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(6).getChildObject().get(7).inlineRotateObject(0.003f, 0, 0, 1);
+            objects.get(6).getChildObject().get(7).inlineTranslateObject(6f, 24.5f, 0f);
 
             // sit
-            objects.get(6).getChildObject().get(8).inlineTranslateObject(-6f,-24.5f,0f);
-            objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f,0,0,1);
-            objects.get(6).getChildObject().get(8).inlineTranslateObject(6f,24.5f,0f);
+            objects.get(6).getChildObject().get(8).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f, 0, 0, 1);
+            objects.get(6).getChildObject().get(8).inlineTranslateObject(6f, 24.5f, 0f);
 //            System.out.println(objects.get(6).getChildObject().get(1).getCenterPoint());
 
 //            ArrayList<Float> sitPos = new ArrayList<>();
@@ -1021,9 +1025,9 @@ public class Main {
 
 
             // Other Sit
-            objects.get(6).getChildObject().get(9).inlineTranslateObject(-6f,-24.5f,0f);
-            objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,1);
-            objects.get(6).getChildObject().get(9).inlineTranslateObject(6f,24.5f,0f);
+            objects.get(6).getChildObject().get(9).inlineTranslateObject(-6f, -24.5f, 0f);
+            objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f, 0, 0, 1);
+            objects.get(6).getChildObject().get(9).inlineTranslateObject(6f, 24.5f, 0f);
 
 //            ArrayList<Float> otherSitPos = new ArrayList<>();
 //            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(0));
@@ -1067,34 +1071,12 @@ public class Main {
         // ship speed
         float shipSpeed = 0.08f;
 
-        // pos1 and pos2
-        Vector3f pos1 = new Vector3f(0,0,0);
-        Vector3f pos2 = new Vector3f(-77,0,0);
-
         // object name
-        List<Object> shipChild = objects.get(11).getChildObject();
         Object shipParent = objects.get(11);
 
-        // centerpoint
-        Vector3f shipCenterPoint = new Vector3f(shipChild.get(1).getCenterPoint().get(0), shipChild.get(1).getCenterPoint().get(1), shipChild.get(1).getCenterPoint().get(2));
+        shipParent.inlineRotateObject((float) Math.toRadians(0.1f), 0, 1, 0);
 
-        // go to pos2 with lerp transition
-        // when in pos2 and translate with lerp to pos1
-        // when in pos1 and translate with lerp to pos2
-
-        // go to pos2 with lerp transition
-        if (shipStateIsPos1){
-            shipParent.inlineTranslateObject(-shipSpeed, 0, 0);
-            if (shipCenterPoint.distance(pos2) < 1.1f){
-                shipStateIsPos1 = false;
-            }
-        } else {
-            shipParent.inlineTranslateObject(shipSpeed, 0, 0);
-            if (shipCenterPoint.distance(pos1) < 1.1f){
-                shipStateIsPos1 = true;
-            }
-        }
-
+        shipParent.inlineTranslateObject(-shipSpeed, 0, 0);
 
 
     }
