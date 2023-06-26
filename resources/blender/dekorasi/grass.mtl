@@ -1,0 +1,79 @@
+# Blender 3.5.1 MTL File: 'main.blend'
+# www.blender.org
+
+newmtl 1_Mat
+Ns 200.000000
+Ka 0.750000 0.750000 0.750000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99.png
+map_d C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Opacity.png
+map_Bump -bm 1.000000 C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Normal.png
+
+newmtl 2_Mat
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99.png
+map_d C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Opacity.png
+map_Bump -bm 1.000000 C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Normal.png
+
+newmtl 3_Mat
+Ns 6.985151
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9.png
+map_d C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9_Opacity.png
+map_Bump -bm 3.300000 C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9_Normal.png
+
+newmtl 3_Mat.001
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99.png
+map_d C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Opacity.png
+map_Bump -bm 1.000000 C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Normal.png
+
+newmtl 4_Mat
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 3
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99.png
+map_d C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Opacity.png
+map_Bump -bm 1.000000 C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/99_Normal.png
+
+newmtl Sample_Leaf_Mat
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.117237 0.052133 0.009616
+Ni 1.450000
+illum 2
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9.png
+map_d C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9_Opacity.png
+map_Bump -bm 1.000000 C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9_Normal.png
+
+newmtl Sample_Petal_Mat
+Ns 200.000000
+Ka 1.000000 1.000000 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+illum 2
+map_Kd C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9.png
+map_d C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9_Opacity.png
+map_Bump -bm 1.000000 C:/Users/SyNTaX/Downloads/uploads_files_4427039_obj/C:/9_Normal.png

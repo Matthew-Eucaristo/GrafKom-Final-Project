@@ -19,18 +19,20 @@ import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL30.*;
 
 public class Main {
-        private Window window = new Window(1000, 1000, "NotSoThemePark");
-        private ArrayList<Object> objects = new ArrayList<>();
 
-        private MouseInput mouseInput;
-        int countDegree = 0;
-        Projection projection = new Projection(window.getWidth(), window.getHeight());
-        Camera camera = new Camera();
+    private Window window;
 
-        Matrix4f viewMatrix;
+    private ArrayList<Object> objects = new ArrayList<>();
 
-        ShaderProgram objectShader;
-        List<ShaderProgram.ShaderModuleData> shaderModuleDataList;
+    private MouseInput mouseInput;
+    int countDegree = 0;
+    Projection projection;
+    Camera camera = new Camera();
+
+    Matrix4f viewMatrix;
+
+    ShaderProgram objectShader;
+    List<ShaderProgram.ShaderModuleData> shaderModuleDataList;
 
     Object mainCharacter;
     boolean toggleKeyPressed = false;
@@ -40,9 +42,9 @@ public class Main {
     boolean cameraFW = false;
     boolean cameraTransitionCompleted = false;
 
-        boolean dropTowerSwitch = true;
-        boolean isNight = false;
-        List<Object> ferrisWheel;
+    boolean dropTowerSwitch = true;
+    boolean isNight = false;
+    List<Object> ferrisWheel;
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, List<Object> parent,
                                String filename,
@@ -94,7 +96,8 @@ public class Main {
 
     private void importObjects(List<ShaderProgram.ShaderModuleData> shaderModuleDataList, String filename,
                                Vector4f color, Vector3f translate, float scaleXYZ, Vector4f rotate) {
-        importObjects(shaderModuleDataList, filename, color, translate, new Vector3f(scaleXYZ, scaleXYZ, scaleXYZ),
+        importObjects(shaderModuleDataList, filename, color, translate,
+                new Vector3f(scaleXYZ, scaleXYZ, scaleXYZ),
                 rotate);
     }
 
@@ -114,9 +117,9 @@ public class Main {
                 null,
                 null,
                 null);
-        //set parent
+        // set parent
         List<Object> carusel = objects.get(5).getChildObject();
-        //spindel carusel
+        // spindel carusel
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/spindle.obj",
                 new Vector4f(235, 64, 52, 255),
                 null,
@@ -128,31 +131,31 @@ public class Main {
                 null,
                 null,
                 null);
-        //seats
+        // seats
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/seats.obj",
                 new Vector4f(0, 128, 128, 255),
                 null,
                 null,
                 null);
-        //roof
+        // roof
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/roof.obj",
                 new Vector4f(255, 255, 255, 255),
                 null,
                 null,
                 null);
-        //roof frilles
+        // roof frilles
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/roof_frilles.obj",
                 new Vector4f(255, 215, 0, 255),
                 null,
                 null,
                 null);
-        //cap
+        // cap
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/cap.obj",
                 new Vector4f(255, 215, 0, 255),
                 null,
                 null,
                 null);
-        //balls
+        // balls
         importObjects(shaderModuleDataList, carusel, "resources/blender/Caroussel/balls.obj",
                 new Vector4f(211, 211, 211, 255),
                 null,
@@ -167,46 +170,46 @@ public class Main {
                 null,
                 null,
                 null);
-        //set parent
+        // set parent
         List<Object> swing = objects.get(6).getChildObject();
-        //spindle
+        // spindle
         // alas swing ride
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/spindle.obj",
                 new Vector4f(232, 182, 0, 255),
                 null,
                 null,
                 null);
-        //roof
+        // roof
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/roof.obj",
                 new Vector4f(242, 100, 25, 255),
                 null,
                 null,
                 null);
-        //speen
+        // speen
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/speen.obj",
                 new Vector4f(207, 255, 4, 255),
                 null,
                 null,
                 null);
-        //hand
+        // hand
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/hand.obj",
                 new Vector4f(67, 70, 75, 255),
                 null,
                 null,
                 null);
-        //chains
+        // chains
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/chains.obj",
                 new Vector4f(255, 103, 0, 255),
                 null,
                 null,
                 null);
-        //chair frames
+        // chair frames
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/chair_frames.obj",
                 new Vector4f(65, 105, 225, 255),
                 null,
                 null,
                 null);
-        //chair flats
+        // chair flats
         importObjects(shaderModuleDataList, swing, "resources/blender/Swing_Ride/chair_frames.obj",
                 new Vector4f(255, 107, 53, 255),
                 null,
@@ -264,7 +267,6 @@ public class Main {
         // set as parent
         List<Object> streetLamps = objects.get(3).getChildObject();
 
-
     }
 
     private void createTrees() {
@@ -275,7 +277,6 @@ public class Main {
         Vector4f colorWood = new Vector4f(50, 45, 23, 255f);
 
         // take the trees in blender and create many trees as decoration
-
 
         // create the leaf
         importObjects(shaderModuleDataList, null, "resources/blender/tree/" + 1 + ".obj",
@@ -290,7 +291,6 @@ public class Main {
 
     }
 
-
     private void createMC(Object mainCharacter) {
         // create main character as child of the parent
 
@@ -298,7 +298,7 @@ public class Main {
         Vector4f rotation = new Vector4f(1f, 0f, 0f, -90f);
 
         // transitions
-        Vector3f translate = new Vector3f(-7.5f, -1.19f, -57f);
+         Vector3f translate = new Vector3f(-7.5f, 0f, -57f);
 
         // create the body
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/body.fbx",
@@ -328,19 +328,15 @@ public class Main {
         importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/shirt.fbx",
                 new Vector4f(255f, 0f, 255f, 255f), translate, 1f, rotation);
 
-                // scale for all child of main character
-                mainCharacter.getChildObject().forEach(object -> {
-                        object.inlineScaleObject(1.0f, 1.0f, 1.0f);
-                });
-                // rotation for all child of main character
-                mainCharacter.getChildObject().forEach(object -> {
-                        object.inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f);
-                });
-
-        // translation for all child of main character
+        // scale for all child of main character
         mainCharacter.getChildObject().forEach(object -> {
-            object.inlineTranslateObject(0f, 1f, 0f);
+            object.inlineScaleObject(1.0f, 1.0f, 1.0f);
         });
+        // rotation for all child of main character
+        mainCharacter.getChildObject().forEach(object -> {
+            object.inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f);
+        });
+
     }
 
     private void createCastles() {
@@ -350,15 +346,15 @@ public class Main {
         // set as parent
         List<Object> gate = objects.get(4).getChildObject();
 
-                // towers
-                importObjects(shaderModuleDataList, gate, "resources/blender/gate/towers.obj",
-                                new Vector4f(225, 210, 160, 255),
-                                null, 1f, new Vector4f(1f, 0f, 0f, 0));
+        // towers
+        importObjects(shaderModuleDataList, gate, "resources/blender/gate/towers.obj",
+                new Vector4f(225, 210, 160, 255),
+                null, 1f, new Vector4f(1f, 0f, 0f, 0));
 
-                // walls
-                importObjects(shaderModuleDataList, gate, "resources/blender/gate/walls.obj",
-                                new Vector4f(81, 60, 49, 255),
-                                null, 1f, null);
+        // walls
+        importObjects(shaderModuleDataList, gate, "resources/blender/gate/walls.obj",
+                new Vector4f(81, 60, 49, 255),
+                null, 1f, null);
 
     }
 
@@ -371,33 +367,41 @@ public class Main {
         // set as parent
         List<Object> dropTower = objects.get(7).getChildObject();
 
-
         // square
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSquare.obj", new Vector4f(12, 46, 148, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSquare.obj",
+                new Vector4f(12, 46, 148, 255), null, null, null);
 
         // sit
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj", new Vector4f(179, 140, 12, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTSit.obj",
+                new Vector4f(179, 140, 12, 255), null, null, null);
 
         // platform
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj", new Vector4f(156, 8, 20, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTPlatform.obj",
+                new Vector4f(156, 8, 20, 255), null, null, null);
 
         // ramp
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj", new Vector4f(82, 81, 79, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRamp.obj",
+                new Vector4f(82, 81, 79, 255), null, null, null);
 
         // rounded fence
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRoundedFence.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTRoundedFence.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence 2
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTFence2.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // head
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTHead.obj", new Vector4f(156, 8, 20, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTHead.obj",
+                new Vector4f(156, 8, 20, 255), null, null, null);
 
         // structure
-        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTStructure.obj", new Vector4f(179, 140, 12, 255), null, null, null);
+        importObjects(shaderModuleDataList, dropTower, "resources/blender/drop tower/DTStructure.obj",
+                new Vector4f(179, 140, 12, 255), null, null, null);
 
     }
 
@@ -411,35 +415,44 @@ public class Main {
         List<Object> ferrisWheel = objects.get(8).getChildObject();
 
         // structure
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWStructure.obj", new Vector4f(156, 8, 20, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWStructure.obj",
+                new Vector4f(156, 8, 20, 255), null, null, null);
 
         // fence
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence1
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence1.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence1.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence2
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence2.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence2.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // fence3
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence3.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWFence3.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // ramp
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWRamp.obj", new Vector4f(143, 141, 134, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWRamp.obj",
+                new Vector4f(143, 141, 134, 255), null, null, null);
 
         // platform
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWPlatform.obj", new Vector4f(213, 215, 219, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWPlatform.obj",
+                new Vector4f(213, 215, 219, 255), null, null, null);
 
         // wheel
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj", new Vector4f(213, 215, 219, 255), null, null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWWheel.obj",
+                new Vector4f(213, 215, 219, 255), null, null, null);
 
         // sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20, 255), new Vector3f(6f, 9.6f, -39.2f), null, null);
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj",
+                new Vector4f(156, 8, 20, 255), new Vector3f(6f, 9.6f, -39.2f), null, null);
 
         // other sit
-        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20, 255), null, null, null);
-
+        importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj",
+                new Vector4f(156, 8, 20, 255), null, null, null);
 
     }
 
@@ -447,81 +460,82 @@ public class Main {
         float scale = 1;
         // create the colour lamps
         importObjects(shaderModuleDataList, null, "resources/blender/colour lamp/ColourLampPole.obj",
-                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(7f,0,33f), null, null);
+                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(7f, 0, 33f), null, null);
 
         // set as parent
         List<Object> colourLamps = objects.get(10).getChildObject();
 
-
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable.obj",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(7f,0,33f), null, null);
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(7f, 0, 33f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(4.7f,4.2f,34f), null, null);
+                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(4.7f, 4.2f, 34f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(4.7f,3.7f,36.5f), null, null);
+                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(4.7f, 3.7f, 36.5f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(4.7f,4f,39f), null, null);
-
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampPole.obj",
-                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(14f,0,33f), null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable.obj",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(14f,0,33f), null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(11.7f,4.2f,34f), null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(11.7f,3.7f,36.5f), null, null);
-        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(11.7f,4f,39f), null, null);
+                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(4.7f, 4f, 39f), null, null);
 
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampPole.obj",
-                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(-35f,0,4f), null, null);
+                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(14f, 0, 33f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable.obj",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(-35f,0,4f), null, null);
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(14f, 0, 33f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(-37.3f,4.2f,5f), null, null);
+                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(11.7f, 4.2f, 34f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(-37.3f,3.7f,7.5f), null, null);
+                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(11.7f, 3.7f, 36.5f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(-37.3f,4f,10f), null, null);
+                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(11.7f, 4f, 39f), null, null);
 
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampPole.obj",
-                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(-30f,0,24f), null, null);
+                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(-35f, 0, 4f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable.obj",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(-30f,0,24f), null, null);
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(-35f, 0, 4f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(-32.3f,4.2f,25f), null, null);
+                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(-37.3f, 4.2f, 5f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(-32.3f,3.7f,27.5f), null, null);
+                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(-37.3f, 3.7f, 7.5f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(-32.3f,4f,30f), null, null);
+                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(-37.3f, 4f, 10f), null, null);
 
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampPole.obj",
-                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(-30f,4,-26f), null, null);
+                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(-30f, 0, 24f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable.obj",
-                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(-30f,4,-26f), null, null);
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(-30f, 0, 24f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(-32.3f,8.2f,-25f), null, null);
+                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(-32.3f, 4.2f, 25f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(-32.3f,7.7f,-22.5f), null, null);
+                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(-32.3f, 3.7f, 27.5f), null, null);
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
-                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(-32.3f,8f,-20f), null, null);
+                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(-32.3f, 4f, 30f), null, null);
+
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampPole.obj",
+                new Vector4f(99f, 77f, 8f, 255f), new Vector3f(-30f, 4, -26f), null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampCable.obj",
+                new Vector4f(31f, 21f, 14f, 255f), new Vector3f(-30f, 4, -26f), null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
+                new Vector4f(31f, 21f, 255f, 255f), new Vector3f(-32.3f, 8.2f, -25f), null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
+                new Vector4f(31f, 255f, 14f, 255f), new Vector3f(-32.3f, 7.7f, -22.5f), null, null);
+        importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
+                new Vector4f(255f, 21f, 14f, 255f), new Vector3f(-32.3f, 8f, -20f), null, null);
 
     }
 
-        public void init() {
-                window.init();
-                GL.createCapabilities();
-                mouseInput = window.getMouseInput();
-                camera.setPosition(0, 1000, 2000);
+    public void init() {
+        window = new Window(1000, 1000, "NotSoThemePark");
+        projection = new Projection(window.getWidth(), window.getHeight());
+        window.init();
+        GL.createCapabilities();
+        mouseInput = window.getMouseInput();
+        camera.setPosition(0, 1000, 2000);
 
-                // create the shader program
-                // usahain di atas
-                shaderModuleDataList = new ArrayList<>();
-                shaderModuleDataList.add(
-                                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER));
-                shaderModuleDataList
-                                .add(new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag",
-                                                GL_FRAGMENT_SHADER));
+        // create the shader program
+        // usahain di atas
+        shaderModuleDataList = new ArrayList<>();
+        shaderModuleDataList.add(
+                new ShaderProgram.ShaderModuleData("resources/shaders/scene.vert", GL_VERTEX_SHADER));
+        shaderModuleDataList
+                .add(new ShaderProgram.ShaderModuleData("resources/shaders/scene.frag",
+                        GL_FRAGMENT_SHADER));
 
         objectShader = new ShaderProgram(shaderModuleDataList);
         objectShader.link();
@@ -561,7 +575,7 @@ public class Main {
         // caroussel
         createCaroussel(); // 5
 
-        //swing ride
+        // swing ride
         createSwingride(); // 6
 
         // Drop Tower
@@ -582,7 +596,7 @@ public class Main {
         // bus station
         createBusStation(); // 12
 
-        //tenda
+        // tenda
         createTents(); // 13
 
         // castle
@@ -597,19 +611,21 @@ public class Main {
         // create gate
         createCreepyGate(); // 17
 
+        // create additional decoration
+        createAdditionalDecoration(); // 18
 
         // Random Object
-//        objects.add(new Sphere(
-//                // this is for the object sementara buat chara yg digerakkin
-//                shaderModuleDataList,
-//                new ArrayList<>(),
-//                new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
-//                Arrays.asList(10f, 0f, 0f),
-//                0.125f,
-//                0.125f,
-//                0.125f,
-//                36,
-//                18));
+        // objects.add(new Sphere(
+        // // this is for the object sementara buat chara yg digerakkin
+        // shaderModuleDataList,
+        // new ArrayList<>(),
+        // new Vector4f(1.0f, 1.0f, 1.0f, 1.0f),
+        // Arrays.asList(10f, 0f, 0f),
+        // 0.125f,
+        // 0.125f,
+        // 0.125f,
+        // 36,
+        // 18));
         // .inlineTranslateObject(10f, 2f, 10f)
         // .inlineScaleObjectXYZ(50f)
         // .inlineRotateObject((float) Math.toRadians(180), 0f, 0f, 0f));
@@ -619,234 +635,274 @@ public class Main {
 
     }
 
-        private void createCreepyGate() {
-                // create parent
-                // gate
-                // gerbang
-                importObjects(shaderModuleDataList, null, "resources/blender/terrain/gate/gerbang_depan.obj",
-                                new Vector4f(24, 32, 38, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+    private void createAdditionalDecoration() {
+        // create parent
+        importObjects(shaderModuleDataList, null, "resources/blender/dekorasi/little_bush.obj",
+                new Vector4f(133, 140, 66, 255), null, null, null);
 
-                System.out.println(objects.get(17).getCenterPoint().toString());
-                // set as parent
-                List<Object> gate = objects.get(17).getChildObject();
+        // set as parent
+        List<Object> littleBush = objects.get(18).getChildObject();
 
-                // papan
-                importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/papan.obj",
-                                new Vector4f(115, 87, 68, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+        // all child
+        // medium bush
+        importObjects(shaderModuleDataList, littleBush, "resources/blender/dekorasi/medium_bush.obj",
+                new Vector4f(74, 148, 25, 255), null, null, null);
 
-                // dont enter1
-                importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/dont_enter1.obj",
-                                new Vector4f(106, 14, 10, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+        // small to medium
+        importObjects(shaderModuleDataList, littleBush, "resources/blender/dekorasi/small_to_medium.obj",
+                new Vector4f(145, 170, 104, 255), null, null, null);
 
-                // dont enter2
-                importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/dont_enter2.obj",
-                                new Vector4f(106, 14, 10, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
-        }
+        // grass
+        importObjects(shaderModuleDataList, littleBush, "resources/blender/dekorasi/grass.obj",
+                new Vector4f(124, 150, 89, 255), null, null, null);
 
-        private void createMonster() {
-                // create Monster
-                importObjects(shaderModuleDataList, null, "resources/blender/monster/monster.obj",
-                                new Vector4f(60, 1, 3, 255), null, null, null);
-        }
+        // big tree
+        // leaf
+        importObjects(shaderModuleDataList, null, "resources/blender/dekorasi/pohon besar/leaf.obj",
+                new Vector4f(86, 160, 66, 255), null, null, null);
 
-        private void createTerrain() {
-                // create parent
-                importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj",
-                                new Vector4f(58, 105, 0, 255),
-                                null, null,
-                                new Vector4f(0f, 0f, 0f, 0)); // 1
+        // wood
+        importObjects(shaderModuleDataList, null, "resources/blender/dekorasi/pohon besar/wood.obj",
+                new Vector4f(40, 41, 16, 255), null, null, null);
+    }
 
-                // set as parent
-                List<Object> terrain = objects.get(1).getChildObject();
+    private void createCreepyGate() {
+        // create parent
+        // gate
+        // gerbang
+        importObjects(shaderModuleDataList, null, "resources/blender/terrain/gate/gerbang_depan.obj",
+                new Vector4f(24, 32, 38, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-                // earth
-                // land
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/earth/land.obj",
-                                new Vector4f(234, 255, 96, 255),
-                                null, null,
-                                null);
+        System.out.println(objects.get(17).getCenterPoint().toString());
+        // set as parent
+        List<Object> gate = objects.get(17).getChildObject();
 
-                // sea
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/earth/sea.obj",
-                                new Vector4f(81, 165, 188, 255),
-                                null, null,
-                                null);
+        // papan
+        importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/papan.obj",
+                new Vector4f(115, 87, 68, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-                // road
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/road.obj",
-                                new Vector4f(100, 100, 100, 255),
-                                null, null,
-                                new Vector4f(0f, 0f, 0f, 0));
+        // dont enter1
+        importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/dont_enter1.obj",
+                new Vector4f(106, 14, 10, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-                // picnic table
-                // chair
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/chair.obj",
-                                new Vector4f(126, 83, 75, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+        // dont enter2
+        importObjects(shaderModuleDataList, gate, "resources/blender/terrain/gate/dont_enter2.obj",
+                new Vector4f(106, 14, 10, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
+    }
 
-                // kaki meja
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/kaki_meja.obj",
-                                new Vector4f(49, 32, 29, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+    private void createMonster() {
+        // create Monster
+        importObjects(shaderModuleDataList, null, "resources/blender/monster/monster.obj",
+                new Vector4f(60, 1, 3, 255), null, null, null);
+    }
 
-                // meja
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/meja.stl",
-                                new Vector4f(250, 206, 160, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+    private void createTerrain() {
+        // create parent
+        importObjects(shaderModuleDataList, "resources/blender/terrain/terrain.obj",
+                new Vector4f(58, 105, 0, 255),
+                null, null,
+                new Vector4f(0f, 0f, 0f, 0)); // 1
 
-                // text di depan
-                // happy place text
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/fonts/happy_place_text.obj",
-                                new Vector4f(6, 30, 165, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+        // set as parent
+        List<Object> terrain = objects.get(1).getChildObject();
 
-                // monkeyface
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/monkey_face/monkey_face.obj",
-                                new Vector4f(137, 1, 13, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+        // earth
+        // land
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/earth/land.obj",
+                new Vector4f(234, 255, 96, 255),
+                null, null,
+                null);
 
-                // hedge
-                importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/hedge.obj",
-                                new Vector4f(0, 255, 0, 255),
-                                null, null, new Vector4f(0f, 0f, 0f, 0));
+        // sea
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/earth/sea.obj",
+                new Vector4f(81, 165, 188, 255),
+                null, null,
+                null);
 
-        }
+        // road
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/road.obj",
+                new Vector4f(100, 100, 100, 255),
+                null, null,
+                new Vector4f(0f, 0f, 0f, 0));
 
-        private void createCircusTent() {
-                // create parent
-                // flag
-                importObjects(shaderModuleDataList, null, "resources/blender/circus_tent/flag.obj",
-                                new Vector4f(255, 0, 0, 255), null, null, null);
+        // picnic table
+        // chair
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/chair.obj",
+                new Vector4f(126, 83, 75, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-                // set as parent
-                List<Object> circusTent = objects.get(15).getChildObject();
+        // kaki meja
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/kaki_meja.obj",
+                new Vector4f(49, 32, 29, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-                // all child
-                // iron wire
-                importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/iron_wire.obj",
-                                new Vector4f(94, 80, 79, 255), null, null, null);
+        // meja
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/picnic_table/meja.stl",
+                new Vector4f(250, 206, 160, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-                // pole
-                importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/pole.obj",
-                                new Vector4f(250, 250, 255, 255), null, null, null);
+        // text di depan
+        // happy place text
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/fonts/happy_place_text.obj",
+                new Vector4f(6, 30, 165, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-                // tent
-                importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/tent.obj",
-                                new Vector4f(251, 191, 77, 255), null, null, null);
+        // monkeyface
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/monkey_face/monkey_face.obj",
+                new Vector4f(137, 1, 13, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-        }
+        // hedge
+        importObjects(shaderModuleDataList, terrain, "resources/blender/terrain/hedge.obj",
+                new Vector4f(0, 255, 0, 255),
+                null, null, new Vector4f(0f, 0f, 0f, 0));
 
-        private void createCastleBesar() {
-                // create parent
-                // color2
-                importObjects(shaderModuleDataList, null, "resources/blender/castle/color2.obj",
-                                new Vector4f(22, 133, 139, 255), null, null, null);
+    }
 
-                // set as parent
-                List<Object> castleBesar = objects.get(14).getChildObject();
+    private void createCircusTent() {
+        // create parent
+        // flag
+        importObjects(shaderModuleDataList, null, "resources/blender/circus_tent/flag.obj",
+                new Vector4f(255, 0, 0, 255), null, null, null);
 
-                // all child
-                // color3
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color3.obj",
-                                new Vector4f(50, 46, 46, 255), null, null, null);
+        // set as parent
+        List<Object> circusTent = objects.get(15).getChildObject();
 
-                // color4
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color4.obj",
-                                new Vector4f(130, 119, 107, 255), null, null, null);
+        // all child
+        // iron wire
+        importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/iron_wire.obj",
+                new Vector4f(94, 80, 79, 255), null, null, null);
 
-                // front castle
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_castle.obj",
-                                new Vector4f(208, 110, 54, 255), null, null, null);
+        // pole
+        importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/pole.obj",
+                new Vector4f(250, 250, 255, 255), null, null, null);
 
-                // front gate castle
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_gate_castle.obj",
-                                new Vector4f(108, 102, 95, 255), null, null, null);
+        // tent
+        importObjects(shaderModuleDataList, circusTent, "resources/blender/circus_tent/tent.obj",
+                new Vector4f(251, 191, 77, 255), null, null, null);
 
-                // tower
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/tower.stl",
-                                new Vector4f(186, 184, 172, 255), null, null, null);
+    }
 
-                // gerbang depan
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/gerbang_depan.obj",
-                                new Vector4f(79, 81, 86, 255), null, null, null);
+    private void createCastleBesar() {
+        // create parent
+        // color2
+        importObjects(shaderModuleDataList, null, "resources/blender/castle/color2.obj",
+                new Vector4f(22, 133, 139, 255), null, null, null);
 
-                // last_tower
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/last_tower.obj",
-                                new Vector4f(196, 164, 115, 255), null, null, null);
+        // set as parent
+        List<Object> castleBesar = objects.get(14).getChildObject();
 
-                // main wall
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/main_wall.obj",
-                                new Vector4f(153, 163, 187, 255), null, null, null);
+        // all child
+        // color3
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color3.obj",
+                new Vector4f(50, 46, 46, 255), null, null, null);
 
-                // roof 1
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/roof1.obj",
-                                new Vector4f(30, 43, 56, 255), null, null, null);
+        // color4
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/color4.obj",
+                new Vector4f(130, 119, 107, 255), null, null, null);
 
-                // tower color
-                importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/tower_color.stl",
-                                new Vector4f(138, 74, 113, 255), null, null, null);
-        }
+        // front castle
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_castle.obj",
+                new Vector4f(208, 110, 54, 255), null, null, null);
 
-        private void createBusStation() {
-                // create parent
-                // atasasn
-                importObjects(shaderModuleDataList, null, "resources/blender/bus_station/atasan.obj",
-                                new Vector4f(106, 113, 167, 255), null, null, null);
+        // front gate castle
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/front_gate_castle.obj",
+                new Vector4f(108, 102, 95, 255), null, null, null);
 
-                // set as parent
-                List<Object> busStation = objects.get(12).getChildObject();
+        // tower
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/tower.stl",
+                new Vector4f(186, 184, 172, 255), null, null, null);
 
-                // all child
-                // besi
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/besi.obj",
-                                new Vector4f(70, 70, 70, 255), null, null, null);
+        // gerbang depan
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/gerbang_depan.obj",
+                new Vector4f(79, 81, 86, 255), null, null, null);
 
-                // branches
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/branches.obj",
-                                new Vector4f(154, 131, 107, 255), null, null, null);
+        // last_tower
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/last_tower.obj",
+                new Vector4f(196, 164, 115, 255), null, null, null);
 
-                // daun
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/daun.obj",
-                                new Vector4f(0, 255, 0, 255), null, null, null);
+        // main wall
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/main_wall.obj",
+                new Vector4f(153, 163, 187, 255), null, null, null);
 
-                // kaki besi
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kaki_besi.obj",
-                                new Vector4f(70, 70, 70, 255), null, null, null);
+        // roof 1
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/roof1.obj",
+                new Vector4f(30, 43, 56, 255), null, null, null);
 
-                // kursi
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kursi.obj",
-                                new Vector4f(72, 72, 109, 255), null, null, null);
+        // tower color
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/tower_color.stl",
+                new Vector4f(138, 74, 113, 255), null, null, null);
 
-                // papan
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan.obj",
-                                new Vector4f(126, 128, 128, 255), null, null, null);
+        // enemy
+        // tong
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/enemy/spider/tong.obj",
+                new Vector4f(161, 92, 61, 255), null, null, null);
 
-                // papan tiang
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan_tiang.obj",
-                                new Vector4f(126, 128, 128, 255), null, null, null);
+        // kaki
+        importObjects(shaderModuleDataList, castleBesar, "resources/blender/castle/enemy/spider/kaki.obj",
+                new Vector4f(190, 113, 144, 255), null, null, null);
+    }
 
-                // pot
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/pot.obj",
-                                new Vector4f(103, 92, 93, 255), null, null, null);
+    private void createBusStation() {
+        // create parent
+        // atasasn
+        importObjects(shaderModuleDataList, null, "resources/blender/bus_station/atasan.obj",
+                new Vector4f(106, 113, 167, 255), null, null, null);
 
-                // sekrup
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/sekrup.obj",
-                                new Vector4f(70, 70, 70, 255), null, null, null);
+        // set as parent
+        List<Object> busStation = objects.get(12).getChildObject();
 
-                // tiangnya papan
-                importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/tiangnya_papan.obj",
-                                new Vector4f(70, 70, 70, 255), null, null, null);
-        }
+        // all child
+        // besi
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/besi.obj",
+                new Vector4f(70, 70, 70, 255), null, null, null);
 
-        private void createShip() {
-                // create parent ship
-                // api jet (dummy)
-                importObjects(shaderModuleDataList, null, "resources/blender/starshipku/api_jet.obj",
-                                new Vector4f(87, 103, 205, 255), null, 0f, null);
+        // branches
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/branches.obj",
+                new Vector4f(154, 131, 107, 255), null, null, null);
+
+        // daun
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/daun.obj",
+                new Vector4f(0, 255, 0, 255), null, null, null);
+
+        // kaki besi
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kaki_besi.obj",
+                new Vector4f(70, 70, 70, 255), null, null, null);
+
+        // kursi
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/kursi.obj",
+                new Vector4f(72, 72, 109, 255), null, null, null);
+
+        // papan
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan.obj",
+                new Vector4f(126, 128, 128, 255), null, null, null);
+
+        // papan tiang
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/papan_tiang.obj",
+                new Vector4f(126, 128, 128, 255), null, null, null);
+
+        // pot
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/pot.obj",
+                new Vector4f(103, 92, 93, 255), null, null, null);
+
+        // sekrup
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/sekrup.obj",
+                new Vector4f(70, 70, 70, 255), null, null, null);
+
+        // tiangnya papan
+        importObjects(shaderModuleDataList, busStation, "resources/blender/bus_station/tiangnya_papan.obj",
+                new Vector4f(70, 70, 70, 255), null, null, null);
+    }
+
+    private void createShip() {
+        // create parent ship
+        // api jet (dummy)
+        importObjects(shaderModuleDataList, null, "resources/blender/starshipku/api_jet.obj",
+                new Vector4f(87, 103, 205, 255), null, 0f, null);
 
         // set as parent
         List<Object> ship = objects.get(11).getChildObject();
@@ -921,7 +977,6 @@ public class Main {
         importObjects(shaderModuleDataList, ship, "resources/blender/starshipku/tulisan.obj",
                 new Vector4f(156, 54, 158, 255), null, null, null);
 
-
         // translate
         ship.forEach(object -> {
             object.inlineTranslateObject(-20f, 30f, -100f);
@@ -932,7 +987,7 @@ public class Main {
             object.inlineRotateObject((float) Math.toRadians(35), 0f, 0f, 1f);
         });
 
-        }
+    }
 
     private void createBumperCar() {
         // alas bumpercar
@@ -1024,10 +1079,10 @@ public class Main {
                 new Vector4f(165, 148, 134, 255), null, null, new Vector4f(1f, 0f, 0f, 0));
     }
 
-        public void input() {
-                float cameraSpeed = 0.2f;
-                float characterSpeed = 0.03f;
-                float rotateSpeedInDegrees = .5f;
+    public void input() {
+        float cameraSpeed = 0.2f;
+        float characterSpeed = 0.03f;
+        float rotateSpeedInDegrees = .5f;
 
         // keybind for toggling FPS or TPS
         if (window.isKeyPressed(GLFW_KEY_1)) {
@@ -1048,7 +1103,6 @@ public class Main {
                 } else {
                     cameraModeIsFPS = true;
 
-
                     // toggle camera transition
                     cameraTransitionCompleted = false;
                 }
@@ -1060,7 +1114,6 @@ public class Main {
                 // toggle camera transition
                 cameraTransitionCompleted = false;
 
-
                 // toggle camera mode
                 if (cameraModeIsTPS) {
                     cameraDT = false;
@@ -1071,14 +1124,12 @@ public class Main {
                 }
             }
 
-
-        }else if (window.isKeyPressed(GLFW_KEY_3)) {
+        } else if (window.isKeyPressed(GLFW_KEY_3)) {
             if (!toggleKeyPressed) {
                 toggleKeyPressed = true;
 
                 // toggle camera transition
                 cameraTransitionCompleted = false;
-
 
                 // toggle camera mode
                 if (cameraDT) {
@@ -1090,14 +1141,12 @@ public class Main {
                 }
             }
 
-
         } else if (window.isKeyPressed(GLFW_KEY_4)) {
             if (!toggleKeyPressed) {
                 toggleKeyPressed = true;
 
                 // toggle camera transition
                 cameraTransitionCompleted = false;
-
 
                 // toggle camera mode
                 if (cameraFW) {
@@ -1109,85 +1158,81 @@ public class Main {
                 }
             }
 
-
         } else {
             toggleKeyPressed = false;
         }
 
-                // ini buat yang WASD
-                if (window.isKeyPressed(GLFW_KEY_W)) {
-                        objects.get(0).translateObject(camera.getDirection().x, 0f, camera.getDirection().z);
-                        camera.moveForward(characterSpeed);
+        // ini buat yang WASD
+        if (window.isKeyPressed(GLFW_KEY_W)) {
+            objects.get(0).translateObject(camera.getDirection().x, 0f, camera.getDirection().z);
+            camera.moveForward(characterSpeed);
 
-                }
-                if (window.isKeyPressed(GLFW_KEY_S)) {
-                        objects.get(0).translateObject(-camera.getDirection().x, 0f, -camera.getDirection().z);
-                        camera.moveBackwards(characterSpeed);
-                }
-                if (window.isKeyPressed(GLFW_KEY_A)) {
-                        camera.addRotation(0, (float) Math.toRadians(-1 * rotateSpeedInDegrees));
-                        camera.moveRight((float) Math.toRadians(rotateSpeedInDegrees));
-                }
-                if (window.isKeyPressed(GLFW_KEY_D)) {
-                        camera.addRotation(0, (float) Math.toRadians(rotateSpeedInDegrees));
-                        camera.moveLeft((float) Math.toRadians(rotateSpeedInDegrees));
-                }
-
-                if (window.isKeyPressed(GLFW_KEY_Q)) {
-                        camera.addRotation((float) Math.toRadians(-1 * rotateSpeedInDegrees), 0);
-                        camera.moveDown((float) Math.toRadians(rotateSpeedInDegrees));
-                }
-                if (window.isKeyPressed(GLFW_KEY_E)) {
-                        camera.addRotation((float) Math.toRadians(rotateSpeedInDegrees), 0);
-                        camera.moveUp((float) Math.toRadians(rotateSpeedInDegrees));
-                }
-
-
-                if (window.isKeyPressed(GLFW_KEY_PAGE_UP)) {
-                        camera.moveUp(cameraSpeed);
-                }
-                if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
-                        camera.moveDown(cameraSpeed);
-                }
-
-                // this is for moving the character
-                if (window.isKeyPressed(GLFW_KEY_UP)) {
-                        camera.moveForward(cameraSpeed);
-                }
-                if (window.isKeyPressed(GLFW_KEY_DOWN)) {
-                        camera.moveBackwards(cameraSpeed);
-                }
-                if (window.isKeyPressed(GLFW_KEY_LEFT)) {
-                        camera.moveLeft(cameraSpeed);
-                }
-                if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
-                        camera.moveRight(cameraSpeed);
-                }
-                if (window.isKeyPressed(GLFW_KEY_I)) {
-                        objects.get(0).inlineRotateObject((float) Math.toRadians(1), 0f, 1f, 0f);
-                }
-                System.out.println("x : " + camera.getDirection().x + " y : " + camera.getDirection().y + " z : "
-                                + camera.getDirection().z);
-
-                // ini buat mouse
-                if (window.isFocused()){
-                        window.getMouseInput().setCursorVisibility(false);
-                        Vector2f displayVec = window.getMouseInput().getDisplVec();
-                        // this is so that the camera will move around the object
-                        camera.addRotation((float) Math.toRadians(displayVec.x * rotateSpeedInDegrees),
-                                (float) Math.toRadians(displayVec.y * rotateSpeedInDegrees));
-
-                        camera.moveUp((float) Math.toRadians(displayVec.y * rotateSpeedInDegrees));
-                        camera.moveRight((float) Math.toRadians(displayVec.x * rotateSpeedInDegrees));
-
-                } else {
-                        window.getMouseInput().setCursorVisibility(true);
-                }
-                if (window.getMouseInput().getScroll().y != 0) {
-                        projection.setFOV(projection.getFOV() - (window.getMouseInput().getScroll().y * 0.01f));
-                        window.getMouseInput().setScroll(new Vector2f());
-                }
         }
+        if (window.isKeyPressed(GLFW_KEY_S)) {
+            objects.get(0).translateObject(-camera.getDirection().x, 0f, -camera.getDirection().z);
+            camera.moveBackwards(characterSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_A)) {
+            camera.addRotation(0, (float) Math.toRadians(-1 * rotateSpeedInDegrees));
+            camera.moveRight((float) Math.toRadians(rotateSpeedInDegrees));
+        }
+        if (window.isKeyPressed(GLFW_KEY_D)) {
+            camera.addRotation(0, (float) Math.toRadians(rotateSpeedInDegrees));
+            camera.moveLeft((float) Math.toRadians(rotateSpeedInDegrees));
+        }
+
+        if (window.isKeyPressed(GLFW_KEY_Q)) {
+            camera.addRotation((float) Math.toRadians(-1 * rotateSpeedInDegrees), 0);
+            camera.moveDown((float) Math.toRadians(rotateSpeedInDegrees));
+        }
+        if (window.isKeyPressed(GLFW_KEY_E)) {
+            camera.addRotation((float) Math.toRadians(rotateSpeedInDegrees), 0);
+            camera.moveUp((float) Math.toRadians(rotateSpeedInDegrees));
+        }
+
+        if (window.isKeyPressed(GLFW_KEY_PAGE_UP)) {
+            camera.moveUp(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_PAGE_DOWN)) {
+            camera.moveDown(cameraSpeed);
+        }
+
+        // this is for moving the character
+        if (window.isKeyPressed(GLFW_KEY_UP)) {
+            camera.moveForward(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_DOWN)) {
+            camera.moveBackwards(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_LEFT)) {
+            camera.moveLeft(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_RIGHT)) {
+            camera.moveRight(cameraSpeed);
+        }
+        if (window.isKeyPressed(GLFW_KEY_I)) {
+            objects.get(0).inlineRotateObject((float) Math.toRadians(1), 0f, 1f, 0f);
+        }
+
+        // ini buat mouse
+        if (window.isFocused()) {
+            window.getMouseInput().setCursorVisibility(false);
+            Vector2f displayVec = window.getMouseInput().getDisplVec();
+            // this is so that the camera will move around the object
+            camera.addRotation((float) Math.toRadians(displayVec.x * rotateSpeedInDegrees),
+                    (float) Math.toRadians(displayVec.y * rotateSpeedInDegrees));
+
+            camera.moveUp((float) Math.toRadians(displayVec.y * rotateSpeedInDegrees));
+            camera.moveRight((float) Math.toRadians(displayVec.x * rotateSpeedInDegrees));
+
+        } else {
+            window.getMouseInput().setCursorVisibility(true);
+        }
+        if (window.getMouseInput().getScroll().y != 0) {
+            projection.setFOV(projection.getFOV() - (window.getMouseInput().getScroll().y * 0.01f));
+            window.getMouseInput().setScroll(new Vector2f());
+        }
+    }
 
     public void loop() {
         while (window.isOpen()) {
@@ -1196,16 +1241,16 @@ public class Main {
             GL.createCapabilities();
             input();
 
-                        // code
-                        for (Object object : objects) {
-                                // check if the index of object is 16, if it is then print if isNight equals
-                                // true
-                                if (!isNight) {
-                                        if (objects.indexOf(object) == 16 || objects.indexOf(object) == 17) {
-                                                continue;
-                                        }
-                                }
-                                object.draw(camera, projection);
+            // code
+            for (Object object : objects) {
+                // check if the index of object is 16, if it is then print if isNight equals
+                // true
+                if (!isNight) {
+                    if (objects.indexOf(object) == 16 || objects.indexOf(object) == 17) {
+                        continue;
+                    }
+                }
+                object.draw(camera, projection);
 
             }
 
@@ -1221,11 +1266,11 @@ public class Main {
                 Vector3f eyePosition = new Vector3f(
                         mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
                         mainCharacter.getChildObject().get(2).getCenterPoint().get(1),
-                        mainCharacter.getChildObject().get(2).getCenterPoint().get(2));
+                        mainCharacter.getChildObject().get(2).getCenterPoint().get(2) - 2f);
 
-                                // set the camera to the main character eye
-                                camera.setPosition(eyePosition.x, eyePosition.y + 1f, eyePosition.z - 1f);
-                                // camera.lockInEye();
+                // set the camera to the main character eye
+                camera.setPosition(eyePosition.x, eyePosition.y + 1f, eyePosition.z - 1f);
+                // camera.lockInEye();
 
             }
             // set TPS
@@ -1238,13 +1283,13 @@ public class Main {
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z + 2f);
-//                camera.lockInEye();
+                // camera.lockInEye();
 
             }
             // check night or not
             Sphere terrain = (Sphere) objects.get(0);
-            isNight = terrain.getLightDirection().y >= 0 && terrain.getLightDirection().x < 1 && terrain.getLightDirection().x > -1;
-
+            isNight = terrain.getLightDirection().y >= 0 && terrain.getLightDirection().x < 1
+                    && terrain.getLightDirection().x > -1;
 
             // set CameraDT
             if (cameraDT && cameraTransitionCompleted) {
@@ -1256,8 +1301,7 @@ public class Main {
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
-//                camera.lockInEye();
-
+                // camera.lockInEye();
 
             }
             // set CameraFW
@@ -1270,8 +1314,7 @@ public class Main {
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y - 1f, eyePosition.z);
-//                camera.lockInEye();
-
+                // camera.lockInEye();
 
             }
             // Translate Drop Tower Sit
@@ -1283,8 +1326,7 @@ public class Main {
                 objects.get(7).getChildObject().get(1).inlineTranslateObject(0f, -0.2f, 0f);
             }
 
-
-            //rotasi Ferris Wheel
+            // rotasi Ferris Wheel
             // Wheel
             objects.get(8).getChildObject().get(7).inlineTranslateObject(-6f, -24.5f, 0f);
             objects.get(8).getChildObject().get(7).inlineRotateObject(0.003f, 0, 0, 1);
@@ -1294,38 +1336,40 @@ public class Main {
             objects.get(8).getChildObject().get(8).inlineTranslateObject(-6f, -24.5f, 0f);
             objects.get(8).getChildObject().get(8).inlineRotateObject(0.003f, 0, 0, 1);
             objects.get(8).getChildObject().get(8).inlineTranslateObject(6f, 24.5f, 0f);
-//            System.out.println(objects.get(6).getChildObject().get(1).getCenterPoint());
+            // System.out.println(objects.get(6).getChildObject().get(1).getCenterPoint());
 
-//            ArrayList<Float> sitPos = new ArrayList<>();
-//            sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(0));
-//            sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(1));
-//            sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(2));
+            // ArrayList<Float> sitPos = new ArrayList<>();
+            // sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(0));
+            // sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(1));
+            // sitPos.add(objects.get(8).getChildObject().get(8).getCenterPoint().get(2));
 
-//            objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f,0,0,-1);
-//            objects.get(6).getChildObject().get(8).inlineTranslateObject(sitPos.get(0),sitPos.get(1),0f);
-
+            // objects.get(6).getChildObject().get(8).inlineRotateObject(0.003f,0,0,-1);
+            // objects.get(6).getChildObject().get(8).inlineTranslateObject(sitPos.get(0),sitPos.get(1),0f);
 
             // Other Sit
             objects.get(8).getChildObject().get(9).inlineTranslateObject(-6f, -24.5f, 0f);
             objects.get(8).getChildObject().get(9).inlineRotateObject(0.003f, 0, 0, 1);
             objects.get(8).getChildObject().get(9).inlineTranslateObject(6f, 24.5f, 0f);
 
-//            ArrayList<Float> otherSitPos = new ArrayList<>();
-//            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(0));
-//            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(1));
-//            otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(2));
+            // ArrayList<Float> otherSitPos = new ArrayList<>();
+            // otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(0));
+            // otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(1));
+            // otherSitPos.add(objects.get(8).getChildObject().get(9).getCenterPoint().get(2));
 
-//            objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,-1);
-//            objects.get(6).getChildObject().get(8).inlineTranslateObject(otherSitPos.get(0),otherSitPos.get(1),0f);
+            // objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,-1);
+            // objects.get(6).getChildObject().get(8).inlineTranslateObject(otherSitPos.get(0),otherSitPos.get(1),0f);
 
-//            // sit
-//            importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWSit.obj", new Vector4f(156, 8, 20,255), new Vector3f(6f,9.6f,-39.2f), null, null);
-//
-//            // other sit
-//            importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+            // // sit
+            // importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris
+            // wheel/FWSit.obj", new Vector4f(156, 8, 20,255), new Vector3f(6f,9.6f,-39.2f),
+            // null, null);
+            //
+            // // other sit
+            // importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris
+            // wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
 
-            // init ship animation
-            initShipAni();
+            // check collision
+            checkCollision();
 
             // init ship animation
             initShipAni();
@@ -1340,6 +1384,26 @@ public class Main {
         }
     }
 
+    private void checkCollision() {
+        // check all parents and child centerpoints and check if they are in range with the player, then toggle the collision
+        float offset = 3.5f;
+        for (Object object : objects) {
+            if (objects.indexOf(object) == 0 || objects.indexOf(object) == 1) continue;
+            for (int j = 0; j < object.getChildObject().size(); j++) {
+                if (object.getChildObject().get(j).getCenterPoint().get(0) - mainCharacter.getChildObject().get(2).getCenterPoint().get(0) < offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(0) - mainCharacter.getChildObject().get(2).getCenterPoint().get(0) > -offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(1) - mainCharacter.getChildObject().get(2).getCenterPoint().get(1) < offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(1) - mainCharacter.getChildObject().get(2).getCenterPoint().get(1) > -offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) < offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) > -offset) {
+                    System.out.println("Collision" + objects.indexOf(object));
+                }
+            }
+        }
+
+
+    }
+
     private void initShipAni() {
         // ship speed
         float shipSpeed = 0.08f;
@@ -1351,19 +1415,18 @@ public class Main {
 
         shipParent.inlineTranslateObject(-shipSpeed, 0, 0);
 
-
     }
 
-        private void cameraTransition() {
-                float acceptedOffset = 0.3f;
-                if (cameraTransitionCompleted)
-                        return;
-                if (cameraModeIsFPS) {
-                        // target is the eye
-                        Vector3f target = new Vector3f(
-                                        mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
-                                        mainCharacter.getChildObject().get(2).getCenterPoint().get(1) + 1.5f,
-                                        mainCharacter.getChildObject().get(2).getCenterPoint().get(2) - 5.5f);
+    private void cameraTransition() {
+        float acceptedOffset = 0.3f;
+        if (cameraTransitionCompleted)
+            return;
+        if (cameraModeIsFPS) {
+            // target is the eye
+            Vector3f target = new Vector3f(
+                    mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
+                    mainCharacter.getChildObject().get(2).getCenterPoint().get(1) + 1.5f,
+                    mainCharacter.getChildObject().get(2).getCenterPoint().get(2) - 5.5f);
 
             camera.setTargetPosition(target);
             camera.updatePosition();
@@ -1373,12 +1436,12 @@ public class Main {
                 System.out.println("Transition Completed!");
             }
 
-                } else {
-                        // target is the body
-                        Vector3f target = new Vector3f(
-                                        mainCharacter.getChildObject().get(0).getCenterPoint().get(0),
-                                        mainCharacter.getChildObject().get(0).getCenterPoint().get(1) + 1.5f,
-                                        mainCharacter.getChildObject().get(0).getCenterPoint().get(2) + 5f);
+        } else {
+            // target is the body
+            Vector3f target = new Vector3f(
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(0),
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(1) + 1.5f,
+                    mainCharacter.getChildObject().get(0).getCenterPoint().get(2) + 5f);
 
             camera.setTargetPosition(target);
             camera.updatePosition();
