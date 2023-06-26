@@ -19,6 +19,7 @@ import org.lwjgl.glfw.GLFW;
 
 
 
+
 public class Sphere extends Circle {
     float radiusZ;
     int stackCount;
@@ -28,6 +29,8 @@ public class Sphere extends Circle {
     boolean xPositive = false;
     boolean yPositive = false;
     boolean zPositive = false;
+    float lastPointLightUpdateTime = 0f;
+    float tempDiffuseX = .1f, tempDiffuseY = .1f, tempDiffuseZ = .1f;
 
     public Vector3f getLightDirection() {
         return lightDirection;
@@ -293,11 +296,22 @@ public class Sphere extends Circle {
                 new Vector3f(-31.4f, 16f, 40.7f),
         };
         float lightPower = 0.1f;
+        float interval = .5f;
+
         if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 7f;
+
+        System.out.println(time);
+
+        if (time - lastPointLightUpdateTime >= interval){
+            tempDiffuseX = (float) (Math.random() * lightPower);
+            tempDiffuseY = (float) (Math.random() * lightPower);
+            tempDiffuseZ = (float) (Math.random() * lightPower);
+            lastPointLightUpdateTime = time;
+        }
         for(int i = 1; i < forTowerLights.length + 1; i++){
             uniformsMap.setUniform("pointLights[" + i + "].position", forTowerLights[i - 1]);
             uniformsMap.setUniform("pointLights[" + i + "].ambient", new Vector3f(0.05f, 0.05f, 0.05f));
-            uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f((float) (Math.random() * lightPower), (float) (Math.random() * lightPower), (float) (Math.random() * lightPower)));
+            uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(tempDiffuseX, tempDiffuseY, tempDiffuseZ));
             uniformsMap.setUniform("pointLights[" + i + "].specular", new Vector3f(1.0f, 1.0f, 1.0f));
             uniformsMap.setUniform("pointLights[" + i + "].constant", 1.0f);
             uniformsMap.setUniform("pointLights[" + i + "].linear", 0.09f);

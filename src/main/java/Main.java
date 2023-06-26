@@ -10,9 +10,6 @@ import org.lwjgl.opengl.GL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Vector;
-
-import javax.naming.ldap.PagedResultsControl;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.glClearColor;
@@ -35,7 +32,7 @@ public class Main {
     List<ShaderProgram.ShaderModuleData> shaderModuleDataList;
     List<Float> collisionCenter = new ArrayList<>();
 
-    Object mainCharacter;
+    List<Object> mainCharacter;
     boolean toggleKeyPressed = false;
     boolean cameraModeIsFPS = false;
     boolean cameraModeIsTPS = false;
@@ -292,51 +289,45 @@ public class Main {
 
     }
 
-    private void createMC(Object mainCharacter) {
+    private void createNPC() {
         // create main character as child of the parent
 
         // rotations
         Vector4f rotation = new Vector4f(1f, 0f, 0f, -90f);
 
         // transitions
-         Vector3f translate = new Vector3f(-7.5f, 0f, -57f);
+         Vector3f translate = new Vector3f(-7.5f, 0f, -7f);
 
         // create the body
-        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/body.fbx",
+        importObjects(shaderModuleDataList, null, "resources/blender/mc/body.fbx",
                 new Vector4f(170f, 200f, 170f, 255f), translate, 1f, rotation);
 
+        // set as parent
+        List<Object> parent = objects.get(19).getChildObject();
+
         // create the head
-        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/head.fbx",
+        importObjects(shaderModuleDataList, parent, "resources/blender/mc/head.fbx",
                 new Vector4f(190f, 190f, 189f, 255f), translate, 1f, rotation);
 
         // create the eye
-        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/eye.fbx",
+        importObjects(shaderModuleDataList, parent, "resources/blender/mc/eye.fbx",
                 new Vector4f(10f, 10f, 200f, 255f), translate, 1f, rotation);
 
         // create the hair
-        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/hair.fbx",
+        importObjects(shaderModuleDataList, parent, "resources/blender/mc/hair.fbx",
                 new Vector4f(10f, 20f, 20f, 255f), translate, 1f, rotation);
 
         // create the leg
-        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/leg.fbx",
+        importObjects(shaderModuleDataList, parent, "resources/blender/mc/leg.fbx",
                 new Vector4f(100f, 255f, 255f, 255f), translate, 1f, rotation);
 
         // create the mouth
-        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/mouth.fbx",
+        importObjects(shaderModuleDataList, parent, "resources/blender/mc/mouth.fbx",
                 new Vector4f(255f, 255f, 0f, 255f), translate, 1f, rotation);
 
         // create the shirt
-        importObjects(shaderModuleDataList, mainCharacter.getChildObject(), "resources/blender/mc/shirt.fbx",
+        importObjects(shaderModuleDataList, parent, "resources/blender/mc/shirt.fbx",
                 new Vector4f(255f, 0f, 255f, 255f), translate, 1f, rotation);
-
-        // scale for all child of main character
-        mainCharacter.getChildObject().forEach(object -> {
-            object.inlineScaleObject(1.0f, 1.0f, 1.0f);
-        });
-        // rotation for all child of main character
-        mainCharacter.getChildObject().forEach(object -> {
-            object.inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f);
-        });
 
     }
 
@@ -522,7 +513,7 @@ public class Main {
     }
 
     public void init() {
-        window = new Window(1000, 1000, "NotSoThemePark");
+        window = new Window(1920, 1080, "NotSoThemePark");
         projection = new Projection(window.getWidth(), window.getHeight());
         window.init();
         GL.createCapabilities();
@@ -558,7 +549,7 @@ public class Main {
                 .inlineRotateObject((float) Math.toRadians(180), 0f, 1f, 0f));
 
         // main character
-        mainCharacter = objects.get(0); // 0
+        mainCharacter = objects.get(0).getChildObject(); // 0
         createMC(mainCharacter);
 
         // Terrain
@@ -615,6 +606,9 @@ public class Main {
         // create additional decoration
         createAdditionalDecoration(); // 18
 
+        // create additional npc
+        createNPC(); // 19
+
         System.out.println(objects.get(7).getChildObject().get(3).getCenterPoint());
 
         // Random Object
@@ -635,6 +629,51 @@ public class Main {
 
         // Get the camera's view matrix.
         viewMatrix = camera.getViewMatrix();
+
+    }
+
+    private void createMC(List<Object> parent) {
+
+        // create belt
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/belt.obj", new Vector4f(54,60,72,255), null, null, null);
+
+        // create cape and body
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/cape_and_body.obj", new Vector4f(241,241,241,255), null, null, null);
+
+        // create color2
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/cape_and_body.obj", new Vector4f(76,143,194,255), null, null, null);
+
+        // eye
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/eye.obj", new Vector4f(137,182,208,255), null, null, null);
+
+        // hair
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/hair.obj", new Vector4f(143,224,242,255), null, null, null);
+
+        // kaki
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/kaki.obj", new Vector4f(44,64,101,255), null, null, null);
+
+        // sabuk_pedang
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/sabuk_pedang.obj", new Vector4f(115,18,29,255), null, null, null);
+
+        // sepatu1
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/sepatu1.obj", new Vector4f(241,241,241,255), null, null, null);
+
+        // sepatu2
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/sepatu2.obj", new Vector4f(165,171,181,255), null, null, null);
+
+        // skin
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/skin.obj", new Vector4f(250,232,212,255), null, null, null);
+
+        // weapon
+        importObjects(shaderModuleDataList, parent, "resources/blender/asunaMC/weapon.obj", new Vector4f(212,201,199,255), null, null, null);
+
+
+        // translate all child
+        for (Object o :
+                parent) {
+            o.inlineTranslateObject(8.8f, 0f, 58.68f);
+        }
+
 
     }
 
@@ -1284,9 +1323,9 @@ public class Main {
             if (cameraModeIsFPS && cameraTransitionCompleted && !cameraDT && !cameraFW) {
                 // set to FPS mode
                 Vector3f eyePosition = new Vector3f(
-                        mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
-                        mainCharacter.getChildObject().get(2).getCenterPoint().get(1),
-                        mainCharacter.getChildObject().get(2).getCenterPoint().get(2) - 2f);
+                        mainCharacter.get(3).getCenterPoint().get(0),
+                        mainCharacter.get(3).getCenterPoint().get(1),
+                        mainCharacter.get(3).getCenterPoint().get(2) - 2f);
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 1.1f, eyePosition.z + 1.5f);
@@ -1297,9 +1336,9 @@ public class Main {
             if (cameraModeIsTPS && cameraTransitionCompleted && !cameraDT && !cameraFW) {
                 // set to FPS mode
                 Vector3f eyePosition = new Vector3f(
-                        mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
-                        mainCharacter.getChildObject().get(2).getCenterPoint().get(1),
-                        mainCharacter.getChildObject().get(2).getCenterPoint().get(2));
+                        mainCharacter.get(3).getCenterPoint().get(0),
+                        mainCharacter.get(3).getCenterPoint().get(1),
+                        mainCharacter.get(3).getCenterPoint().get(2));
 
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z + 2f);
@@ -1411,12 +1450,12 @@ public class Main {
         for (Object object : objects) {
             if (objects.indexOf(object) == 0 || objects.indexOf(object) == 1) continue;
             for (int j = 0; j < object.getChildObject().size(); j++) {
-                if (object.getChildObject().get(j).getCenterPoint().get(0) - mainCharacter.getChildObject().get(2).getCenterPoint().get(0) < offset &&
-                        object.getChildObject().get(j).getCenterPoint().get(0) - mainCharacter.getChildObject().get(2).getCenterPoint().get(0) > -offset &&
-                        object.getChildObject().get(j).getCenterPoint().get(1) - mainCharacter.getChildObject().get(2).getCenterPoint().get(1) < offset &&
-                        object.getChildObject().get(j).getCenterPoint().get(1) - mainCharacter.getChildObject().get(2).getCenterPoint().get(1) > -offset &&
-                        object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) < offset &&
-                        object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) > -offset) {
+                if (object.getChildObject().get(j).getCenterPoint().get(0) - mainCharacter.get(2).getCenterPoint().get(0) < offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(0) - mainCharacter.get(2).getCenterPoint().get(0) > -offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(1) - mainCharacter.get(2).getCenterPoint().get(1) < offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(1) - mainCharacter.get(2).getCenterPoint().get(1) > -offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.get(2).getCenterPoint().get(2) < offset &&
+                        object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.get(2).getCenterPoint().get(2) > -offset) {
                     System.out.println("Collision" + objects.indexOf(object));
                     return true;
                 }
@@ -1458,9 +1497,9 @@ public class Main {
         if (cameraModeIsFPS) {
             // target is the eye
             Vector3f target = new Vector3f(
-                    mainCharacter.getChildObject().get(2).getCenterPoint().get(0),
-                    mainCharacter.getChildObject().get(2).getCenterPoint().get(1) + 1.5f,
-                    mainCharacter.getChildObject().get(2).getCenterPoint().get(2) - 5.5f);
+                    mainCharacter.get(3).getCenterPoint().get(0),
+                    mainCharacter.get(3).getCenterPoint().get(1) + 1.5f,
+                    mainCharacter.get(3).getCenterPoint().get(2) - 5.5f);
 
             camera.setTargetPosition(target);
             camera.updatePosition();
@@ -1473,9 +1512,9 @@ public class Main {
         } else {
             // target is the body
             Vector3f target = new Vector3f(
-                    mainCharacter.getChildObject().get(0).getCenterPoint().get(0),
-                    mainCharacter.getChildObject().get(0).getCenterPoint().get(1) + 1.5f,
-                    mainCharacter.getChildObject().get(0).getCenterPoint().get(2) + 5f);
+                    mainCharacter.get(0).getCenterPoint().get(0),
+                    mainCharacter.get(0).getCenterPoint().get(1) + 1.5f,
+                    mainCharacter.get(0).getCenterPoint().get(2) + 4f);
 
             camera.setTargetPosition(target);
             camera.updatePosition();
