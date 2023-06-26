@@ -506,15 +506,6 @@ public class Main {
         importObjects(shaderModuleDataList, colourLamps, "resources/blender/colour lamp/ColourLampBulb.obj",
                 new Vector4f(255f, 21f, 14f, 255f), new Vector3f(-32.3f,8f,-20f), null, null);
 
-        System.out.println(objects.get(10).getChildObject().get(11).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(12).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(13).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(16).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(17).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(18).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(21).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(22).getCenterPoint());
-        System.out.println(objects.get(10).getChildObject().get(23).getCenterPoint());
     }
 
         public void init() {

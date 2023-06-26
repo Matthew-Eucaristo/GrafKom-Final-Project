@@ -366,7 +366,7 @@ public class Sphere extends Circle {
         Vector3f _bigSpotLightDirection = bigSpotLightDir;
 //        System.out.println("x :"+ bigSpotLightDir.x + " y :" + bigSpotLightDir.y +" z :"+bigSpotLightDir.z);
         lightPower = 0.000f;
-        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 100f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 400f;
         uniformsMap.setUniform("bigSpotLight.position", _bigSpotLightPosition);
         uniformsMap.setUniform("bigSpotLight.direction", _bigSpotLightDirection);
         uniformsMap.setUniform("bigSpotLight.ambient", new Vector3f(0.0f, 0.0f, 0.0f));
