@@ -108,7 +108,7 @@ public class ObjectLoader extends Sphere {
         // this.texture = newTextures;
 
         // set centerpoint
-        setCenterPoint(List.of(newVertices.get(0).x, newVertices.get(0).y, newVertices.get(0).z));
+//        setCenterPoint(List.of(newVertices.get(0).x, newVertices.get(0).y, newVertices.get(0).z));
 
         setupVAOVBO();
 

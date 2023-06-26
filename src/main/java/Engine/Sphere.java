@@ -320,18 +320,22 @@ public class Sphere extends Circle {
                 new Vector3f(-32.3f, 7.7f, -22.5f),
                 new Vector3f(-32.3f, 8.0f, -20.0f),
         };
-        lightPower = 0.1f;
-        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 3f;
+        lightPower = 3f;
+        float lightColor = 0.1f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) {
+            lightPower = 1f ;
+            lightColor = 1f;
+        }
         int x = 1;
         for(int i = 11; i < forColourLamp.length + 11; i++){
             uniformsMap.setUniform("pointLights[" + i + "].position", forColourLamp[i - 11]);
             uniformsMap.setUniform("pointLights[" + i + "].ambient", new Vector3f(0.05f, 0.05f, 0.05f));
             switch (x){
-                case 1 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(0.05f * lightPower,0.05f * lightPower,1f * lightPower));
+                case 1 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(0.05f * lightPower,0.05f * lightPower,lightColor * lightPower));
 
-                case 2 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(0.05f * lightPower,1f * lightPower,0.05f * lightPower));
+                case 2 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(lightColor * lightPower,0.05f * lightPower,lightColor * lightPower));
 
-                case 3 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(1f * lightPower,0.05f * lightPower,0.05f * lightPower));
+                case 3 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(lightColor * lightPower,0.05f * lightPower,0.05f * lightPower));
                 }
 //            uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f((float) (Math.random() * lightPower), (float) (Math.random() * lightPower), (float) (Math.random() * lightPower)));
             uniformsMap.setUniform("pointLights[" + i + "].specular", new Vector3f(0.1f, 0.1f, 0.1f));

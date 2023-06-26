@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="benerin yang grass kebesaran">
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="Nambah lampu colourLamp">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Object.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Object.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/ObjectLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +25,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -119,23 +125,7 @@
       <option name="project" value="LOCAL" />
       <updated>1687748156518</updated>
     </task>
-    <task id="LOCAL-00007" summary="benerin yang rusak">
-      <option name="closed" value="true" />
-      <created>1687750475545</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1687750475545</updated>
-    </task>
-    <task id="LOCAL-00008" summary="sudah bisa collision tapi masih belum diem, masih cmn print aja">
-      <option name="closed" value="true" />
-      <created>1687754457165</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1687754457165</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -157,9 +147,6 @@
     <MESSAGE value="jadi text&#10;jadi monster" />
     <MESSAGE value="kurang ini tadi maap" />
     <MESSAGE value="Nambah lampu colourLamp" />
-    <MESSAGE value="benerin yang rusak" />
-    <MESSAGE value="sudah bisa collision tapi masih belum diem, masih cmn print aja" />
-    <MESSAGE value="benerin yang grass kebesaran" />
-    <option name="LAST_COMMIT_MESSAGE" value="benerin yang grass kebesaran" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nambah lampu colourLamp" />
   </component>
 </project>

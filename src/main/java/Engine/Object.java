@@ -34,8 +34,18 @@ public class Object extends ShaderProgram{
 
     List<Vector3f> normal;
 
+    float radius;
+
     public List<Object> getChildObject() {
         return childObject;
+    }
+
+    public float getRadius() {
+        return radius;
+    }
+
+    public void setRadius(float radius) {
+        this.radius = radius;
     }
 
     public void setChildObject(List<Object> childObject) {

@@ -33,6 +33,7 @@ public class Main {
 
     ShaderProgram objectShader;
     List<ShaderProgram.ShaderModuleData> shaderModuleDataList;
+    List<Float> collisionCenter = new ArrayList<>();
 
     Object mainCharacter;
     boolean toggleKeyPressed = false;
@@ -614,6 +615,8 @@ public class Main {
         // create additional decoration
         createAdditionalDecoration(); // 18
 
+        System.out.println(objects.get(7).getChildObject().get(3).getCenterPoint());
+
         // Random Object
         // objects.add(new Sphere(
         // // this is for the object sementara buat chara yg digerakkin
@@ -674,7 +677,7 @@ public class Main {
                 new Vector4f(24, 32, 38, 255),
                 null, null, new Vector4f(0f, 0f, 0f, 0));
 
-        System.out.println(objects.get(17).getCenterPoint().toString());
+//        System.out.println(objects.get(17).getCenterPoint().toString());
         // set as parent
         List<Object> gate = objects.get(17).getChildObject();
 
@@ -1081,7 +1084,7 @@ public class Main {
 
     public void input() {
         float cameraSpeed = 0.2f;
-        float characterSpeed = 0.03f;
+        float characterSpeed = 0.1f;
         float rotateSpeedInDegrees = .5f;
 
         // keybind for toggling FPS or TPS
@@ -1099,9 +1102,11 @@ public class Main {
                 // toggle camera mode
                 if (cameraModeIsFPS) {
                     cameraModeIsFPS = false;
-
+                    System.out.println("Exiting FPS mode");
                 } else {
                     cameraModeIsFPS = true;
+                    System.out.println("Entering FPS mode");
+
 
                     // toggle camera transition
                     cameraTransitionCompleted = false;
@@ -1116,10 +1121,12 @@ public class Main {
 
                 // toggle camera mode
                 if (cameraModeIsTPS) {
-                    cameraDT = false;
+                    cameraModeIsTPS = false;
+                    System.out.println("Exiting TPS mode");
                 } else {
-                    cameraDT = true;
+                    cameraModeIsTPS = true;
                     cameraTransitionCompleted = false;
+                    System.out.println("Entering TPS mode");
 
                 }
             }
@@ -1134,9 +1141,11 @@ public class Main {
                 // toggle camera mode
                 if (cameraDT) {
                     cameraDT = false;
+                    System.out.println("Exiting DT mode");
                 } else {
                     cameraDT = true;
                     cameraTransitionCompleted = false;
+                    System.out.println("Entering DT mode");
 
                 }
             }
@@ -1151,12 +1160,15 @@ public class Main {
                 // toggle camera mode
                 if (cameraFW) {
                     cameraFW = false;
+                    System.out.println("Exiting FW mode");
                 } else {
                     cameraFW = true;
                     cameraTransitionCompleted = false;
+                    System.out.println("Entering FW mode");
 
                 }
             }
+
 
         } else {
             toggleKeyPressed = false;
@@ -1166,11 +1178,19 @@ public class Main {
         if (window.isKeyPressed(GLFW_KEY_W)) {
             objects.get(0).translateObject(camera.getDirection().x, 0f, camera.getDirection().z);
             camera.moveForward(characterSpeed);
+            if (checkCollision()){
+                objects.get(0).translateObject(-camera.getDirection().x, 0f, -camera.getDirection().z);
+                camera.moveForward(-characterSpeed);
+            }
 
         }
         if (window.isKeyPressed(GLFW_KEY_S)) {
             objects.get(0).translateObject(-camera.getDirection().x, 0f, -camera.getDirection().z);
             camera.moveBackwards(characterSpeed);
+            if (checkCollision()){
+                objects.get(0).translateObject(camera.getDirection().x, 0f, camera.getDirection().z);
+                camera.moveBackwards(characterSpeed);
+            }
         }
         if (window.isKeyPressed(GLFW_KEY_A)) {
             camera.addRotation(0, (float) Math.toRadians(-1 * rotateSpeedInDegrees));
@@ -1269,7 +1289,7 @@ public class Main {
                         mainCharacter.getChildObject().get(2).getCenterPoint().get(2) - 2f);
 
                 // set the camera to the main character eye
-                camera.setPosition(eyePosition.x, eyePosition.y + 1f, eyePosition.z - 1f);
+                camera.setPosition(eyePosition.x, eyePosition.y + 1.1f, eyePosition.z + 1.5f);
                 // camera.lockInEye();
 
             }
@@ -1303,6 +1323,7 @@ public class Main {
                 camera.setPosition(eyePosition.x, eyePosition.y + 2f, eyePosition.z);
                 // camera.lockInEye();
 
+
             }
             // set CameraFW
             if (cameraFW && cameraTransitionCompleted) {
@@ -1315,6 +1336,7 @@ public class Main {
                 // set the camera to the main character eye
                 camera.setPosition(eyePosition.x, eyePosition.y - 1f, eyePosition.z);
                 // camera.lockInEye();
+
 
             }
             // Translate Drop Tower Sit
@@ -1359,17 +1381,16 @@ public class Main {
             // objects.get(6).getChildObject().get(9).inlineRotateObject(0.003f,0,0,-1);
             // objects.get(6).getChildObject().get(8).inlineTranslateObject(otherSitPos.get(0),otherSitPos.get(1),0f);
 
-            // // sit
-            // importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris
-            // wheel/FWSit.obj", new Vector4f(156, 8, 20,255), new Vector3f(6f,9.6f,-39.2f),
-            // null, null);
-            //
-            // // other sit
-            // importObjects(shaderModuleDataList, ferrisWheel, "resources/blender/ferris
-            // wheel/FWOtherSit.obj", new Vector4f(156, 8, 20,255), null, null, null);
+//            System.out.println(mainCharacter.getCenterPoint());
 
+//            setObjectCenterPoint();
+
+            setCollisionCenter();
             // check collision
             checkCollision();
+
+            // set object center point for collision
+
 
             // init ship animation
             initShipAni();
@@ -1384,7 +1405,7 @@ public class Main {
         }
     }
 
-    private void checkCollision() {
+    private boolean checkCollision() {
         // check all parents and child centerpoints and check if they are in range with the player, then toggle the collision
         float offset = 3.5f;
         for (Object object : objects) {
@@ -1397,11 +1418,23 @@ public class Main {
                         object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) < offset &&
                         object.getChildObject().get(j).getCenterPoint().get(2) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) > -offset) {
                     System.out.println("Collision" + objects.indexOf(object));
+                    return true;
                 }
             }
         }
+//        for (int i = 0;i < 7;i++){
+//            if (collisionCenter.get(0+i*3) - mainCharacter.getChildObject().get(2).getCenterPoint().get(0) < offset &&
+//                    collisionCenter.get(0+i*3) - mainCharacter.getChildObject().get(2).getCenterPoint().get(0) > -offset &&
+//                    collisionCenter.get(1+i*3) - mainCharacter.getChildObject().get(2).getCenterPoint().get(1) < offset &&
+//                    collisionCenter.get(1+i*3) - mainCharacter.getChildObject().get(2).getCenterPoint().get(1) > -offset &&
+//                    collisionCenter.get(2+i*3) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) < offset &&
+//                    collisionCenter.get(2+i*3) - mainCharacter.getChildObject().get(2).getCenterPoint().get(2) > -offset){
+//                System.out.println("Collision");
+//                    return true;
+//            }
+//        }
 
-
+    return false;
     }
 
     private void initShipAni() {
@@ -1414,6 +1447,7 @@ public class Main {
         shipParent.inlineRotateObject((float) Math.toRadians(0.1f), 0, 1, 0);
 
         shipParent.inlineTranslateObject(-shipSpeed, 0, 0);
+
 
     }
 
@@ -1453,7 +1487,79 @@ public class Main {
         }
 
     }
+    public void setObjectCenterPoint(){
+        List<Float> center = new ArrayList<>();
+        center.add(-6.6004677f);
+        center.add(0.0f);
+        center.add(-12.451611f);
+//        objects.get(4).getChildObject().get(0).setCenterPoint(List.of(-6.6004677f,0.0f,-12.451611f));
+        objects.get(4).getChildObject().get(0).setCenterPoint(center);
+        objects.get(4).getChildObject().get(0).setRadius(3f);
+        System.out.println(center.get(0));
+        System.out.println(objects.get(4).getChildObject().get(0).getCenterPoint());
+        center.clear();
+        center.add(-0.97663164f);
+        center.add(0.0f);
+        center.add(-48.95655f);
+        objects.get(15).getChildObject().get(0).setCenterPoint(center);
+        objects.get(15).getChildObject().get(0).setRadius(5f);
+        center.clear();
+        center.add(21.213406f);
+        center.add(0.0f);
+        center.add(-56.255806f);
+        objects.get(7).getChildObject().get(0).setCenterPoint(center);
+        objects.get(7).getChildObject().get(0).setRadius(3f);
+        center.clear();
+        center.add(-2.6384835f);
+        center.add(0.0f);
+        center.add(-94.72552f);
+        objects.get(8).getChildObject().get(0).setCenterPoint(center);
+        objects.get(8).getChildObject().get(0).setRadius(5f);
+        center.clear();
+        center.add(-16.258732f);
+        center.add(0.0f);
+        center.add(-64.421f);
+        objects.get(6).getChildObject().get(0).setCenterPoint(center);
+        objects.get(6).getChildObject().get(0).setRadius(3f);
+        center.clear();
+        center.add(-28.119263f);
+        center.add(0.0f);
+        center.add(-41.652187f);
+        objects.get(5).getChildObject().get(0).setCenterPoint(center);
+        objects.get(5).getChildObject().get(0).setRadius(3f);
+        center.clear();
+        center.add(0.69744813f);
+        center.add(0.0f);
+        center.add(-15.457853f);
+        objects.get(17).getChildObject().get(0).setCenterPoint(center);
+        objects.get(17).getChildObject().get(0).setRadius(1f);
+        center.clear();
+    }
+    public void setCollisionCenter(){
 
+        collisionCenter.add(-6.6004677f);
+        collisionCenter.add(0.0f);
+        collisionCenter.add(-12.451611f);
+        collisionCenter.add(-0.97663164f);
+        collisionCenter.add(0.0f);
+        collisionCenter.add(-48.95655f);
+        collisionCenter.add(21.213406f);
+        collisionCenter.add(0.0f);
+        collisionCenter.add(-56.255806f);
+        collisionCenter.add(-2.6384835f);
+        collisionCenter.add(0.0f);
+        collisionCenter.add(-94.72552f);
+        collisionCenter.add(-16.258732f);
+        collisionCenter.add(0.0f);
+        collisionCenter.add(-64.421f);
+        collisionCenter.add(-28.119263f);
+        collisionCenter.add(0.0f);
+        collisionCenter.add(-41.652187f);
+        collisionCenter.add(0.69744813f);
+        collisionCenter.add(0.0f);
+        collisionCenter.add(-15.457853f);
+
+    }
     public static float getDistance(List<Float> pointOne, List<Float> pointTwo) {
         float distance = 0;
 
