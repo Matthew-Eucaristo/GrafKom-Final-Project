@@ -16,5 +16,17 @@ Computer Graphic's Final Project
 
 ## Demo? TL/DR?
 
-[![Thumbnail]()](https://youtu.be/2BrOJkHl5D4)
+[![thumbnail](https://github.com/Matthew-Eucaristo/GrafKom-Final-Project/assets/108221736/e05e9afb-e865-4a75-8470-134105c30651)](https://youtu.be/2BrOJkHl5D4)
 
+
+## Documents / Laporan
+[Google Docs](https://docs.google.com/document/d/1lEwboTh_juZNlTuSyEGTJ_glbkr5Gan-5unw_uSXsXc/edit)
+
+
+## Credits  
+- https://www.cgtrader.com/free-3d-models  
+- https://www.freepik.com/3d-models  
+- https://free3d.com/  
+- https://sketchfab.com/features/free-3d-models
+
+sorry for missing or incomplete sources, thanks for watching ! 
