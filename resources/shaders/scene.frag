@@ -24,7 +24,7 @@ struct PointLight {
     vec3 specular;
 };
 
-#define NR_POINT_LIGHTS 11
+#define NR_POINT_LIGHTS 26
 uniform PointLight pointLights[NR_POINT_LIGHTS];
 
 // Spot Light

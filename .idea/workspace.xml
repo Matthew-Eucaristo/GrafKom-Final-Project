@@ -4,11 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="sudah jadi creepy gate sama monkey">
+    <list default="true" id="762d9b90-222f-4928-9182-fe43f1e1011a" name="Changes" comment="kurang ini tadi maap">
+      <change afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb.mtl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/MouseInput.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/MouseInput.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb1.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb2.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb2.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb3.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb3.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb4.mtl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampBulb4.obj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampCable.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampCable.mtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampCable.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampCable.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.mtl" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.mtl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.obj" beforeDir="false" afterPath="$PROJECT_DIR$/resources/blender/colour lamp/ColourLampPole.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/shaders/scene.frag" beforeDir="false" afterPath="$PROJECT_DIR$/resources/shaders/scene.frag" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Engine/Sphere.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,15 +127,7 @@
       <option name="project" value="LOCAL" />
       <updated>1687726139669</updated>
     </task>
-    <task id="LOCAL-00006" summary="sudah jadi creepy gate sama monkey">
-      <option name="closed" value="true" />
-      <created>1687728343192</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1687728343192</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,7 +148,6 @@
     <MESSAGE value="udah bisa buat spaceship sama bus station nya" />
     <MESSAGE value="jadi text&#10;jadi monster" />
     <MESSAGE value="kurang ini tadi maap" />
-    <MESSAGE value="sudah jadi creepy gate sama monkey" />
-    <option name="LAST_COMMIT_MESSAGE" value="sudah jadi creepy gate sama monkey" />
+    <option name="LAST_COMMIT_MESSAGE" value="kurang ini tadi maap" />
   </component>
 </project>

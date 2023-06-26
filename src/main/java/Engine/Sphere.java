@@ -291,7 +291,6 @@ public class Sphere extends Circle {
                 new Vector3f(-53f, 18.2f, -9.8f),
                 new Vector3f(-46.6f, 17.2f, 13.2f),
                 new Vector3f(-31.4f, 16f, 40.7f),
-
         };
         float lightPower = 0.1f;
         if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 7f;
@@ -304,7 +303,46 @@ public class Sphere extends Circle {
             uniformsMap.setUniform("pointLights[" + i + "].linear", 0.09f);
             uniformsMap.setUniform("pointLights[" + i + "].quadratic", 0.032f);
         }
+        Vector3f[] forColourLamp = new Vector3f[]{
+                new Vector3f(4.7f, 4.2f, 34.0f),
+                new Vector3f(4.7f, 3.7f, 36.5f),
+                new Vector3f(4.7f, 4.0f, 39.0f),
+                new Vector3f(11.7f, 4.2f, 34.0f),
+                new Vector3f(11.7f, 3.7f, 36.5f),
+                new Vector3f(11.7f, 4.0f, 39.0f),
+                new Vector3f(-37.3f, 4.2f, 5.0f),
+                new Vector3f(-37.3f, 3.7f, 7.5f),
+                new Vector3f(-37.3f, 4.0f, 10.0f),
+                new Vector3f(-32.3f, 4.2f, 25.0f),
+                new Vector3f(-32.3f, 3.7f, 27.5f),
+                new Vector3f(-32.3f, 4.0f, 30.0f),
+                new Vector3f(-32.3f, 8.2f, -25.0f),
+                new Vector3f(-32.3f, 7.7f, -22.5f),
+                new Vector3f(-32.3f, 8.0f, -20.0f),
+        };
+        lightPower = 0.1f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 3f;
+        int x = 1;
+        for(int i = 11; i < forColourLamp.length + 11; i++){
+            uniformsMap.setUniform("pointLights[" + i + "].position", forColourLamp[i - 11]);
+            uniformsMap.setUniform("pointLights[" + i + "].ambient", new Vector3f(0.05f, 0.05f, 0.05f));
+            switch (x){
+                case 1 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(0.05f * lightPower,0.05f * lightPower,1f * lightPower));
 
+                case 2 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(0.05f * lightPower,1f * lightPower,0.05f * lightPower));
+
+                case 3 -> uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f(1f * lightPower,0.05f * lightPower,0.05f * lightPower));
+                }
+//            uniformsMap.setUniform("pointLights[" + i + "].diffuse", new Vector3f((float) (Math.random() * lightPower), (float) (Math.random() * lightPower), (float) (Math.random() * lightPower)));
+            uniformsMap.setUniform("pointLights[" + i + "].specular", new Vector3f(0.1f, 0.1f, 0.1f));
+            uniformsMap.setUniform("pointLights[" + i + "].constant", 1.0f);
+            uniformsMap.setUniform("pointLights[" + i + "].linear", 0.09f);
+            uniformsMap.setUniform("pointLights[" + i + "].quadratic", 0.032f);
+            x++;
+            if (x >= 4){
+                x = 1;
+            }
+        }
         // posisi spotLight
         Vector3f _spotLightPosition = camera.getPosition();
         Vector3f _spotLightDirection = camera.getDirection();
@@ -328,7 +366,7 @@ public class Sphere extends Circle {
         Vector3f _bigSpotLightDirection = bigSpotLightDir;
 //        System.out.println("x :"+ bigSpotLightDir.x + " y :" + bigSpotLightDir.y +" z :"+bigSpotLightDir.z);
         lightPower = 0.000f;
-        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 1000f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 100f;
         uniformsMap.setUniform("bigSpotLight.position", _bigSpotLightPosition);
         uniformsMap.setUniform("bigSpotLight.direction", _bigSpotLightDirection);
         uniformsMap.setUniform("bigSpotLight.ambient", new Vector3f(0.0f, 0.0f, 0.0f));
@@ -345,7 +383,7 @@ public class Sphere extends Circle {
         Vector3f _monsterSpotLightPosition = new Vector3f(15.6f, 29.6f, 44f);
         Vector3f _monsterSpotLightDirection = new Vector3f(0, 96, -40);
         lightPower = 0.000f;
-        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 1000f;
+        if (lightDirection.y >= 0 && lightDirection.x < 1 && lightDirection.x > -1) lightPower = 10f;
         uniformsMap.setUniform("monsterSpotLight.position", _monsterSpotLightPosition);
         uniformsMap.setUniform("monsterSpotLight.direction", _monsterSpotLightDirection);
         uniformsMap.setUniform("monsterSpotLight.ambient", new Vector3f(0.0f, 0.0f, 0.0f));
