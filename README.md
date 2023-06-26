@@ -29,5 +29,6 @@ Link Sementara : [YouTube](https://youtu.be/2BrOJkHl5D4)
 - https://www.freepik.com/3d-models  
 - https://free3d.com/  
 - https://sketchfab.com/features/free-3d-models
+- https://sketchfab.com/3d-models/asuna-e0171e2fbed047168abd51a2000d9b3e
 
 sorry for missing or incomplete sources, thanks for watching ! 
