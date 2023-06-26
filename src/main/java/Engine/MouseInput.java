@@ -51,6 +51,14 @@ public class MouseInput {
         return displVec;
     }
 
+    public void setCursorVisibility(boolean visible){
+        if(visible){
+            glfwSetInputMode(Window.getWindowHandle(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        }else{
+            glfwSetInputMode(Window.getWindowHandle(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        }
+    }
+
     public void input() {
         displVec.x = 0;
         displVec.y = 0;

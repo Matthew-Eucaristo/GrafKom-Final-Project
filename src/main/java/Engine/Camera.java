@@ -97,7 +97,6 @@ public class Camera {
     public Vector3f getDirection() {
         return direction;
     }
-    
 
     public Vector3f getTargetPosition() {
         return targetPosition;
@@ -105,6 +104,19 @@ public class Camera {
 
     public void setTargetPosition(Vector3f targetPosition) {
         this.targetPosition = targetPosition;
+    }
+    public void setDirection(Vector3f direction, Vector3f up, Vector3f right) {
+    this.direction.set(direction).normalize();
+    this.up.set(up).normalize();
+    this.right.set(right).normalize();
+}
+
+    public void updateDirection(){
+        direction.set(targetPosition).sub(position).normalize();
+        right.set(direction).cross(new Vector3f(0,1,0)).normalize();
+        up.set(right).cross(direction).normalize();
+
+        recalculate();
     }
 
     public void updatePosition() {
@@ -117,6 +129,12 @@ public class Camera {
 
         // update the camera position
         position.set(newCameraPosition);
+
+        // update the camera direction based on the current position and target position
+        Vector3f direction = new Vector3f(targetPosition).sub(position).normalize();
+        Vector3f right = new Vector3f(direction).cross(new Vector3f(0,1,0)).normalize();
+        Vector3f up = new Vector3f(right).cross(direction).normalize();
+        setDirection(direction, up, right);
 
         // calculate the view matrix and projection matrix
         recalculate();

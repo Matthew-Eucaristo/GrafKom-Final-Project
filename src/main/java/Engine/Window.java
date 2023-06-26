@@ -15,7 +15,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window {
 
-    private long window;
+    private static long window;
     private boolean open = true;
     private int width, height;
     private String title;
@@ -50,6 +50,10 @@ public class Window {
 
     public boolean isOpen() {
         return open;
+    }
+
+    public static long getWindowHandle(){
+        return window;
     }
 
     public void init() {
@@ -158,6 +162,9 @@ public class Window {
 
     public boolean isKeyReleased(int keyCode) {
         return glfwGetKey(window, keyCode) == GLFW_RELEASE;
+    }
+    public boolean isFocused() {
+        return glfwGetWindowAttrib(window, GLFW_FOCUSED) == GLFW_TRUE;
     }
 
     public MouseInput getMouseInput() {
