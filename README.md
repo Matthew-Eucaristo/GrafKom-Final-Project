@@ -17,7 +17,7 @@ Computer Graphic's Final Project
 ## Demo? TL/DR?
 
 [![thumbnail](https://github.com/Matthew-Eucaristo/GrafKom-Final-Project/assets/108221736/e05e9afb-e865-4a75-8470-134105c30651)](https://youtu.be/2BrOJkHl5D4)
-Link Sementara : [YouTube](https://youtu.be/2BrOJkHl5D4)
+Link YouTube : [YouTube](https://youtu.be/2BrOJkHl5D4)
 
 
 ## Documents / Laporan
